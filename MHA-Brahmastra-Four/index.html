@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>TaskForge-Core // Neural Focus Protocol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="grid-bg"></canvas>
+
+<div class="deck">
+
+  <header class="deck-top">
+    <div class="deck-brand">
+      TASKFORGE<span>-CORE</span>
+      <small>NEURAL FOCUS PROTOCOL // CYBER-SHIELD MATRIX</small>
+    </div>
+    <div class="deck-top-right">
+      <div class="stat-chip">
+        <span class="stat-label">STREAK</span>
+        <span class="stat-value" id="hud-streak">0</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">XP</span>
+        <span class="stat-value" id="hud-xp">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="deck-main">
+
+    <!-- ================= NEURAL FOCUS LOCK ENGINE ================= -->
+    <section class="panel focus-panel" id="focus-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>NEURAL FOCUS LOCK ENGINE</h2>
+        <span class="status-badge" id="focus-status-badge">STANDBY</span>
+      </div>
+
+      <div id="focus-stage-setup" class="focus-stage">
+        <div class="input-group">
+          <label for="focus-task-name">TASK DESIGNATION</label>
+          <input type="text" id="focus-task-name" placeholder="e.g. Deep work — draft proposal" maxlength="50" autocomplete="off">
+        </div>
+        <div class="input-group">
+          <label for="focus-minutes">FOCUS DURATION (MINUTES)</label>
+          <input type="number" id="focus-minutes" min="1" max="180" step="1" value="25">
+        </div>
+        <p class="form-error" id="focus-setup-error"></p>
+        <button class="btn-emerald" id="btn-activate-shield">ACTIVATE CYBER-SHIELD</button>
+      </div>
+
+      <div id="focus-stage-active" class="focus-stage hidden">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 200 200">
+            <circle class="ring-track" cx="100" cy="100" r="88"></circle>
+            <circle class="ring-progress" id="ring-progress" cx="100" cy="100" r="88"></circle>
+          </svg>
+          <div class="ring-center">
+            <span class="ring-time" id="ring-time">25:00</span>
+            <span class="ring-task" id="ring-task-name">—</span>
+          </div>
+        </div>
+
+        <div class="focus-live-status">
+          <span class="pulse-dot"></span>
+          <span id="focus-live-text">SHIELD ACTIVE — FOCUS LOCKED</span>
+        </div>
+
+        <button class="btn-abort" id="btn-abort-shield">ABORT SESSION</button>
+      </div>
+    </section>
+
+    <!-- ================= SHIELD INTEGRITY & BREACH MATRIX ================= -->
+    <section class="panel shield-panel" id="shield-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>SHIELD INTEGRITY MATRIX</h2>
+        <span class="status-badge live">● MONITORING</span>
+      </div>
+
+      <div class="shield-ring-wrap">
+        <svg class="shield-ring-svg" viewBox="0 0 160 160">
+          <circle class="shield-ring-track" cx="80" cy="80" r="68"></circle>
+          <circle class="shield-ring-fill" id="shield-ring-fill" cx="80" cy="80" r="68"></circle>
+        </svg>
+        <div class="shield-ring-center">
+          <span class="shield-pct" id="shield-integrity-pct">100%</span>
+          <span class="shield-label">INTEGRITY</span>
+        </div>
+      </div>
+
+      <div class="shield-stats-row">
+        <div class="mini-stat">
+          <span class="mini-stat-value" id="stat-best-streak">0</span>
+          <span class="mini-stat-label">BEST STREAK</span>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-value" id="stat-completed">0</span>
+          <span class="mini-stat-label">SESSIONS WON</span>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-value" id="stat-breaches">0</span>
+          <span class="mini-stat-label">BREACHES</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LIVE TELEMETRY TERMINAL ================= -->
+    <section class="panel telemetry-panel" id="telemetry-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>LIVE TELEMETRY TERMINAL</h2>
+        <span class="status-badge live">● STREAMING</span>
+      </div>
+
+      <div class="terminal" id="telemetry-feed"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Breach overlay -->
+<div class="breach-overlay" id="breach-overlay">
+  <div class="breach-glitch-bg"></div>
+  <div class="breach-content">
+    <div class="breach-title">SHIELD BREACH DETECTED</div>
+    <div class="breach-sub" id="breach-sub-text">Session aborted before completion.</div>
+    <div class="breach-details">
+      <span>STREAK RESET</span>
+      <span id="breach-integrity-loss">INTEGRITY -15%</span>
+    </div>
+    <button class="btn-emerald" id="btn-breach-ack">ACKNOWLEDGE &amp; RESTABILIZE</button>
+  </div>
+</div>
+
+<!-- Completion overlay -->
+<div class="complete-overlay" id="complete-overlay">
+  <canvas id="complete-burst"></canvas>
+  <div class="complete-content">
+    <div class="complete-title">SESSION SECURED</div>
+    <div class="complete-task" id="complete-task-text">—</div>
+    <div class="complete-xp" id="complete-xp-text">+0 XP</div>
+    <button class="btn-emerald" id="btn-complete-ack">CONTINUE</button>
+  </div>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
