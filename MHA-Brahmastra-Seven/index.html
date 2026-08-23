@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#050807">
+  <meta name="description" content="TaskForge Quantum Bounty Board and Elite Marketplace">
+  <title>TaskForge Core — Quantum Bounty Board</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">TF</div>
+      <div>
+        <h1>TASKFORGE<span>CORE</span></h1>
+        <small>QUANTUM OPERATIONS</small>
+      </div>
+    </div>
+
+    <div class="vault">
+      <span class="vault-label">FORGE VAULT</span>
+      <strong id="forgeBalance">50,000</strong>
+      <span class="forge-symbol">$FORGE</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-panel">
+      <div class="hud-corner top-left"></div>
+      <div class="hud-corner top-right"></div>
+      <div class="hud-corner bottom-left"></div>
+      <div class="hud-corner bottom-right"></div>
+
+      <div class="status-line">
+        <span class="status-dot"></span>
+        QUANTUM NETWORK ONLINE
+      </div>
+
+      <h2>BOUNTY <span>BOARD</span></h2>
+      <p>Complete focused missions. Earn $FORGE. Upgrade your operator profile.</p>
+
+      <div class="stats-row">
+        <div class="mini-stat">
+          <span>ACTIVE</span>
+          <b id="activeBounties">0</b>
+        </div>
+
+        <div class="mini-stat">
+          <span>COMPLETED</span>
+          <b id="completedBounties">0</b>
+        </div>
+
+        <div class="mini-stat">
+          <span>INVENTORY</span>
+          <b id="inventoryCount">0</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">01 // MISSION CONTROL</span>
+          <h3>QUANTUM BOUNTIES</h3>
+        </div>
+
+        <button class="filter-btn active" data-filter="all">ALL</button>
+      </div>
+
+      <div id="bountyGrid" class="bounty-grid"></div>
+    </section>
+
+    <section class="section marketplace-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow gold">02 // DIGITAL ARMORY</span>
+          <h3>ELITE MARKETPLACE</h3>
+        </div>
+
+        <div class="market-status">
+          <span class="status-dot gold-dot"></span>
+          MARKET OPEN
+        </div>
+      </div>
+
+      <div id="marketGrid" class="market-grid"></div>
+    </section>
+
+    <section class="section inventory-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">03 // OPERATOR LOADOUT</span>
+          <h3>YOUR INVENTORY</h3>
+        </div>
+      </div>
+
+      <div id="inventoryGrid" class="inventory-grid"></div>
+    </section>
+  </main>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <div id="unlockOverlay" class="unlock-overlay" aria-hidden="true">
+    <div class="unlock-particles"></div>
+
+    <div class="unlock-card">
+      <div class="unlock-ring">
+        <div class="unlock-icon" id="unlockIcon">◆</div>
+      </div>
+
+      <span class="unlock-label">DIGITAL ASSET ACQUIRED</span>
+      <h2 id="unlockTitle">ITEM UNLOCKED</h2>
+      <p id="unlockDescription">Asset successfully added to your inventory.</p>
+
+      <div class="unlock-rarity" id="unlockRarity">LEGENDARY</div>
+
+      <button id="closeUnlock" class="primary-btn">
+        ADD TO LOADOUT
+      </button>
+    </div>
+  </div>
+
+  <div id="confirmOverlay" class="modal-overlay" aria-hidden="true">
+    <div class="confirm-modal">
+      <span class="eyebrow gold">MARKET TRANSACTION</span>
+      <h3 id="confirmTitle">CONFIRM PURCHASE</h3>
+
+      <p id="confirmText"></p>
+
+      <div class="confirm-price">
+        <span>COST</span>
+        <strong id="confirmPrice">0</strong>
+        <small>$FORGE</small>
+      </div>
+
+      <div class="modal-actions">
+        <button id="cancelPurchase" class="secondary-btn">CANCEL</button>
+        <button id="confirmPurchase" class="primary-btn">PURCHASE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
