@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>TaskForge-Core // Neural Skill-Tree Matrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="grid-bg"></canvas>
+
+<div class="deck">
+
+  <header class="deck-top">
+    <div class="deck-brand">
+      TASKFORGE<span>-CORE</span>
+      <small>NEURAL SKILL-TREE &amp; EVOLUTION MATRIX</small>
+    </div>
+    <div class="deck-top-right">
+      <div class="stat-chip">
+        <span class="stat-label">SKILL POINTS</span>
+        <span class="stat-value" id="hud-xp">500</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">AVATAR TIER</span>
+        <span class="stat-value" id="hud-tier">I</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="deck-main">
+
+    <!-- ================= AVATAR EVOLUTION HUB ================= -->
+    <section class="panel hub-panel" id="hub-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>AVATAR EVOLUTION HUB</h2>
+        <span class="status-badge live">● SYNCED</span>
+      </div>
+
+      <div class="stat-cards" id="stat-cards">
+
+        <div class="stat-card cyan" id="card-intelligence" data-stat="intelligence">
+          <div class="stat-card-head">
+            <span class="stat-icon">◆</span>
+            <div class="stat-card-title">
+              <span class="stat-name">INTELLIGENCE</span>
+              <span class="stat-level" id="level-intelligence">LEVEL 1</span>
+            </div>
+          </div>
+          <div class="stat-progress-track">
+            <div class="stat-progress-fill" id="fill-intelligence"></div>
+          </div>
+          <div class="stat-progress-labels">
+            <span id="progress-text-intelligence">0 / 100 XP TO NEXT LEVEL</span>
+          </div>
+          <button class="btn-upgrade cyan" id="upgrade-intelligence" data-stat="intelligence">
+            UPGRADE — <span id="cost-intelligence">100</span> XP
+          </button>
+        </div>
+
+        <div class="stat-card purple" id="card-discipline" data-stat="discipline">
+          <div class="stat-card-head">
+            <span class="stat-icon">◆</span>
+            <div class="stat-card-title">
+              <span class="stat-name">DISCIPLINE</span>
+              <span class="stat-level" id="level-discipline">LEVEL 1</span>
+            </div>
+          </div>
+          <div class="stat-progress-track">
+            <div class="stat-progress-fill" id="fill-discipline"></div>
+          </div>
+          <div class="stat-progress-labels">
+            <span id="progress-text-discipline">0 / 100 XP TO NEXT LEVEL</span>
+          </div>
+          <button class="btn-upgrade purple" id="upgrade-discipline" data-stat="discipline">
+            UPGRADE — <span id="cost-discipline">100</span> XP
+          </button>
+        </div>
+
+        <div class="stat-card dual" id="card-endurance" data-stat="endurance">
+          <div class="stat-card-head">
+            <span class="stat-icon">◆</span>
+            <div class="stat-card-title">
+              <span class="stat-name">ENDURANCE</span>
+              <span class="stat-level" id="level-endurance">LEVEL 1</span>
+            </div>
+          </div>
+          <div class="stat-progress-track">
+            <div class="stat-progress-fill" id="fill-endurance"></div>
+          </div>
+          <div class="stat-progress-labels">
+            <span id="progress-text-endurance">0 / 100 XP TO NEXT LEVEL</span>
+          </div>
+          <button class="btn-upgrade dual" id="upgrade-endurance" data-stat="endurance">
+            UPGRADE — <span id="cost-endurance">100</span> XP
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= XP ALLOCATION ENGINE ================= -->
+    <section class="panel xp-panel" id="xp-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>XP ALLOCATION ENGINE</h2>
+        <span class="status-badge" id="xp-pool-badge">500 AVAILABLE</span>
+      </div>
+      <p class="xp-disclaimer">Log a real-world action you completed to grant yourself XP. This is a manual ledger, not automatic verification — you decide what counts.</p>
+
+      <form class="xp-form" id="xp-form">
+        <div class="input-group">
+          <label for="xp-action-name">ACTION COMPLETED</label>
+          <input type="text" id="xp-action-name" placeholder="e.g. Finished 45 min study block" maxlength="60" autocomplete="off">
+        </div>
+        <div class="xp-form-row">
+          <div class="input-group">
+            <label for="xp-action-amount">XP EARNED</label>
+            <input type="number" id="xp-action-amount" min="5" max="500" step="5" value="50">
+          </div>
+          <div class="input-group">
+            <label for="xp-action-stat">RELATED STAT</label>
+            <select id="xp-action-stat">
+              <option value="intelligence">Intelligence</option>
+              <option value="discipline">Discipline</option>
+              <option value="endurance">Endurance</option>
+              <option value="general">General Pool</option>
+            </select>
+          </div>
+        </div>
+        <p class="form-error" id="xp-form-error"></p>
+        <button type="submit" class="btn-cyan">LOG ACTION &amp; GRANT XP</button>
+      </form>
+    </section>
+
+    <!-- ================= EVOLUTION TELEMETRY LOG ================= -->
+    <section class="panel telemetry-panel" id="telemetry-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>EVOLUTION TELEMETRY LOG</h2>
+        <span class="status-badge live">● RECORDING</span>
+      </div>
+
+      <div class="terminal" id="telemetry-feed"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Level up overlay -->
+<div class="levelup-overlay" id="levelup-overlay">
+  <canvas id="levelup-burst"></canvas>
+  <div class="levelup-content">
+    <div class="levelup-title" id="levelup-stat-name">INTELLIGENCE</div>
+    <div class="levelup-level" id="levelup-level-text">LEVEL 2</div>
+    <div class="levelup-sub">Neural pathways upgraded</div>
+    <button class="btn-cyan" id="btn-levelup-close">CONTINUE</button>
+  </div>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
