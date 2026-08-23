@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#010101">
+    <meta name="description" content="TaskForge-Core Quantum Ascension Vault">
+    <title>TaskForge-Core | Quantum Ascension Vault</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="scanlines"></div>
+        <div class="ambient ambient-one"></div>
+        <div class="ambient ambient-two"></div>
+
+        <!-- TOP HUD -->
+        <header class="topbar">
+            <div class="brand-block">
+                <div class="brand-mark">TF</div>
+                <div>
+                    <div class="brand-name">TASKFORGE</div>
+                    <div class="brand-sub">QUANTUM CORE // 11</div>
+                </div>
+            </div>
+
+            <button class="inventory-button" id="inventoryButton" type="button">
+                <span>▣</span>
+                INVENTORY
+                <b id="inventoryCount">0</b>
+            </button>
+        </header>
+
+        <main>
+
+            <!-- VAULT HERO -->
+            <section class="vault-section">
+
+                <div class="section-kicker">
+                    <span class="status-dot"></span>
+                    QUANTUM ASCENSION SYSTEM
+                    <span class="kicker-line"></span>
+                    ONLINE
+                </div>
+
+                <h1>QUANTUM<br><span>ASCENSION</span></h1>
+
+                <p class="hero-description">
+                    Convert completed focus work into Quantum Keys and unlock
+                    transparent digital rewards.
+                </p>
+
+                <!-- KEY HUD -->
+                <div class="key-hud">
+                    <div class="key-icon">◆</div>
+                    <div class="key-data">
+                        <span>QUANTUM KEYS</span>
+                        <strong id="keyBalance">5</strong>
+                    </div>
+                    <div class="tier-data">
+                        <span>INVENTORY TIER</span>
+                        <strong id="inventoryTier">INITIATE</strong>
+                    </div>
+                </div>
+
+                <!-- VAULT -->
+                <div class="vault-stage" id="vaultStage">
+
+                    <div class="energy-ring ring-one"></div>
+                    <div class="energy-ring ring-two"></div>
+                    <div class="energy-ring ring-three"></div>
+
+                    <div class="vault-orbit orbit-one"></div>
+                    <div class="vault-orbit orbit-two"></div>
+
+                    <div class="vault-core">
+
+                        <div class="core-symbol">
+                            <span>✦</span>
+                        </div>
+
+                        <div class="vault-label">
+                            QUANTUM<br>VAULT
+                        </div>
+
+                        <div class="vault-lock">
+                            <span>◈</span>
+                            SECURE
+                        </div>
+
+                    </div>
+
+                    <div class="floating-particle particle-a"></div>
+                    <div class="floating-particle particle-b"></div>
+                    <div class="floating-particle particle-c"></div>
+                    <div class="floating-particle particle-d"></div>
+                    <div class="floating-particle particle-e"></div>
+
+                </div>
+
+                <!-- OPEN CONTROLS -->
+                <div class="open-controls">
+
+                    <button
+                        class="open-button primary-open"
+                        id="openOne"
+                        type="button"
+                    >
+                        <span class="button-icon">◇</span>
+                        <span>
+                            <b>OPEN 1× BOX</b>
+                            <small>1 QUANTUM KEY</small>
+                        </span>
+                    </button>
+
+                    <button
+                        class="open-button secondary-open"
+                        id="openTen"
+                        type="button"
+                    >
+                        <span class="button-icon">◇◇</span>
+                        <span>
+                            <b>OPEN 10× BOX</b>
+                            <small>10 QUANTUM KEYS</small>
+                        </span>
+                    </button>
+
+                </div>
+
+                <div class="system-note">
+                    <span>ⓘ</span>
+                    NO REAL-MONEY PURCHASES · ODDS ARE TRANSPARENT
+                </div>
+
+            </section>
+
+            <!-- ODDS -->
+            <section class="panel odds-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-index">01 //</span>
+                        <h2>DROP MATRIX</h2>
+                    </div>
+                    <span class="live-badge">LIVE</span>
+                </div>
+
+                <div class="odds-grid">
+
+                    <div class="rarity-row common">
+                        <div class="rarity-icon">C</div>
+                        <div class="rarity-info">
+                            <strong>COMMON</strong>
+                            <span>Standard cosmetic</span>
+                        </div>
+                        <b>60%</b>
+                    </div>
+
+                    <div class="rarity-row rare">
+                        <div class="rarity-icon">R</div>
+                        <div class="rarity-info">
+                            <strong>RARE</strong>
+                            <span>Enhanced cosmetic</span>
+                        </div>
+                        <b>25%</b>
+                    </div>
+
+                    <div class="rarity-row epic">
+                        <div class="rarity-icon">E</div>
+                        <div class="rarity-info">
+                            <strong>EPIC</strong>
+                            <span>Premium cosmetic</span>
+                        </div>
+                        <b>12%</b>
+                    </div>
+
+                    <div class="rarity-row legendary">
+                        <div class="rarity-icon">L</div>
+                        <div class="rarity-info">
+                            <strong>LEGENDARY</strong>
+                            <span>Elite title / cosmetic</span>
+                        </div>
+                        <b>3%</b>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- TASK CONVERTER -->
+            <section class="panel task-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-index">02 //</span>
+                        <h2>FOCUS → KEY</h2>
+                    </div>
+                </div>
+
+                <div class="task-card">
+
+                    <div class="task-icon">⌁</div>
+
+                    <div class="task-copy">
+                        <strong>DEEP WORK PROTOCOL</strong>
+                        <span>Complete a focus session to earn one Quantum Key.</span>
+                    </div>
+
+                    <button id="earnKeyButton" class="earn-button" type="button">
+                        COMPLETE FOCUS
+                        <span>+1 KEY</span>
+                    </button>
+
+                </div>
+
+                <div class="progress-area">
+                    <div class="progress-label">
+                        <span>SESSION PROGRESS</span>
+                        <strong id="focusProgressText">0%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div id="focusProgress" class="progress-fill"></div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- RECENT DROPS -->
+            <section class="panel drops-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-index">03 //</span>
+                        <h2>RECENT DROPS</h2>
+                    </div>
+                </div>
+
+                <div id="recentDrops" class="recent-drops">
+                    <div class="empty-drops">
+                        NO REWARDS DISCOVERED YET
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- INVENTORY DRAWER -->
+        <aside id="inventoryDrawer" class="inventory-drawer">
+
+            <div class="drawer-header">
+                <div>
+                    <span class="panel-index">INVENTORY //</span>
+                    <h2>REWARD VAULT</h2>
+                </div>
+
+                <button id="closeInventory" type="button">×</button>
+            </div>
+
+            <div class="drawer-stats">
+                <div>
+                    <span>ITEMS</span>
+                    <strong id="drawerItemCount">0</strong>
+                </div>
+
+                <div>
+                    <span>TIER</span>
+                    <strong id="drawerTier">INITIATE</strong>
+                </div>
+            </div>
+
+            <div id="inventoryList" class="inventory-list">
+                <div class="empty-inventory">
+                    YOUR COLLECTION IS EMPTY.<br>
+                    COMPLETE FOCUS WORK TO EARN KEYS.
+                </div>
+            </div>
+
+        </aside>
+
+        <div id="drawerOverlay" class="drawer-overlay"></div>
+
+        <!-- REVEAL MODAL -->
+        <div id="revealOverlay" class="reveal-overlay">
+
+            <div class="reveal-backdrop"></div>
+
+            <div id="revealCard" class="reveal-card">
+
+                <div class="reveal-topline">
+                    QUANTUM ACQUISITION
+                </div>
+
+                <div id="revealRarity" class="reveal-rarity">
+                    LEGENDARY
+                </div>
+
+                <div id="revealIcon" class="reveal-icon">
+                    ✦
+                </div>
+
+                <h2 id="revealName">VOID SOVEREIGN</h2>
+
+                <p id="revealDescription">
+                    Elite cosmetic reward unlocked.
+                </p>
+
+                <div class="reveal-divider"></div>
+
+                <button id="revealContinue" type="button">
+                    ADD TO INVENTORY
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- TOAST -->
+        <div id="toast" class="toast">
+            <span id="toastIcon">◆</span>
+            <span id="toastText">SYSTEM READY</span>
+        </div>
+
+        <!-- PARTICLE CONTAINER -->
+        <div id="particleContainer" class="particle-container"></div>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
