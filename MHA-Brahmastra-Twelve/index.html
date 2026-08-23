@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="TaskForge-Core Global Pantheon Status Matrix">
+    <title>TaskForge-Core | Global Pantheon</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="screenFlash" class="screen-flash"></div>
+    <div id="particleLayer" class="particle-layer"></div>
+
+    <main class="app-shell">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-mark">TF</div>
+                <div>
+                    <h1>TASKFORGE</h1>
+                    <span>CORE // PANTHEON NETWORK</span>
+                </div>
+            </div>
+
+            <div class="network-status">
+                <span class="network-dot"></span>
+                <span>LIVE</span>
+            </div>
+        </header>
+
+        <section class="hero-panel">
+
+            <div class="scanline"></div>
+
+            <div class="hero-heading">
+                <div class="eyebrow">GLOBAL STATUS MATRIX</div>
+                <h2>PANTHEON<br><strong>LEADERBOARD</strong></h2>
+                <p>Focus output ranked across the TaskForge network.</p>
+            </div>
+
+            <div class="titan-card">
+                <div class="holo-grid"></div>
+
+                <div class="titan-crown">♛</div>
+
+                <div class="titan-label">CURRENT GLOBAL TITAN</div>
+
+                <div id="titanName" class="titan-name">NOVA PRIME</div>
+
+                <div class="titan-stats">
+                    <div>
+                        <span>LEVEL</span>
+                        <strong id="titanLevel">99</strong>
+                    </div>
+
+                    <div>
+                        <span>FOCUS XP</span>
+                        <strong id="titanXP">98,450</strong>
+                    </div>
+
+                    <div>
+                        <span>$FORGE</span>
+                        <strong id="titanForge">250K</strong>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="player-dashboard">
+
+            <div class="dashboard-title">
+                <span>YOUR OPERATOR PROFILE</span>
+                <span class="status-chip">SYNCED</span>
+            </div>
+
+            <div class="rank-main">
+                <div class="rank-number">
+                    <small>GLOBAL RANK</small>
+                    <strong id="playerRank">#42</strong>
+                </div>
+
+                <div class="rank-progress">
+                    <div class="progress-top">
+                        <span>NEXT RANK</span>
+                        <strong id="distanceText">2,350 XP</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div id="rankProgress" class="progress-fill"></div>
+                    </div>
+
+                    <div class="progress-bottom">
+                        <span id="currentXP">47,650 XP</span>
+                        <span id="nextXP">50,000 XP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-grid">
+
+                <div class="stat-card">
+                    <span>LEVEL</span>
+                    <strong id="playerLevel">38</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>TOTAL XP</span>
+                    <strong id="playerTotalXP">47,650</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>$FORGE</span>
+                    <strong id="playerForge">48,500</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="status-buff">
+
+            <div class="buff-icon">✦</div>
+
+            <div class="buff-info">
+                <span>DAILY STATUS BUFF</span>
+                <strong id="buffStatus">AVAILABLE</strong>
+                <small>+250 XP for today's focused session</small>
+            </div>
+
+            <button id="claimBuffBtn" class="buff-button">
+                CLAIM
+            </button>
+
+        </section>
+
+        <section class="leaderboard-section">
+
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">GLOBAL RANKING</span>
+                    <h3>ELITE OPERATORS</h3>
+                </div>
+
+                <div class="live-counter">
+                    <span></span>
+                    <strong id="onlineCount">12,847</strong>
+                    ONLINE
+                </div>
+            </div>
+
+            <div id="leaderboard" class="leaderboard"></div>
+
+        </section>
+
+        <section class="session-panel">
+
+            <div class="session-header">
+                <div>
+                    <span class="eyebrow">PRODUCTIVITY ENGINE</span>
+                    <h3>CLIMB THE MATRIX</h3>
+                </div>
+
+                <div class="session-icon">⚡</div>
+            </div>
+
+            <p class="session-description">
+                Log a focused work session to increase your XP and improve your simulated global position.
+            </p>
+
+            <div class="session-input-row">
+
+                <label for="sessionMinutes">
+                    FOCUS MINUTES
+                </label>
+
+                <input
+                    id="sessionMinutes"
+                    type="number"
+                    min="5"
+                    max="480"
+                    value="30"
+                    inputmode="numeric"
+                >
+
+            </div>
+
+            <button id="logSessionBtn" class="climb-button">
+                <span class="button-glow"></span>
+                <span class="button-icon">▲</span>
+                LOG SESSION &amp; CLIMB RANK
+            </button>
+
+            <div id="sessionMessage" class="session-message">
+                READY FOR SESSION
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <span>TASKFORGE-CORE</span>
+            <span>GLOBAL MATRIX v12.0</span>
+            <span id="clock">00:00:00</span>
+        </footer>
+
+    </main>
+
+    <div id="rankModal" class="modal-overlay">
+
+        <div class="rank-modal">
+
+            <div class="modal-symbol">◆</div>
+
+            <span class="eyebrow">RANKING UPDATE</span>
+
+            <h2 id="modalTitle">RANK ADVANCED</h2>
+
+            <div class="rank-change">
+                <span id="oldRank">#42</span>
+                <strong>→</strong>
+                <span id="newRank">#41</span>
+            </div>
+
+            <p id="modalMessage">
+                Your focus session increased your position.
+            </p>
+
+            <button id="closeModalBtn" class="modal-button">
+                CONTINUE
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
