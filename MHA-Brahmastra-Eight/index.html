@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="TaskForge Core Cyber-Colosseum productivity duel">
+  <title>TaskForge Core — Cyber-Colosseum</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="scanlines"></div>
+  <div class="grid-overlay"></div>
+
+  <header class="topbar">
+
+    <div class="brand">
+      <div class="brand-mark">TF</div>
+
+      <div class="brand-text">
+        <h1>TASKFORGE<span>CORE</span></h1>
+        <small>CYBER-COLOSSEUM // PvP PRODUCTIVITY</small>
+      </div>
+    </div>
+
+    <div class="vault">
+      <span class="vault-label">FORGE VAULT</span>
+      <strong id="vaultBalance">50,000</strong>
+      <small>$FORGE</small>
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- MATCHMAKING -->
+
+    <section id="lobbySection" class="lobby-section">
+
+      <div class="section-kicker">
+        <span class="cyan-line"></span>
+        COLOSSEUM NETWORK
+        <span class="online-dot"></span>
+        ONLINE
+      </div>
+
+      <div class="lobby-header">
+        <div>
+          <h2>CYBER<span>COLOSSEUM</span></h2>
+          <p>
+            Enter a virtual 1v1 productivity duel.
+            Your $FORGE wager is locked during the match.
+          </p>
+        </div>
+
+        <div class="rank-box">
+          <span>RANK</span>
+          <strong id="playerRank">ROOKIE</strong>
+        </div>
+      </div>
+
+
+      <div class="match-panel">
+
+        <div class="panel-title">
+          <span>01 // MATCHMAKING</span>
+          <span class="panel-status">READY</span>
+        </div>
+
+        <div class="wager-display">
+
+          <div class="wager-label">
+            <span>DUEL WAGER</span>
+            <small>VIRTUAL $FORGE</small>
+          </div>
+
+          <div class="wager-value">
+            <button id="decreaseWager" class="wager-adjust">−</button>
+
+            <div>
+              <strong id="wagerValue">5,000</strong>
+              <span>$FORGE</span>
+            </div>
+
+            <button id="increaseWager" class="wager-adjust">+</button>
+          </div>
+
+          <div class="wager-presets">
+            <button data-wager="1000">1K</button>
+            <button data-wager="2500">2.5K</button>
+            <button data-wager="5000" class="selected">5K</button>
+            <button data-wager="10000">10K</button>
+          </div>
+
+        </div>
+
+
+        <div class="risk-info">
+          <div>
+            <span>ENTRY</span>
+            <strong id="entryAmount">5,000</strong>
+          </div>
+
+          <div>
+            <span>POT</span>
+            <strong id="potentialPot">10,000</strong>
+          </div>
+
+          <div>
+            <span>MODE</span>
+            <strong>1v1</strong>
+          </div>
+        </div>
+
+
+        <button id="searchOpponent" class="search-button">
+          <span class="search-icon">⌁</span>
+          SEARCH OPPONENT
+          <span class="button-arrow">›</span>
+        </button>
+
+        <p class="virtual-note">
+          Virtual economy only • No real-money value
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ARENA -->
+
+    <section id="arenaSection" class="arena-section hidden">
+
+      <div class="arena-topbar">
+
+        <div>
+          <span class="section-kicker">02 // LIVE COMBAT</span>
+          <h2>PRODUCTIVITY <span>DUEL</span></h2>
+        </div>
+
+        <div class="match-timer">
+          <span>ROUND TIME</span>
+          <strong id="roundTimer">02:00</strong>
+        </div>
+
+      </div>
+
+
+      <!-- FIGHTERS -->
+
+      <div class="fighters">
+
+        <div class="fighter player-fighter">
+
+          <div class="fighter-header">
+
+            <div class="avatar cyan-avatar">
+              <span>01</span>
+            </div>
+
+            <div class="fighter-name">
+              <span>PLAYER ONE</span>
+              <strong id="playerScore">0</strong>
+              <small>FOCUS POWER</small>
+            </div>
+
+          </div>
+
+          <div class="fighter-health">
+            <div class="health-label">
+              <span>PRODUCTIVITY</span>
+              <strong id="playerPercent">0%</strong>
+            </div>
+
+            <div class="health-bar">
+              <div id="playerHealth" class="health-fill player-fill"></div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="vs-mark">
+          <span>VS</span>
+        </div>
+
+
+        <div class="fighter enemy-fighter">
+
+          <div class="fighter-header">
+
+            <div class="fighter-name enemy-name">
+              <span>UNKNOWN CHALLENGER</span>
+              <strong id="enemyScore">0</strong>
+              <small>FOCUS POWER</small>
+            </div>
+
+            <div class="avatar red-avatar">
+              <span>??</span>
+            </div>
+
+          </div>
+
+          <div class="fighter-health">
+
+            <div class="health-label">
+              <span>PRODUCTIVITY</span>
+              <strong id="enemyPercent">0%</strong>
+            </div>
+
+            <div class="health-bar enemy-health-bar">
+              <div id="enemyHealth" class="health-fill enemy-fill"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- TUG OF WAR -->
+
+      <div class="tug-section">
+
+        <div class="tug-labels">
+          <span>PLAYER ADVANTAGE</span>
+          <strong id="advantageText">EVEN</strong>
+          <span>CHALLENGER ADVANTAGE</span>
+        </div>
+
+        <div class="tug-track">
+
+          <div class="tug-center"></div>
+
+          <div id="tugPlayer" class="tug-player"></div>
+
+          <div id="tugEnemy" class="tug-enemy"></div>
+
+          <div id="tugMarker" class="tug-marker"></div>
+
+        </div>
+
+        <div class="tug-scale">
+          <span>100</span>
+          <span>75</span>
+          <span>50</span>
+          <span>25</span>
+          <span>0</span>
+        </div>
+
+      </div>
+
+
+      <!-- COMBAT LOG -->
+
+      <div class="combat-log" id="combatLog">
+        <div class="log-entry system-log">
+          <span>[SYSTEM]</span>
+          DUEL INITIALIZED.
+        </div>
+      </div>
+
+
+      <!-- ATTACK AREA -->
+
+      <div class="attack-area">
+
+        <div class="attack-status">
+          <span class="status-dot"></span>
+          DEEP WORK ENGINE ONLINE
+        </div>
+
+        <button id="deepWorkButton" class="deep-work-button">
+
+          <span class="button-glow"></span>
+
+          <span class="attack-small">EXECUTE</span>
+          <strong>DEEP WORK</strong>
+          <span class="attack-sub">LOG PRODUCTIVITY ACTION</span>
+
+        </button>
+
+        <div class="cooldown-bar">
+          <div id="cooldownFill"></div>
+        </div>
+
+        <p>
+          Each verified productivity action increases your combat power.
+        </p>
+
+      </div>
+
+
+      <div class="arena-footer">
+
+        <div class="arena-stat">
+          <span>WAGER</span>
+          <strong id="arenaWager">5,000</strong>
+          <small>$FORGE</small>
+        </div>
+
+        <div class="arena-stat">
+          <span>POTENTIAL WIN</span>
+          <strong id="arenaPot">10,000</strong>
+          <small>$FORGE</small>
+        </div>
+
+        <button id="forfeitButton" class="forfeit-button">
+          END DUEL
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- IMPACT -->
+
+  <div id="impactFlash" class="impact-flash"></div>
+
+  <div id="hitText" class="hit-text">
+    +POWER
+  </div>
+
+
+  <!-- MATCHMAKING OVERLAY -->
+
+  <div id="matchOverlay" class="modal-overlay">
+
+    <div class="matchmaking-modal">
+
+      <div class="radar">
+        <div class="radar-ring ring-one"></div>
+        <div class="radar-ring ring-two"></div>
+        <div class="radar-ring ring-three"></div>
+        <div class="radar-sweep"></div>
+        <div class="radar-point"></div>
+      </div>
+
+      <span class="modal-kicker">COLOSSEUM NETWORK</span>
+
+      <h2 id="matchStatus">SEARCHING...</h2>
+
+      <p id="matchStatusText">
+        Scanning for a compatible challenger.
+      </p>
+
+      <div class="search-progress">
+        <div id="searchProgress"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- RESULT OVERLAY -->
+
+  <div id="resultOverlay" class="modal-overlay">
+
+    <div id="resultModal" class="result-modal">
+
+      <div id="resultIcon" class="result-icon">✦</div>
+
+      <span id="resultKicker" class="modal-kicker">
+        COLOSSEUM RESULT
+      </span>
+
+      <h2 id="resultTitle">VICTORY</h2>
+
+      <p id="resultDescription">
+        Duel completed.
+      </p>
+
+      <div class="result-reward">
+
+        <span>VAULT UPDATE</span>
+
+        <strong id="resultReward">
+          +0 $FORGE
+        </strong>
+
+      </div>
+
+      <button id="returnLobby" class="search-button">
+        RETURN TO COLOSSEUM
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div id="toastContainer" class="toast-container"></div>
+
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
