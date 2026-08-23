@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>TaskForge-Core // Global Guild Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="grid-bg"></canvas>
+
+<div class="deck">
+
+  <header class="deck-top">
+    <div class="deck-brand">
+      TASKFORGE<span>-CORE</span>
+      <small>GLOBAL GUILD &amp; SOCIAL EMPIRE ENGINE</small>
+    </div>
+    <div class="deck-top-right">
+      <div class="stat-chip">
+        <span class="stat-label">YOUR XP</span>
+        <span class="stat-value" id="hud-xp">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="deck-main">
+
+    <!-- ================= GUILD COMMAND CENTER ================= -->
+    <section class="panel guild-panel" id="guild-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>GUILD COMMAND CENTER</h2>
+        <span class="status-badge" id="guild-status-badge">UNREGISTERED</span>
+      </div>
+
+      <div id="guild-stage-setup" class="guild-stage">
+        <div class="input-group">
+          <label for="guild-name-input">EMPIRE / GUILD NAME</label>
+          <input type="text" id="guild-name-input" placeholder="e.g. Neon Ascendancy" maxlength="28" autocomplete="off">
+        </div>
+        <p class="form-error" id="guild-setup-error"></p>
+        <button class="btn-gold" id="btn-found-guild">FOUND YOUR EMPIRE</button>
+      </div>
+
+      <div id="guild-stage-active" class="guild-stage hidden">
+        <div class="guild-identity">
+          <div class="guild-badge" id="guild-badge">
+            <span class="guild-badge-rank" id="guild-badge-rank">I</span>
+          </div>
+          <div class="guild-identity-text">
+            <span class="guild-name-display" id="guild-name-display">—</span>
+            <span class="guild-rank-title" id="guild-rank-title">Tier I — Outpost Empire</span>
+          </div>
+        </div>
+
+        <div class="warpower-row">
+          <div class="warpower-block">
+            <span class="warpower-value" id="warpower-value">0</span>
+            <span class="warpower-label">COLLECTIVE WAR POWER</span>
+          </div>
+        </div>
+
+        <div class="rank-progress-wrap">
+          <div class="rank-progress-labels">
+            <span id="rank-progress-current">Tier I</span>
+            <span id="rank-progress-next">Tier II at 2,000</span>
+          </div>
+          <div class="rank-progress-track">
+            <div class="rank-progress-fill" id="rank-progress-fill"></div>
+          </div>
+        </div>
+
+        <button class="btn-ghost" id="btn-rename-guild">DISBAND &amp; REFOUND EMPIRE</button>
+      </div>
+    </section>
+
+    <!-- ================= LIVE SOCIAL LEADERBOARD ================= -->
+    <section class="panel leaderboard-panel" id="leaderboard-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>GLOBAL LEADERBOARD</h2>
+        <span class="status-badge sim">SIMULATED RIVALS</span>
+      </div>
+      <p class="leaderboard-disclaimer">Rival empires below are simulated locally on this device for competitive pacing — not live players.</p>
+
+      <div class="leaderboard-list" id="leaderboard-list"></div>
+
+      <button class="btn-gold btn-contribute" id="btn-contribute-xp">CONTRIBUTE +250 XP TO YOUR EMPIRE</button>
+    </section>
+
+    <!-- ================= SOCIAL TELEMETRY & WAR FEED ================= -->
+    <section class="panel feed-panel" id="feed-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>SOCIAL TELEMETRY &amp; WAR FEED</h2>
+        <span class="status-badge sim">SIMULATED FEED</span>
+      </div>
+
+      <div class="terminal" id="war-feed"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Contribution burst overlay -->
+<div class="contribute-overlay" id="contribute-overlay">
+  <canvas id="contribute-burst"></canvas>
+  <div class="contribute-content">
+    <div class="contribute-title">WAR POWER SURGE</div>
+    <div class="contribute-amount" id="contribute-amount-text">+250</div>
+    <div class="contribute-sub" id="contribute-sub-text">Contributed to your empire</div>
+    <button class="btn-gold" id="btn-contribute-close">CONTINUE</button>
+  </div>
+</div>
+
+<!-- Rank up overlay -->
+<div class="rankup-overlay" id="rankup-overlay">
+  <div class="rankup-content">
+    <div class="rankup-title">EMPIRE TIER ADVANCED</div>
+    <div class="rankup-name" id="rankup-name">TIER II</div>
+    <button class="btn-gold" id="btn-rankup-close">ACKNOWLEDGE</button>
+  </div>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
