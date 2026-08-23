@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>TaskForge-Core // Faction War Arena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="tactical-grid"></canvas>
+<div class="scanline"></div>
+
+<div class="hud">
+
+  <header class="hud-top">
+    <div class="hud-brand">
+      TASKFORGE<span>-CORE</span>
+      <small>ARENA MODULE // WAR ECONOMY: $20T $FORGE IN CIRCULATION</small>
+    </div>
+    <div class="hud-top-right">
+      <div class="hud-clock" id="hud-clock">00:00:00</div>
+      <div class="hud-balance">
+        <span class="balance-label">$FORGE</span>
+        <span class="balance-value" id="hud-tokens">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="arena">
+
+    <!-- ================= FACTION WAR NEXUS ================= -->
+    <section class="panel nexus-panel" id="nexus">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>FACTION WAR NEXUS</h2>
+        <span class="status-badge live">● LIVE</span>
+      </div>
+
+      <div class="faction-row">
+        <div class="faction-card cyan" id="faction-card-vanguards">
+          <h3>CYBER-VANGUARDS</h3>
+          <div class="faction-score" id="score-vanguards">0</div>
+          <div class="faction-label">WAR POWER</div>
+          <button class="pledge-btn cyan" id="pledge-vanguards" data-faction="vanguards">PLEDGE ALLEGIANCE</button>
+        </div>
+
+        <div class="faction-vs">VS</div>
+
+        <div class="faction-card crimson" id="faction-card-titans">
+          <h3>SHADOW-TITANS</h3>
+          <div class="faction-score" id="score-titans">0</div>
+          <div class="faction-label">WAR POWER</div>
+          <button class="pledge-btn crimson" id="pledge-titans" data-faction="titans">PLEDGE ALLEGIANCE</button>
+        </div>
+      </div>
+
+      <div class="dominance-wrap">
+        <div class="dominance-labels">
+          <span class="cyan-text" id="dominance-vanguards-pct">50%</span>
+          <span class="dominance-title">TERRITORY DOMINANCE</span>
+          <span class="crimson-text" id="dominance-titans-pct">50%</span>
+        </div>
+        <div class="dominance-track">
+          <div class="dominance-fill" id="dominance-fill"></div>
+          <div class="dominance-marker" id="dominance-marker"></div>
+        </div>
+      </div>
+
+      <p class="pledge-status" id="pledge-status">You have not pledged allegiance. Choose a faction to contribute war power.</p>
+    </section>
+
+    <!-- ================= STAKE & BURN PROTOCOL ================= -->
+    <section class="panel stake-panel" id="stake-protocol">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>STAKE &amp; BURN PROTOCOL</h2>
+        <span class="status-badge" id="stake-count-badge">0 ACTIVE</span>
+      </div>
+
+      <form class="stake-form" id="stake-form">
+        <input type="text" id="stake-name" placeholder="TASK DESIGNATION" maxlength="40" autocomplete="off" required>
+
+        <div class="stake-form-row">
+          <div class="input-group">
+            <label for="stake-amount">STAKE AMOUNT</label>
+            <input type="number" id="stake-amount" min="10" max="5000" step="10" value="100" required>
+          </div>
+          <div class="input-group">
+            <label for="stake-duration">FOCUS DURATION (MIN)</label>
+            <input type="number" id="stake-duration" min="1" max="180" step="1" value="25" required>
+          </div>
+        </div>
+
+        <p class="form-error" id="stake-form-error"></p>
+
+        <button type="submit" class="btn-deploy">DEPLOY STAKE</button>
+      </form>
+
+      <div class="stake-active-list" id="stake-active-list">
+        <p class="empty-state" id="stake-empty-state">No active stakes. Deploy one to enter the burn protocol.</p>
+      </div>
+    </section>
+
+    <!-- ================= TACTICAL COMBAT FEED ================= -->
+    <section class="panel feed-panel" id="combat-feed-panel">
+      <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+      <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+
+      <div class="panel-header">
+        <h2>TACTICAL COMBAT FEED</h2>
+        <span class="status-badge live">● STREAMING</span>
+      </div>
+
+      <div class="terminal" id="combat-feed"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
