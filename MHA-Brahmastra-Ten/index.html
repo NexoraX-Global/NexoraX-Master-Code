@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#020202">
+    <meta name="description" content="TaskForge-Core Neural Streak productivity dashboard">
+    <title>TaskForge-Core | Neural Streak</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="screenFlash"></div>
+    <div id="particles"></div>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-mark">TF</div>
+            <div>
+                <h1>TASKFORGE</h1>
+                <span>NEURAL STREAK // CORE-10</span>
+            </div>
+        </div>
+
+        <div class="vault-mini">
+            <span class="vault-label">$FORGE VAULT</span>
+            <strong id="vaultBalance">0</strong>
+        </div>
+    </header>
+
+    <main class="app">
+
+        <!-- STREAK HERO -->
+        <section class="hero-panel">
+
+            <div class="section-label">
+                <span class="status-dot"></span>
+                NEURAL STREAK ENGINE
+            </div>
+
+            <div class="streak-core">
+
+                <div class="energy-ring ring-one"></div>
+                <div class="energy-ring ring-two"></div>
+                <div class="energy-ring ring-three"></div>
+
+                <div class="flame-core">
+                    <div class="flame">🔥</div>
+                    <div class="streak-number" id="streakCount">0</div>
+                    <div class="days-label">DAY STREAK</div>
+                </div>
+            </div>
+
+            <div class="multiplier-card">
+                <div>
+                    <span>QUANTUM XP MULTIPLIER</span>
+                    <strong id="xpMultiplier">1.0x</strong>
+                </div>
+
+                <div class="multiplier-progress">
+                    <div id="multiplierBar"></div>
+                </div>
+            </div>
+
+            <p class="hero-message" id="heroMessage">
+                Build momentum one focused session at a time.
+            </p>
+
+        </section>
+
+
+        <!-- DAILY STATUS -->
+        <section class="status-grid">
+
+            <article class="status-card">
+                <span class="card-icon">◈</span>
+                <small>TODAY'S STATUS</small>
+                <strong id="todayStatus">READY</strong>
+            </article>
+
+            <article class="status-card">
+                <span class="card-icon gold">✦</span>
+                <small>VAULT REWARD</small>
+                <strong id="vaultReward">0</strong>
+            </article>
+
+            <article class="status-card">
+                <span class="card-icon orange">◉</span>
+                <small>SHIELD</small>
+                <strong id="shieldStatus">AVAILABLE</strong>
+            </article>
+
+        </section>
+
+
+        <!-- 7 DAY MATRIX -->
+        <section class="panel">
+
+            <div class="panel-header">
+                <div>
+                    <span class="section-label">QUANTUM MATRIX</span>
+                    <h2>7-DAY COMMITMENT</h2>
+                </div>
+
+                <span class="week-indicator" id="weekIndicator">WEEK 01</span>
+            </div>
+
+            <div class="week-grid" id="weekGrid"></div>
+
+            <button
+                class="primary-button"
+                id="checkInButton"
+                type="button">
+                <span class="button-glow"></span>
+                <span id="checkInText">LOCK IN TODAY'S FOCUS</span>
+            </button>
+
+            <p class="safe-note">
+                One meaningful focus session is enough. Rest days are okay.
+            </p>
+
+        </section>
+
+
+        <!-- STREAK VAULT -->
+        <section class="panel vault-panel">
+
+            <div class="panel-header">
+                <div>
+                    <span class="section-label">QUANTUM ECONOMY</span>
+                    <h2>STREAK VAULT</h2>
+                </div>
+
+                <span class="vault-lock">LOCKED</span>
+            </div>
+
+            <div class="vault-display">
+
+                <div class="vault-symbol">◆</div>
+
+                <div>
+                    <span>ACCUMULATED $FORGE</span>
+                    <strong id="streakVault">0</strong>
+                </div>
+
+            </div>
+
+            <div class="vault-stats">
+                <div>
+                    <span>DAILY BASE</span>
+                    <strong id="dailyReward">250</strong>
+                </div>
+
+                <div>
+                    <span>MULTIPLIER</span>
+                    <strong id="vaultMultiplier">1.0x</strong>
+                </div>
+
+                <div>
+                    <span>NEXT BONUS</span>
+                    <strong id="nextBonus">500</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- SHIELD -->
+        <section class="panel shield-panel">
+
+            <div class="shield-header">
+
+                <div class="shield-icon">⬡</div>
+
+                <div>
+                    <span class="section-label">STREAK PROTECTION</span>
+                    <h2>QUANTUM SHIELD</h2>
+                </div>
+
+                <div class="shield-state" id="shieldState">
+                    AVAILABLE
+                </div>
+
+            </div>
+
+            <p id="shieldDescription">
+                A recovery token can preserve your streak if you miss a day.
+            </p>
+
+            <div class="shield-timer">
+                <span>RECOVERY WINDOW</span>
+                <strong id="shieldTimer">--:--:--</strong>
+            </div>
+
+            <button
+                class="secondary-button"
+                id="shieldButton"
+                type="button">
+                ACTIVATE STREAK SHIELD
+            </button>
+
+            <small class="shield-cost">
+                COST: 1,000 $FORGE
+            </small>
+
+        </section>
+
+
+        <!-- ACTIVITY -->
+        <section class="panel activity-panel">
+
+            <div class="panel-header">
+                <div>
+                    <span class="section-label">NEURAL LOG</span>
+                    <h2>FOCUS HISTORY</h2>
+                </div>
+            </div>
+
+            <div id="activityLog" class="activity-log"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- SUCCESS MODAL -->
+    <div class="modal-overlay" id="successModal">
+
+        <div class="success-modal">
+
+            <div class="success-ring">
+                <span>✓</span>
+            </div>
+
+            <span class="section-label">FOCUS SESSION CONFIRMED</span>
+
+            <h2 id="successTitle">DAY LOCKED</h2>
+
+            <strong class="reward-pop" id="rewardPopup">
+                +250 $FORGE
+            </strong>
+
+            <p id="successMessage">
+                Your progress has been saved.
+            </p>
+
+            <button
+                class="primary-button modal-button"
+                id="closeModal"
+                type="button">
+                CONTINUE
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="toast" id="toast">
+        <span id="toastIcon">◆</span>
+        <span id="toastMessage">System ready.</span>
+    </div>
+
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
