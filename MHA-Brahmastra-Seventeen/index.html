@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="theme-color" content="#030303">
+    <meta name="description" content="TaskForge Neural-Pact Mutual Accountability Matrix">
+
+    <title>TaskForge // Neural-Pact</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- Ambient Background -->
+        <div class="ambient-grid"></div>
+        <div class="ambient-glow glow-one"></div>
+        <div class="ambient-glow glow-two"></div>
+
+        <!-- Global Failure Overlay -->
+        <div id="failureOverlay" class="failure-overlay">
+            <div class="failure-noise"></div>
+
+            <div class="failure-content">
+                <div class="failure-code">PACT://CRITICAL_FAILURE</div>
+                <div class="failure-title">NEURAL LINK BROKEN</div>
+                <div class="failure-subtitle">
+                    ACCOUNTABILITY PROTOCOL TERMINATED
+                </div>
+
+                <div class="failure-symbol">×</div>
+
+                <button id="resetFailureBtn" class="danger-button">
+                    RESTORE MATRIX
+                </button>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="topbar">
+
+            <div class="brand-block">
+                <div class="brand-mark">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div>
+                    <div class="brand-name">TASKFORGE</div>
+                    <div class="brand-module">NEURAL-Pact // MHA-17</div>
+                </div>
+            </div>
+
+            <div class="system-status">
+                <span id="systemDot" class="status-dot"></span>
+                <span id="systemStatus">STANDBY</span>
+            </div>
+
+        </header>
+
+        <main class="main-container">
+
+            <!-- Hero -->
+            <section class="hero">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    MUTUAL ACCOUNTABILITY MATRIX
+                    <span class="eyebrow-line"></span>
+                </div>
+
+                <h1>
+                    SYMBIOTIC
+                    <strong>NEURAL-PACT</strong>
+                </h1>
+
+                <p>
+                    Two operators. One execution protocol.
+                    Your progress is synchronized with your accountability partner.
+                </p>
+
+            </section>
+
+            <!-- Shared Stake HUD -->
+            <section class="stake-hud glass-panel">
+
+                <div class="hud-label">
+                    SHARED DIGITAL STAKE
+                </div>
+
+                <div class="stake-value">
+                    <span id="sharedStake">5,000</span>
+                    <small>$FORGE</small>
+                </div>
+
+                <div class="stake-status">
+                    <span class="mini-dot"></span>
+                    VIRTUAL ACCOUNTABILITY STAKE
+                </div>
+
+                <div class="hud-divider"></div>
+
+                <div class="hud-grid">
+
+                    <div class="hud-stat">
+                        <span>PACT STATE</span>
+                        <strong id="pactState">UNINITIALIZED</strong>
+                    </div>
+
+                    <div class="hud-stat">
+                        <span>SYNC LEVEL</span>
+                        <strong id="syncLevel">0%</strong>
+                    </div>
+
+                    <div class="hud-stat">
+                        <span>RISK MODE</span>
+                        <strong>SIMULATION</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Operators -->
+            <section class="operators-section">
+
+                <div class="section-heading">
+                    <span>01</span>
+                    DUAL-OPERATOR LINK
+                </div>
+
+                <div class="operator-stage">
+
+                    <!-- User -->
+                    <article id="userOperator" class="operator-card operator-blue">
+
+                        <div class="operator-top">
+                            <span class="operator-id">OPERATOR A</span>
+                            <span id="userStatus" class="operator-state">OFFLINE</span>
+                        </div>
+
+                        <div class="avatar-container">
+                            <div class="avatar-ring"></div>
+                            <div class="avatar">
+                                A
+                            </div>
+                        </div>
+
+                        <h2>YOU</h2>
+
+                        <div class="operator-role">
+                            PRIMARY EXECUTOR
+                        </div>
+
+                        <div class="operator-progress">
+                            <div class="progress-meta">
+                                <span>EXECUTION</span>
+                                <strong id="userProgressText">0%</strong>
+                            </div>
+
+                            <div class="progress-track">
+                                <div id="userProgress" class="progress-fill"></div>
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <!-- Neural Connection -->
+                    <div class="neural-link">
+
+                        <div class="link-pulse"></div>
+
+                        <div class="link-line">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="sync-core">
+                            <span>SYNC</span>
+                        </div>
+
+                    </div>
+
+                    <!-- Partner -->
+                    <article id="partnerOperator" class="operator-card operator-red">
+
+                        <div class="operator-top">
+                            <span class="operator-id">OPERATOR B</span>
+                            <span id="partnerStatus" class="operator-state">OFFLINE</span>
+                        </div>
+
+                        <div class="avatar-container">
+                            <div class="avatar-ring"></div>
+                            <div class="avatar">
+                                B
+                            </div>
+                        </div>
+
+                        <h2>PARTNER</h2>
+
+                        <div class="operator-role">
+                            SIMULATED ACCOUNTABILITY NODE
+                        </div>
+
+                        <div class="operator-progress">
+                            <div class="progress-meta">
+                                <span>EXECUTION</span>
+                                <strong id="partnerProgressText">0%</strong>
+                            </div>
+
+                            <div class="progress-track">
+                                <div id="partnerProgress" class="progress-fill"></div>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- Pact Initiation -->
+            <section id="initiationPanel" class="control-panel glass-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-index">02</span>
+                        <h2>PACT INITIATION</h2>
+                    </div>
+
+                    <div class="panel-indicator">
+                        READY
+                    </div>
+                </div>
+
+                <p class="panel-description">
+                    Establish a virtual accountability contract.
+                    Both operators must complete their execution protocol
+                    before the pact reaches secured status.
+                </p>
+
+                <div class="stake-selector">
+
+                    <button class="stake-option" data-stake="1000">
+                        1,000
+                    </button>
+
+                    <button class="stake-option active" data-stake="5000">
+                        5,000
+                    </button>
+
+                    <button class="stake-option" data-stake="10000">
+                        10,000
+                    </button>
+
+                </div>
+
+                <button id="initiateBtn" class="primary-button">
+                    <span>INITIATE NEURAL-PACT</span>
+                    <small>LOCK VIRTUAL STAKE</small>
+                </button>
+
+            </section>
+
+            <!-- Execution Terminal -->
+            <section id="executionPanel" class="control-panel glass-panel hidden">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-index">03</span>
+                        <h2>JOINT EXECUTION TERMINAL</h2>
+                    </div>
+
+                    <div id="terminalState" class="panel-indicator live">
+                        LINK ACTIVE
+                    </div>
+
+                </div>
+
+                <div class="mission-card">
+
+                    <div class="mission-header">
+                        <span>ACTIVE MISSION</span>
+                        <span id="missionTimer">25:00</span>
+                    </div>
+
+                    <h3>DEEP WORK PROTOCOL</h3>
+
+                    <p>
+                        Complete a genuine distraction-free focus session.
+                        Use the controls below to simulate the accountability
+                        workflow.
+                    </p>
+
+                    <div class="terminal-readout">
+                        <div>
+                            <span>YOUR NODE</span>
+                            <strong id="userNodeState">WAITING</strong>
+                        </div>
+
+                        <div>
+                            <span>PARTNER NODE</span>
+                            <strong id="partnerNodeState">WAITING</strong>
+                        </div>
+
+                        <div>
+                            <span>PACT INTEGRITY</span>
+                            <strong id="integrityState">100%</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="execution-buttons">
+
+                    <button id="secureWorkBtn" class="sync-button">
+                        <span class="button-icon">✓</span>
+                        <span>
+                            <strong>LOG MY WORK</strong>
+                            <small>SECURE MY SIDE</small>
+                        </span>
+                    </button>
+
+                    <button id="partnerFailBtn" class="fail-button">
+                        <span class="button-icon">!</span>
+                        <span>
+                            <strong>PARTNER FAILED</strong>
+                            <small>SIMULATE FAILURE</small>
+                        </span>
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- Event Terminal -->
+            <section class="terminal-panel">
+
+                <div class="terminal-header">
+                    <div>
+                        <span class="terminal-title">PACT EVENT TERMINAL</span>
+                        <span class="terminal-subtitle">LIVE SYSTEM TELEMETRY</span>
+                    </div>
+
+                    <div class="terminal-live">
+                        <span></span>
+                        LIVE
+                    </div>
+                </div>
+
+                <div id="eventLog" class="event-log">
+
+                    <div class="log-entry">
+                        <span class="log-time">[SYSTEM]</span>
+                        <span class="log-text">
+                            Neural-Pact Matrix initialized.
+                        </span>
+                    </div>
+
+                    <div class="log-entry">
+                        <span class="log-time">[SYSTEM]</span>
+                        <span class="log-text">
+                            Awaiting operator synchronization...
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Reward Panel -->
+            <section class="reward-panel glass-panel">
+
+                <div class="reward-icon">◆</div>
+
+                <div class="reward-content">
+                    <span>PACT REWARD</span>
+                    <strong id="rewardValue">10,000 $FORGE</strong>
+                    <small>
+                        Virtual simulation reward when both operators secure execution.
+                    </small>
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>
+            TASKFORGE CORE <span>•</span> NEURAL ACCOUNTABILITY SYSTEM
+            <span>•</span> LOCAL SIMULATION
+        </footer>
+
+    </div>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
