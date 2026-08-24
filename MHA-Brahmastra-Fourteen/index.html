@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="TaskForge Core - Chrono-Lock Sovereign Bounty Matrix">
+    <title>TaskForge Core — Chrono-Lock</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <div class="scanlines"></div>
+        <div class="ambient-grid"></div>
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-mark">TF</div>
+                <div>
+                    <div class="brand-name">TASKFORGE</div>
+                    <div class="brand-sub">SOVEREIGN PROTOCOL</div>
+                </div>
+            </div>
+
+            <div class="vault-display">
+                <span class="vault-label">FORGE VAULT</span>
+                <strong id="walletBalance">50,000</strong>
+                <span class="forge-symbol">$FORGE</span>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="hero-section">
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    CHRONO-LOCK // SIMULATION ONLINE
+                </div>
+
+                <h1>THE CHRONO-LOCK</h1>
+                <p class="hero-copy">
+                    Sovereign Bounty Matrix
+                </p>
+
+                <div class="security-status" id="securityStatus">
+                    <span class="security-icon">◆</span>
+                    <span>VAULT SECURITY: <b>STANDBY</b></span>
+                </div>
+            </section>
+
+            <section class="timer-card" id="timerCard">
+
+                <div class="ring ring-one"></div>
+                <div class="ring ring-two"></div>
+                <div class="ring ring-three"></div>
+
+                <div class="timer-header">
+                    <span>CONTRACT COUNTDOWN</span>
+                    <span id="contractStatus">NO ACTIVE CONTRACT</span>
+                </div>
+
+                <div class="timer-core">
+                    <div class="timer-label">TIME REMAINING</div>
+
+                    <div class="doom-timer" id="doomTimer">
+                        25:00
+                    </div>
+
+                    <div class="timer-sub">
+                        <span id="timerMode">READY FOR DEPLOYMENT</span>
+                    </div>
+                </div>
+
+                <div class="timer-progress">
+                    <div id="timerProgressBar"></div>
+                </div>
+            </section>
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <span class="stat-label">ACTIVE STAKE</span>
+                    <strong id="activeStake">0</strong>
+                    <small>$FORGE</small>
+                </div>
+
+                <div class="stat-card gold">
+                    <span class="stat-label">POTENTIAL PAYOUT</span>
+                    <strong id="potentialPayout">0</strong>
+                    <small>$FORGE // 2X</small>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">RISK LEVEL</span>
+                    <strong id="riskLevel">LOW</strong>
+                    <small id="riskDescription">NO CONTRACT</small>
+                </div>
+            </section>
+
+            <section class="console panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">01 // DEPLOYMENT</span>
+                        <h2>SOVEREIGN STAKING CONSOLE</h2>
+                    </div>
+
+                    <div class="lock-icon">▣</div>
+                </div>
+
+                <div class="stake-selector">
+
+                    <label for="stakeInput">
+                        CONTRACT STAKE
+                    </label>
+
+                    <div class="input-wrap">
+                        <input
+                            id="stakeInput"
+                            type="number"
+                            min="100"
+                            max="50000"
+                            step="100"
+                            value="1000"
+                            inputmode="numeric"
+                            autocomplete="off"
+                        >
+                        <span>$FORGE</span>
+                    </div>
+
+                    <div class="quick-stakes">
+                        <button type="button" class="quick-btn" data-stake="500">500</button>
+                        <button type="button" class="quick-btn" data-stake="1000">1K</button>
+                        <button type="button" class="quick-btn" data-stake="2500">2.5K</button>
+                        <button type="button" class="quick-btn" data-stake="5000">5K</button>
+                    </div>
+                </div>
+
+                <div class="risk-readout">
+                    <div>
+                        <span>SUCCESS</span>
+                        <strong>+2X</strong>
+                    </div>
+
+                    <div>
+                        <span>FAILURE</span>
+                        <strong>STAKE LOST</strong>
+                    </div>
+
+                    <div>
+                        <span>SESSION</span>
+                        <strong>25:00</strong>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-action"
+                    id="startContractBtn"
+                >
+                    <span class="button-glow"></span>
+                    <span class="button-icon">◈</span>
+                    INITIATE HIGH-STAKES CONTRACT
+                    <small>LOCK STAKE & START TIMER</small>
+                </button>
+
+                <div class="console-note">
+                    <span>!</span>
+                    Virtual $FORGE only. This module does not process real money.
+                </div>
+            </section>
+
+            <section class="monitor panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">02 // TELEMETRY</span>
+                        <h2>LIQUIDATION WARNING MONITOR</h2>
+                    </div>
+
+                    <span class="live-badge">LIVE</span>
+                </div>
+
+                <div class="terminal" id="terminal">
+                    <div class="terminal-line system">
+                        <span>[SYSTEM]</span>
+                        Chrono-Lock security protocol initialized.
+                    </div>
+
+                    <div class="terminal-line">
+                        <span>[VAULT]</span>
+                        Sovereign wallet connection verified.
+                    </div>
+
+                    <div class="terminal-line warning">
+                        <span>[WARNING]</span>
+                        Contract failure results in virtual stake liquidation.
+                    </div>
+
+                    <div class="terminal-line">
+                        <span>[READY]</span>
+                        Awaiting operator deployment.
+                    </div>
+                </div>
+            </section>
+
+            <section class="resolution panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">03 // RESOLUTION</span>
+                        <h2>CONTRACT CONTROL</h2>
+                    </div>
+                </div>
+
+                <div class="resolution-grid">
+
+                    <button
+                        type="button"
+                        class="resolve-btn success"
+                        id="completeBtn"
+                        disabled
+                    >
+                        <span>✓</span>
+                        <strong>COMPLETE WORK</strong>
+                        <small>CLAIM 2X BOUNTY</small>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="resolve-btn danger"
+                        id="failBtn"
+                        disabled
+                    >
+                        <span>×</span>
+                        <strong>SIMULATE FAILURE</strong>
+                        <small>LIQUIDATE STAKE</small>
+                    </button>
+
+                </div>
+            </section>
+
+            <section class="history panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">04 // RECORDS</span>
+                        <h2>CONTRACT HISTORY</h2>
+                    </div>
+                </div>
+
+                <div id="historyList" class="history-list">
+                    <div class="empty-history">
+                        NO CONTRACTS RECORDED
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <div class="modal-overlay" id="resultModal">
+
+            <div class="result-modal" id="resultModalCard">
+
+                <div class="result-symbol" id="resultSymbol">✓</div>
+
+                <div class="result-kicker" id="resultKicker">
+                    CONTRACT RESOLVED
+                </div>
+
+                <h2 id="resultTitle">BOUNTY CLAIMED</h2>
+
+                <p id="resultMessage">
+                    Contract successfully completed.
+                </p>
+
+                <div class="result-amount">
+                    <span id="resultAmountLabel">REWARD</span>
+                    <strong id="resultAmount">+2,000</strong>
+                    <small>$FORGE</small>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    id="closeModalBtn"
+                >
+                    RETURN TO MATRIX
+                </button>
+            </div>
+        </div>
+
+        <div class="toast" id="toast">
+            <span id="toastIcon">◆</span>
+            <span id="toastMessage">System notification.</span>
+        </div>
+
+        <footer>
+            <span>TASKFORGE-CORE</span>
+            <span>CHRONO-LOCK MATRIX</span>
+            <span>LOCAL SIMULATION</span>
+        </footer>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
