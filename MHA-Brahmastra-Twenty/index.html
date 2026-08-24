@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#030303">
+    <meta name="description" content="TaskForge-Core Apex Syndicate Raid">
+    <title>TaskForge-Core | Apex Syndicate Raid</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark">TF</span>
+                <div>
+                    <strong>TASKFORGE</strong>
+                    <small>APEX SYNDICATE</small>
+                </div>
+            </div>
+
+            <div class="connection">
+                <span class="connection-dot"></span>
+                <span>RAID ONLINE</span>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="raid-header panel">
+                <div>
+                    <span class="eyebrow">GLOBAL PRODUCTIVITY RAID</span>
+                    <h1>THE APEX SYNDICATE</h1>
+                    <p>Collective Objective: <strong>100 HOURS OF DEEP WORK</strong></p>
+                </div>
+
+                <div class="timer-box">
+                    <span>TIME REMAINING</span>
+                    <strong id="raidTimer">48:00:00</strong>
+                </div>
+            </section>
+
+            <section class="boss-section">
+
+                <div class="boss-visual">
+                    <div class="scan-grid"></div>
+                    <div class="boss-core">
+                        <div class="core-ring ring-one"></div>
+                        <div class="core-ring ring-two"></div>
+                        <div class="core-ring ring-three"></div>
+                        <div class="boss-eye">◈</div>
+                    </div>
+
+                    <div class="boss-label">
+                        <span>HOSTILE TARGET ENTITY</span>
+                        <strong>THE PROCRASTINATION TITAN</strong>
+                    </div>
+                </div>
+
+                <div class="hp-panel panel">
+
+                    <div class="hp-heading">
+                        <div>
+                            <span class="eyebrow">BOSS INTEGRITY</span>
+                            <h2 id="bossHpText">100:00 HRS</h2>
+                        </div>
+
+                        <span id="bossStatus" class="status danger">
+                            ACTIVE
+                        </span>
+                    </div>
+
+                    <div class="health-track">
+                        <div id="bossHealth" class="health-fill"></div>
+                        <div class="health-glare"></div>
+                    </div>
+
+                    <div class="hp-meta">
+                        <span id="damageText">0 HOURS DEALT</span>
+                        <span id="percentText">100% HP</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="stats-grid">
+
+                <article class="stat-card panel">
+                    <span>SYNDICATE</span>
+                    <strong id="memberCount">8</strong>
+                    <small>ACTIVE OPERATORS</small>
+                </article>
+
+                <article class="stat-card panel">
+                    <span>POOLED REWARD</span>
+                    <strong id="rewardAmount">500,000</strong>
+                    <small>$FORGE TEAM REWARD</small>
+                </article>
+
+                <article class="stat-card panel">
+                    <span>YOUR DAMAGE</span>
+                    <strong id="personalDamage">0.0h</strong>
+                    <small>VERIFIED FOCUS</small>
+                </article>
+
+            </section>
+
+            <section class="feed-section panel">
+
+                <div class="section-title">
+                    <div>
+                        <span class="eyebrow">NETWORK TERMINAL</span>
+                        <h2>SYNDICATE LIVE FEED</h2>
+                    </div>
+
+                    <span class="live-badge">
+                        <i></i> LIVE
+                    </span>
+                </div>
+
+                <div id="raidFeed" class="raid-feed"></div>
+
+            </section>
+
+            <section class="action-section panel">
+
+                <div class="action-copy">
+                    <span class="eyebrow">YOUR EXECUTION TERMINAL</span>
+                    <h2>DEAL DAMAGE THROUGH REAL WORK</h2>
+                    <p>
+                        Complete a genuine 2-hour deep-work block,
+                        then record the contribution here.
+                    </p>
+                </div>
+
+                <button id="attackButton" class="attack-button">
+                    <span class="button-icon">⚡</span>
+                    <span>
+                        <strong>LOG 2-HOUR DEEP WORK</strong>
+                        <small>DEAL 2.0 HOURS OF DAMAGE</small>
+                    </span>
+                </button>
+
+                <div class="verification-note">
+                    <span>◉</span>
+                    Productivity contribution is locally simulated for this prototype.
+                </div>
+
+            </section>
+
+            <section class="team-section panel">
+
+                <div class="section-title">
+                    <div>
+                        <span class="eyebrow">SYNDICATE MATRIX</span>
+                        <h2>OPERATOR STATUS</h2>
+                    </div>
+                </div>
+
+                <div id="teamGrid" class="team-grid"></div>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <span>TASKFORGE-CORE // APEX RAID ENGINE</span>
+            <span>LOCAL SIMULATION MODE</span>
+        </footer>
+
+    </div>
+
+    <div id="impactOverlay" class="impact-overlay"></div>
+
+    <div id="victoryOverlay" class="victory-overlay">
+        <div class="victory-content">
+            <span class="victory-symbol">✦</span>
+            <span class="eyebrow">OBJECTIVE COMPLETE</span>
+            <h2>TITAN DEFEATED</h2>
+            <p>100 HOURS OF COLLECTIVE DEEP WORK ACHIEVED.</p>
+            <strong>+500,000 $FORGE TEAM REWARD</strong>
+            <button id="resetRaidButton">START NEW RAID</button>
+        </div>
+    </div>
+
+    <div id="warningOverlay" class="warning-overlay">
+        <div>
+            <span>⚠</span>
+            <strong>RAID DEADLINE APPROACHING</strong>
+            <small>SYNDICATE ACTIVITY REQUIRED</small>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
