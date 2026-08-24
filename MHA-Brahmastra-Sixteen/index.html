@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#020202">
+    <meta name="description" content="TaskForge-Core Proof-of-Execution productivity engine">
+    <title>TaskForge-Core | Proof-of-Execution Oracle</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark">TF</span>
+                <div>
+                    <h1>TASKFORGE<span>-CORE</span></h1>
+                    <p>PROOF-OF-EXECUTION ORACLE</p>
+                </div>
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                <span>ORACLE ONLINE</span>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="dashboard-grid">
+                <article class="stat-card">
+                    <div class="stat-label">GENUINE HOURS</div>
+                    <div class="stat-value" id="totalHours">0.00</div>
+                    <div class="stat-sub">Verified focus time</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">VERIFIED SESSIONS</div>
+                    <div class="stat-value" id="verifiedSessions">0</div>
+                    <div class="stat-sub">Oracle-approved</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">ORACLE SCORE</div>
+                    <div class="stat-value" id="oracleScore">100</div>
+                    <div class="stat-sub">Execution integrity</div>
+                </article>
+            </section>
+
+            <section class="oracle-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow">MHA-16 // ACCOUNTABILITY PROTOCOL</span>
+                        <h2>PROOF-OF-EXECUTION <strong>ORACLE</strong></h2>
+                    </div>
+
+                    <div class="security-badge">
+                        <span>SECURE</span>
+                    </div>
+                </div>
+
+                <div id="systemMessage" class="system-message">
+                    <span class="message-prefix">&gt;</span>
+                    <span id="systemMessageText">System ready. Select a focus protocol.</span>
+                </div>
+
+                <section id="protocolScreen" class="protocol-screen">
+
+                    <div class="protocol-intro">
+                        <div class="void-symbol">◈</div>
+
+                        <h3>ENTER THE VOID</h3>
+
+                        <p>
+                            Remove distractions. Complete genuine real-world work.
+                            When the protocol ends, your execution must be documented
+                            before rewards can be issued.
+                        </p>
+                    </div>
+
+                    <div class="duration-selector">
+                        <button class="duration-btn active" data-minutes="25">
+                            <strong>25</strong>
+                            <span>MIN FOCUS</span>
+                        </button>
+
+                        <button class="duration-btn" data-minutes="60">
+                            <strong>60</strong>
+                            <span>MIN FOCUS</span>
+                        </button>
+                    </div>
+
+                    <button id="startVoidBtn" class="primary-btn">
+                        <span class="btn-icon">▶</span>
+                        INITIATE VOID PROTOCOL
+                    </button>
+
+                    <div class="protocol-rules">
+                        <div>
+                            <span>01</span>
+                            <p>No reward before completion.</p>
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            <p>Proof is mandatory.</p>
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            <p>Oracle validates the submission.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="voidScreen" class="void-screen hidden">
+
+                    <div class="void-mode-label">
+                        <span class="pulse-ring"></span>
+                        VOID MODE ACTIVE
+                    </div>
+
+                    <div class="timer-container">
+                        <div class="timer-ring">
+                            <div class="timer-inner">
+                                <span id="timerLabel">TIME REMAINING</span>
+                                <strong id="timerDisplay">25:00</strong>
+                                <small id="timerSession">25 MIN PROTOCOL</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="focus-status">
+                        <span class="live-indicator"></span>
+                        <span>FOCUS SESSION IN PROGRESS</span>
+                    </div>
+
+                    <p class="void-warning">
+                        Stay with the work. Closing the page does not complete the protocol.
+                    </p>
+
+                    <button id="abortBtn" class="danger-outline-btn">
+                        ABORT SESSION
+                    </button>
+                </section>
+
+                <section id="debriefScreen" class="debrief-screen hidden">
+
+                    <div class="debrief-header">
+                        <span class="completion-icon">✓</span>
+                        <div>
+                            <span class="eyebrow">TEMPORAL LOCK RELEASED</span>
+                            <h3>PROOF REQUIRED</h3>
+                        </div>
+                    </div>
+
+                    <p class="debrief-instruction">
+                        The focus interval is complete. Describe what you actually
+                        accomplished. Include concrete actions, outputs, decisions,
+                        problems solved, or measurable progress.
+                    </p>
+
+                    <div class="terminal-wrapper">
+                        <div class="terminal-topbar">
+                            <span>POE_TERMINAL</span>
+                            <span id="characterStatus">0 / 30 MINIMUM</span>
+                        </div>
+
+                        <textarea
+                            id="proofInput"
+                            maxlength="2000"
+                            placeholder="ENTER YOUR PROOF OF EXECUTION..."
+                            spellcheck="false"
+                            autocomplete="off"
+                        ></textarea>
+
+                        <div class="terminal-footer">
+                            <span id="characterCount">0 characters</span>
+                            <span>MAX 2000</span>
+                        </div>
+                    </div>
+
+                    <div id="proofHint" class="proof-hint">
+                        Minimum proof density: 30 characters.
+                    </div>
+
+                    <button id="submitProofBtn" class="primary-btn">
+                        <span class="btn-icon">◆</span>
+                        SUBMIT LOG TO ORACLE
+                    </button>
+                </section>
+
+                <section id="scanScreen" class="scan-screen hidden">
+
+                    <div class="scanner-core">
+                        <div class="scan-circle">
+                            <span>◈</span>
+                        </div>
+                    </div>
+
+                    <h3>ORACLE ANALYSIS IN PROGRESS</h3>
+
+                    <div class="scan-terminal">
+                        <p id="scanLine1">&gt; Initializing verification engine...</p>
+                        <p id="scanLine2">&gt; Awaiting analysis...</p>
+                        <p id="scanLine3">&gt; Awaiting analysis...</p>
+                        <p id="scanLine4">&gt; Awaiting analysis...</p>
+                    </div>
+
+                    <div class="scan-progress">
+                        <div id="scanProgressBar"></div>
+                    </div>
+
+                    <div id="scanPercent">0%</div>
+                </section>
+
+                <section id="resultScreen" class="result-screen hidden">
+
+                    <div id="resultIcon" class="result-icon">✓</div>
+
+                    <span id="resultEyebrow" class="eyebrow">ORACLE DECISION</span>
+
+                    <h3 id="resultTitle">ORACLE VERIFIED</h3>
+
+                    <p id="resultText">
+                        Your proof has been accepted.
+                    </p>
+
+                    <div id="rewardBox" class="reward-box">
+                        <span>VERIFIED REWARD</span>
+                        <strong id="rewardAmount">+250 $FORGE</strong>
+                    </div>
+
+                    <button id="continueBtn" class="primary-btn">
+                        RETURN TO PROTOCOL
+                    </button>
+                </section>
+
+            </section>
+
+            <section class="history-panel">
+                <div class="panel-header compact">
+                    <div>
+                        <span class="eyebrow">AUDIT DATABASE</span>
+                        <h2>EXECUTION HISTORY</h2>
+                    </div>
+
+                    <span id="historyCount" class="history-count">0 RECORDS</span>
+                </div>
+
+                <div id="historyList" class="history-list">
+                    <div class="empty-history">
+                        <span>◌</span>
+                        <p>No verified execution records yet.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <span>TASKFORGE-CORE</span>
+            <span>•</span>
+            <span>POE ENGINE v1.0</span>
+            <span>•</span>
+            <span>LOCAL EXECUTION MODE</span>
+        </footer>
+
+    </div>
+
+    <div id="flashOverlay" class="flash-overlay"></div>
+    <div id="notification" class="notification"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
