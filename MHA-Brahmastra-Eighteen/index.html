@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="TaskForge Core Micro-Win Reactor">
+    <title>TaskForge Core — Neuro Reactor</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-shell">
+
+        <header class="topbar">
+            <div>
+                <div class="eyebrow">TASKFORGE // CORE SYSTEM</div>
+                <h1>NEURO REACTOR</h1>
+            </div>
+
+            <div class="stats-panel">
+                <span class="stat-label">FOCUS POINTS</span>
+                <strong id="focusPoints">0</strong>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="reactor-section">
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    <span id="systemStatus">SYSTEM READY</span>
+                </div>
+
+                <div class="reactor-stage" id="reactorStage">
+
+                    <div class="reactor-ring ring-outer"></div>
+                    <div class="reactor-ring ring-middle"></div>
+                    <div class="reactor-ring ring-inner"></div>
+
+                    <div class="shockwave" id="shockwave"></div>
+
+                    <div class="reactor-core state-1" id="reactorCore">
+                        <div class="core-inner"></div>
+                        <div class="core-highlight"></div>
+                    </div>
+
+                    <div class="core-label">
+                        <span>CORE LEVEL</span>
+                        <strong id="coreLevel">1</strong>
+                    </div>
+                </div>
+
+                <div class="momentum-card">
+
+                    <div class="momentum-header">
+                        <span>FOCUS MOMENTUM</span>
+                        <strong id="multiplier">1×</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="momentumProgress"></div>
+                    </div>
+
+                    <div class="momentum-footer">
+                        <span id="momentumText">Complete a task to begin</span>
+                        <span id="comboTimer">--:--</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="task-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">MICRO-WIN PROTOCOL</span>
+                        <h2>Choose One Small Action</h2>
+                    </div>
+
+                    <span class="task-count" id="taskCount">0 / 3</span>
+                </div>
+
+                <form class="task-form" id="taskForm">
+                    <input
+                        id="taskInput"
+                        type="text"
+                        maxlength="80"
+                        autocomplete="off"
+                        placeholder="e.g. Read one page"
+                        aria-label="Enter a small task"
+                    >
+                    <button type="submit" id="addTaskButton">ADD</button>
+                </form>
+
+                <div class="suggestions">
+                    <button class="suggestion" data-task="Read 1 page">READ 1 PAGE</button>
+                    <button class="suggestion" data-task="Drink some water">DRINK WATER</button>
+                    <button class="suggestion" data-task="Reply to 1 message">REPLY TO 1</button>
+                </div>
+
+                <div class="task-list" id="taskList"></div>
+
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">+</div>
+                    <p>No micro-tasks yet.</p>
+                    <span>Add one small action and start when you're ready.</span>
+                </div>
+
+                <button class="reset-button" id="resetButton" type="button">
+                    RESET TODAY'S TASKS
+                </button>
+
+            </section>
+
+            <section class="activity-section">
+
+                <div class="section-heading compact">
+                    <div>
+                        <span class="eyebrow">ACTIVITY LOG</span>
+                        <h2>Today's Progress</h2>
+                    </div>
+                </div>
+
+                <div class="activity-log" id="activityLog">
+                    <div class="log-entry">
+                        <span class="log-time">--:--</span>
+                        <span>Reactor initialized.</span>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <div class="impact-overlay" id="impactOverlay">
+            <div class="impact-content">
+                <span id="impactMultiplier">+10</span>
+                <strong id="impactMessage">MICRO-WIN COMPLETE</strong>
+            </div>
+        </div>
+
+        <div class="toast" id="toast"></div>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
