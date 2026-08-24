@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020202">
+    <meta name="description" content="TaskForge Core Encrypted Bounty Vault">
+    <title>TaskForge — Encrypted Bounty Vault</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+    <header class="topbar">
+        <div>
+            <span class="eyebrow">TASKFORGE // REWARD SYSTEM</span>
+            <h1>CRYPTIC BOUNTY VAULT</h1>
+            <p class="subtitle">Verified work → transparent rewards</p>
+        </div>
+
+        <div class="forge-wallet">
+            <span>$FORGE</span>
+            <strong id="forgeBalance">0</strong>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero-panel">
+
+            <div class="security-status">
+                <span class="status-dot"></span>
+                <span id="systemStatus">VAULT SYSTEM ONLINE</span>
+            </div>
+
+            <div class="vault-stage" id="vaultStage">
+
+                <div class="energy-ring ring-one"></div>
+                <div class="energy-ring ring-two"></div>
+                <div class="energy-ring ring-three"></div>
+
+                <div class="vault" id="vaultVisual">
+                    <div class="vault-top">
+                        <div class="vault-lock"></div>
+                    </div>
+
+                    <div class="vault-body">
+                        <div class="vault-emblem">TF</div>
+                        <div class="vault-line"></div>
+                        <span>ENCRYPTED</span>
+                    </div>
+
+                    <div class="vault-light"></div>
+                </div>
+
+                <div class="vault-caption">
+                    <span>SECURITY LEVEL</span>
+                    <strong>QUANTUM-256</strong>
+                </div>
+
+            </div>
+
+            <button
+                class="primary-button"
+                id="simulateButton"
+                type="button">
+                <span>+</span>
+                SIMULATE 2-HR DEEP WORK
+                <small>EARN 1 BOUNTY VAULT</small>
+            </button>
+
+            <p class="disclaimer">
+                Demo mode: this button represents a completed focus block.
+                It does not verify real-world work automatically.
+            </p>
+
+        </section>
+
+        <section class="stats-grid">
+
+            <article class="stat-card">
+                <span>VAULTS COLLECTED</span>
+                <strong id="collectedCount">0</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>VAULTS OPENED</span>
+                <strong id="openedCount">0</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>$FORGE EXTRACTED</span>
+                <strong id="extractedAmount">0</strong>
+            </article>
+
+        </section>
+
+        <section class="inventory-panel">
+
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">SECURE INVENTORY</span>
+                    <h2>BOUNTY VAULTS</h2>
+                </div>
+
+                <span class="inventory-status" id="inventoryStatus">
+                    0 READY
+                </span>
+            </div>
+
+            <div class="vault-grid" id="vaultGrid"></div>
+
+            <div class="empty-inventory" id="emptyInventory">
+                <div class="empty-symbol">◈</div>
+                <strong>NO VAULTS AVAILABLE</strong>
+                <span>Complete a focus block to add a vault.</span>
+            </div>
+
+        </section>
+
+        <section class="reward-panel">
+
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">REWARD PROTOCOL</span>
+                    <h2>TRANSPARENT REWARD TRACK</h2>
+                </div>
+            </div>
+
+            <div class="reward-track">
+
+                <div class="reward-row common">
+                    <span class="rarity-dot"></span>
+                    <div>
+                        <strong>STANDARD</strong>
+                        <small>Reward 1</small>
+                    </div>
+                    <b>+100 $FORGE</b>
+                </div>
+
+                <div class="reward-row epic">
+                    <span class="rarity-dot"></span>
+                    <div>
+                        <strong>EPIC</strong>
+                        <small>Reward 2</small>
+                    </div>
+                    <b>+1 STREAK SHIELD</b>
+                </div>
+
+                <div class="reward-row legendary">
+                    <span class="rarity-dot"></span>
+                    <div>
+                        <strong>LEGENDARY</strong>
+                        <small>Reward 3</small>
+                    </div>
+                    <b>+10,000 $FORGE</b>
+                </div>
+
+            </div>
+
+            <p class="reward-note">
+                Rewards follow a visible rotation rather than hidden odds.
+                Each earned vault advances to the next reward in the track.
+            </p>
+
+        </section>
+
+        <section class="history-panel">
+
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">AUDIT TERMINAL</span>
+                    <h2>RECENT ACTIVITY</h2>
+                </div>
+            </div>
+
+            <div id="activityLog" class="activity-log">
+                <div class="log-line">
+                    <span>--:--</span>
+                    <b>System initialized.</b>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="reveal-overlay" id="revealOverlay">
+
+    <div class="reveal-burst"></div>
+
+    <div class="reveal-window">
+
+        <div class="decrypt-status" id="decryptStatus">
+            DECRYPTING VAULT...
+        </div>
+
+        <div class="reveal-vault" id="revealVault">
+            <div class="reveal-lock"></div>
+        </div>
+
+        <div class="reward-result" id="rewardResult">
+
+            <span class="result-rarity" id="resultRarity">
+                REWARD
+            </span>
+
+            <strong id="resultTitle">
+                REWARD UNLOCKED
+            </strong>
+
+            <p id="resultDescription">
+                Reward details
+            </p>
+
+            <button
+                class="claim-button"
+                id="claimButton"
+                type="button">
+                ACKNOWLEDGE REWARD
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
