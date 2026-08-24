@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#050505">
+    <title>TaskForge Core — Cognitive Ascension</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <header class="topbar">
+        <div class="brand-block">
+            <div class="brand-mark">TF</div>
+            <div>
+                <div class="brand-name">TASKFORGE</div>
+                <div class="brand-subtitle">COGNITIVE ASCENSION</div>
+            </div>
+        </div>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero-panel">
+            <div class="hero-grid"></div>
+
+            <div class="hero-content">
+                <div class="eyebrow">NEURAL DEVELOPMENT PROTOCOL // 015</div>
+
+                <h1>
+                    COGNITIVE
+                    <span>ASCENSION</span>
+                </h1>
+
+                <p>
+                    Convert genuine focused work into Neuro-Sparks and invest
+                    them into measurable cognitive skills.
+                </p>
+
+                <div class="hero-line"></div>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+
+            <article class="stat-card cyan-card">
+                <div class="card-label">FOCUS HOURS LOGGED</div>
+                <div class="stat-value">
+                    <span id="focusHours">0.0</span>
+                    <small>H</small>
+                </div>
+                <div class="stat-footer">
+                    <span class="mini-icon">◈</span>
+                    Real work recorded
+                </div>
+            </article>
+
+            <article class="stat-card gold-card">
+                <div class="card-label">NEURO-SPARKS</div>
+                <div class="stat-value">
+                    <span id="sparkBalance">0</span>
+                    <small>NS</small>
+                </div>
+                <div class="stat-footer">
+                    <span class="mini-icon">✦</span>
+                    Available to invest
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="card-label">TOTAL SESSIONS</div>
+                <div class="stat-value">
+                    <span id="sessionCount">0</span>
+                </div>
+                <div class="stat-footer">
+                    <span class="mini-icon">◎</span>
+                    Focus sessions completed
+                </div>
+            </article>
+
+        </section>
+
+        <section class="logger-section">
+
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">REAL-WORK LOGGER</div>
+                    <h2>Log Your Focus</h2>
+                </div>
+
+                <div class="earned-badge">
+                    +100 NS
+                </div>
+            </div>
+
+            <div class="logger-panel">
+
+                <div class="logger-orb">
+                    <div class="orb-ring ring-one"></div>
+                    <div class="orb-ring ring-two"></div>
+                    <div class="orb-core">
+                        <span>60</span>
+                        <small>MIN</small>
+                    </div>
+                </div>
+
+                <div class="logger-copy">
+                    <h3>60 MINUTES DEEP WORK</h3>
+                    <p>
+                        Complete a genuine 60-minute focused work session,
+                        then record it here.
+                    </p>
+
+                    <button id="logWorkBtn" class="primary-button">
+                        <span>LOG 60 MINS DEEP WORK</span>
+                        <strong>+100 SPARKS</strong>
+                    </button>
+
+                    <div class="integrity-note">
+                        <span>✓</span>
+                        Log only work you actually completed.
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="skill-section">
+
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">NEURAL NETWORK</div>
+                    <h2>Cognitive Skill Tree</h2>
+                </div>
+
+                <div class="level-indicator">
+                    ASCENSION
+                    <strong id="overallLevel">LVL 1</strong>
+                </div>
+            </div>
+
+            <div class="skill-tree">
+
+                <div class="tree-line vertical-line"></div>
+                <div class="tree-line horizontal-line"></div>
+
+                <article class="skill-node" data-skill="focus">
+
+                    <div class="node-glow"></div>
+
+                    <div class="node-icon">◉</div>
+
+                    <div class="node-content">
+                        <div class="node-category">PILLAR 01</div>
+                        <h3>DEEP FOCUS</h3>
+                        <p>
+                            Build sustained attention and reduce unnecessary
+                            context switching.
+                        </p>
+
+                        <div class="level-row">
+                            <span>LEVEL</span>
+                            <strong id="focusLevel">1 / 50</strong>
+                        </div>
+
+                        <div class="progress-track">
+                            <div id="focusProgress" class="progress-fill cyan-fill"></div>
+                        </div>
+
+                        <button class="upgrade-button" data-upgrade="focus">
+                            UPGRADE
+                            <span id="focusCost">100 NS</span>
+                        </button>
+                    </div>
+
+                </article>
+
+                <article class="skill-node" data-skill="execution">
+
+                    <div class="node-glow"></div>
+
+                    <div class="node-icon">⚡</div>
+
+                    <div class="node-content">
+                        <div class="node-category">PILLAR 02</div>
+                        <h3>EXECUTION SPEED</h3>
+                        <p>
+                            Improve the ability to turn decisions into
+                            deliberate action.
+                        </p>
+
+                        <div class="level-row">
+                            <span>LEVEL</span>
+                            <strong id="executionLevel">1 / 50</strong>
+                        </div>
+
+                        <div class="progress-track">
+                            <div id="executionProgress" class="progress-fill gold-fill"></div>
+                        </div>
+
+                        <button class="upgrade-button" data-upgrade="execution">
+                            UPGRADE
+                            <span id="executionCost">100 NS</span>
+                        </button>
+                    </div>
+
+                </article>
+
+                <article class="skill-node" data-skill="discipline">
+
+                    <div class="node-glow"></div>
+
+                    <div class="node-icon">◆</div>
+
+                    <div class="node-content">
+                        <div class="node-category">PILLAR 03</div>
+                        <h3>STRATEGIC DISCIPLINE</h3>
+                        <p>
+                            Strengthen planning, prioritization and consistent
+                            follow-through.
+                        </p>
+
+                        <div class="level-row">
+                            <span>LEVEL</span>
+                            <strong id="disciplineLevel">1 / 50</strong>
+                        </div>
+
+                        <div class="progress-track">
+                            <div id="disciplineProgress" class="progress-fill purple-fill"></div>
+                        </div>
+
+                        <button class="upgrade-button" data-upgrade="discipline">
+                            UPGRADE
+                            <span id="disciplineCost">100 NS</span>
+                        </button>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="progress-section">
+
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">LONG-TERM DEVELOPMENT</div>
+                    <h2>Ascension Metrics</h2>
+                </div>
+            </div>
+
+            <div class="metrics-panel">
+
+                <div class="metric">
+                    <div class="metric-top">
+                        <span>DEEP FOCUS</span>
+                        <strong id="metricFocus">1%</strong>
+                    </div>
+                    <div class="metric-track">
+                        <div id="metricFocusBar"></div>
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-top">
+                        <span>EXECUTION</span>
+                        <strong id="metricExecution">1%</strong>
+                    </div>
+                    <div class="metric-track">
+                        <div id="metricExecutionBar"></div>
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-top">
+                        <span>DISCIPLINE</span>
+                        <strong id="metricDiscipline">1%</strong>
+                    </div>
+                    <div class="metric-track">
+                        <div id="metricDisciplineBar"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div>TASKFORGE CORE</div>
+        <span>BUILD SKILLS. DO REAL WORK. ASCEND.</span>
+    </footer>
+
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+
+<div id="upgradeModal" class="modal-overlay">
+    <div class="upgrade-modal">
+
+        <button id="closeModal" class="close-modal">×</button>
+
+        <div class="modal-symbol">✦</div>
+
+        <div class="section-kicker">NEURAL UPGRADE</div>
+        <h2 id="modalTitle">UPGRADE SKILL</h2>
+
+        <p id="modalDescription">
+            Confirm your skill investment.
+        </p>
+
+        <div class="upgrade-summary">
+            <div>
+                <span>CURRENT</span>
+                <strong id="modalCurrent">1</strong>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div>
+                <span>NEXT</span>
+                <strong id="modalNext">2</strong>
+            </div>
+        </div>
+
+        <div class="modal-cost">
+            COST
+            <strong id="modalCost">100 NS</strong>
+        </div>
+
+        <button id="confirmUpgrade" class="confirm-button">
+            CONFIRM UPGRADE
+        </button>
+
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
