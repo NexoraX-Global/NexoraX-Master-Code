@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+    <meta name="theme-color" content="#020205">
+    <meta
+        name="description"
+        content="TaskForge-Core Neural Syndicate Corporate Territory Warfare"
+    >
+    <title>TaskForge-Core | Neural Syndicate</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="background-grid"></div>
+    <div class="scan-overlay"></div>
+    <div id="screenFlash" class="screen-flash"></div>
+    <div id="particleLayer" class="particle-layer"></div>
+
+    <main class="app-shell">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="brand-block">
+                <div class="brand-symbol">TF</div>
+
+                <div>
+                    <h1>TASKFORGE</h1>
+                    <span>NEURAL SYNDICATE NETWORK</span>
+                </div>
+            </div>
+
+            <div class="network-state">
+                <span class="live-dot"></span>
+                NETWORK LIVE
+            </div>
+
+        </header>
+
+
+        <!-- LIVE TICKER -->
+
+        <section class="ticker-wrapper">
+
+            <div class="ticker-label">
+                LIVE WAR ROOM
+            </div>
+
+            <div class="ticker-window">
+                <div id="tickerTrack" class="ticker-track"></div>
+            </div>
+
+        </section>
+
+
+        <!-- CORPORATE HUD -->
+
+        <section class="syndicate-hud">
+
+            <div class="hud-header">
+
+                <div>
+                    <span class="eyebrow">EXECUTIVE COMMAND</span>
+
+                    <h2 id="syndicateName">
+                        NEXUS SYNDICATE
+                    </h2>
+                </div>
+
+                <div id="warStatus" class="war-status safe">
+                    STABLE
+                </div>
+
+            </div>
+
+
+            <div class="executive-profile">
+
+                <div class="corporate-emblem">
+                    N
+                </div>
+
+                <div class="executive-info">
+
+                    <span>CORPORATE TITLE</span>
+
+                    <strong id="corporateTitle">
+                        SENIOR EXECUTIVE DIRECTOR
+                    </strong>
+
+                    <small>
+                        SYNDICATE COMMAND AUTHORITY
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="valuation-card">
+
+                <span>COMPANY VALUATION</span>
+
+                <strong id="companyValuation">
+                    $12.84B
+                </strong>
+
+                <div class="valuation-change">
+                    <span id="valuationChange">+4.7%</span>
+                    <span>SESSION GROWTH</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TERRITORY WAR -->
+
+        <section class="war-panel">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="eyebrow">
+                        CORPORATE WARFARE MATRIX
+                    </span>
+
+                    <h3>
+                        TERRITORY DOMINANCE
+                    </h3>
+                </div>
+
+                <div class="sector-count">
+                    <strong id="sectorCount">24</strong>
+                    <span>SECTORS</span>
+                </div>
+
+            </div>
+
+
+            <div class="faction-score-row">
+
+                <div class="faction-card player-faction">
+
+                    <div class="faction-name">
+                        <span class="faction-icon">◆</span>
+                        <strong id="playerFactionName">
+                            NEXUS SYNDICATE
+                        </strong>
+                    </div>
+
+                    <strong
+                        id="playerShare"
+                        class="market-share"
+                    >
+                        54.0%
+                    </strong>
+
+                    <span class="share-label">
+                        MARKET CONTROL
+                    </span>
+
+                </div>
+
+
+                <div class="versus">
+                    VS
+                </div>
+
+
+                <div class="faction-card enemy-faction">
+
+                    <div class="faction-name">
+                        <span class="faction-icon">▲</span>
+                        <strong id="enemyFactionName">
+                            VOID INDUSTRIES
+                        </strong>
+                    </div>
+
+                    <strong
+                        id="enemyShare"
+                        class="market-share"
+                    >
+                        46.0%
+                    </strong>
+
+                    <span class="share-label">
+                        MARKET CONTROL
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="dominance-bar">
+
+                <div
+                    id="playerTerritoryBar"
+                    class="player-territory"
+                    style="width:54%"
+                ></div>
+
+                <div class="territory-marker"></div>
+
+            </div>
+
+
+            <div class="dominance-labels">
+
+                <span>
+                    NEXUS CONTROL
+                </span>
+
+                <strong id="dominanceText">
+                    DOMINANCE +8.0%
+                </strong>
+
+                <span>
+                    VOID CONTROL
+                </span>
+
+            </div>
+
+
+            <div class="territory-grid">
+
+                <div class="territory-stat">
+                    <span>PRODUCTIVITY POWER</span>
+                    <strong id="productivityPower">
+                        18,420
+                    </strong>
+                </div>
+
+                <div class="territory-stat">
+                    <span>SECTOR CONTROL</span>
+                    <strong id="controlledSectors">
+                        13 / 24
+                    </strong>
+                </div>
+
+                <div class="territory-stat">
+                    <span>WAR SCORE</span>
+                    <strong id="warScore">
+                        72,850
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STRIKE ENGINE -->
+
+        <section class="injection-panel">
+
+            <div class="injection-heading">
+
+                <div>
+                    <span class="eyebrow">
+                        PRODUCTIVITY WEAPON SYSTEM
+                    </span>
+
+                    <h3>
+                        CORPORATE INJECTION
+                    </h3>
+                </div>
+
+                <div class="energy-core">
+                    ⚡
+                </div>
+
+            </div>
+
+
+            <p>
+                Log a focused work session to generate productivity
+                power and strengthen your syndicate's simulated
+                territorial position.
+            </p>
+
+
+            <div class="focus-input">
+
+                <label for="focusMinutes">
+                    FOCUS SESSION
+                </label>
+
+                <div class="input-unit">
+                    <input
+                        id="focusMinutes"
+                        type="number"
+                        min="5"
+                        max="480"
+                        value="30"
+                        inputmode="numeric"
+                    >
+
+                    <span>MINUTES</span>
+                </div>
+
+            </div>
+
+
+            <button
+                id="injectionButton"
+                class="injection-button"
+            >
+                <span class="button-sweep"></span>
+
+                <span class="button-symbol">
+                    ⚡
+                </span>
+
+                EXECUTE CORPORATE INJECTION
+
+                <small>
+                    LOG DEEP WORK
+                </small>
+
+            </button>
+
+
+            <div
+                id="injectionResult"
+                class="injection-result"
+            >
+                SYSTEM READY
+            </div>
+
+        </section>
+
+
+        <!-- HOSTILE TAKEOVER LOG -->
+
+        <section class="terminal-panel">
+
+            <div class="terminal-header">
+
+                <div>
+                    <span class="eyebrow">
+                        THREAT INTELLIGENCE
+                    </span>
+
+                    <h3>
+                        HOSTILE TAKEOVER LOG
+                    </h3>
+                </div>
+
+                <span class="terminal-state">
+                    ● MONITORING
+                </span>
+
+            </div>
+
+
+            <div
+                id="takeoverLog"
+                class="takeover-log"
+            ></div>
+
+        </section>
+
+
+        <!-- DIVIDEND VAULT -->
+
+        <section class="dividend-vault">
+
+            <div class="vault-icon">
+                $
+            </div>
+
+            <div class="vault-info">
+
+                <span>
+                    SYNDICATE DIVIDEND VAULT
+                </span>
+
+                <strong id="dividendBalance">
+                    8,240 $FORGE
+                </strong>
+
+                <small id="dailyDividend">
+                    +1,620 $FORGE / DAY
+                </small>
+
+            </div>
+
+
+            <button
+                id="collectDividend"
+                class="collect-button"
+            >
+                COLLECT
+            </button>
+
+        </section>
+
+
+        <!-- SECTOR MAP -->
+
+        <section class="sector-panel">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="eyebrow">
+                        TERRITORIAL MAP
+                    </span>
+
+                    <h3>
+                        CONTROLLED SECTORS
+                    </h3>
+                </div>
+
+            </div>
+
+
+            <div
+                id="sectorGrid"
+                class="sector-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                TASKFORGE-CORE
+            </span>
+
+            <span>
+                NEURAL SYNDICATE v13.0
+            </span>
+
+            <span id="clock">
+                00:00:00
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- WAR ALERT -->
+
+    <div
+        id="warAlert"
+        class="alert-overlay"
+    >
+
+        <div class="alert-box">
+
+            <div class="alert-icon">
+                !
+            </div>
+
+            <span class="eyebrow">
+                SECURITY ALERT
+            </span>
+
+            <h2>
+                TERRITORY EVENT
+            </h2>
+
+            <p id="alertMessage">
+                A simulated faction maneuver has changed
+                the territorial balance.
+            </p>
+
+            <button id="closeAlert">
+                ACKNOWLEDGE
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>xc
