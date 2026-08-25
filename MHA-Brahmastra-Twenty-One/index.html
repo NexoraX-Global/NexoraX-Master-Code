@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="TaskForge Gladiator Focus Arena">
+    <title>TaskForge // Gladiator Focus Arena</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="app" class="app">
+
+        <div class="scanlines"></div>
+        <div class="background-grid"></div>
+
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark">TF</span>
+                <div>
+                    <strong>TASKFORGE</strong>
+                    <span>GLADIATOR ARENA</span>
+                </div>
+            </div>
+
+            <div class="vault">
+                <span class="vault-label">FOCUS XP</span>
+                <strong id="forgeBalance">10,000</strong>
+                <span class="forge-symbol">$FORGE</span>
+            </div>
+        </header>
+
+        <main>
+
+            <!-- MATCHMAKING -->
+            <section id="lobby" class="screen active">
+
+                <div class="hero">
+                    <div class="eyebrow">◆ COMPETITIVE FOCUS PROTOCOL</div>
+
+                    <h1>
+                        GLADIATOR
+                        <span>FOCUS ARENA</span>
+                    </h1>
+
+                    <p>
+                        Enter a distraction-free 1v1 focus duel.
+                        Maintain focus for 60 minutes and earn Focus XP.
+                    </p>
+                </div>
+
+                <div class="arena-card lobby-card">
+
+                    <div class="card-header">
+                        <div>
+                            <span class="section-code">ARENA // 01</span>
+                            <h2>COMMITMENT TERMINAL</h2>
+                        </div>
+
+                        <span class="status-dot">
+                            SYSTEM ONLINE
+                        </span>
+                    </div>
+
+                    <div class="commitment-display">
+
+                        <label for="pledgeInput">
+                            FOCUS XP COMMITMENT
+                        </label>
+
+                        <div class="input-wrap">
+                            <input
+                                id="pledgeInput"
+                                type="number"
+                                min="100"
+                                max="5000"
+                                step="100"
+                                value="1000"
+                                inputmode="numeric"
+                            >
+
+                            <span>$FORGE</span>
+                        </div>
+
+                        <div class="commitment-info">
+                            <span>Minimum: 100 XP</span>
+                            <span>Maximum: 5,000 XP</span>
+                        </div>
+
+                    </div>
+
+                    <div class="protocol-grid">
+
+                        <div>
+                            <span>DUEL LENGTH</span>
+                            <strong>60:00</strong>
+                        </div>
+
+                        <div>
+                            <span>FOCUS MODE</span>
+                            <strong>STRICT</strong>
+                        </div>
+
+                        <div>
+                            <span>TAB EXIT</span>
+                            <strong>PENALTY</strong>
+                        </div>
+
+                    </div>
+
+                    <button id="findRivalBtn" class="primary-button">
+                        <span class="button-icon">⚔</span>
+                        FIND RIVAL
+                    </button>
+
+                    <div id="matchmaking" class="matchmaking hidden">
+                        <div class="radar"></div>
+                        <strong id="matchStatus">SEARCHING FOR RIVAL...</strong>
+                        <span id="matchSubstatus">
+                            Scanning active operators
+                        </span>
+                    </div>
+
+                    <div id="lobbyMessage" class="message"></div>
+
+                </div>
+
+                <div class="warning-panel">
+                    <span>⚠</span>
+                    <div>
+                        <strong>STRICT FOCUS PROTOCOL</strong>
+                        <p>
+                            Leaving this arena during an active duel counts
+                            as a focus failure.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ARENA -->
+            <section id="arena" class="screen">
+
+                <div class="arena-header">
+
+                    <div>
+                        <span class="section-code">LIVE MATCH // 02</span>
+                        <h2>FOCUS DUEL</h2>
+                    </div>
+
+                    <div id="connectionStatus" class="connection">
+                        <span></span>
+                        LINK STABLE
+                    </div>
+
+                </div>
+
+                <div class="fighters">
+
+                    <!-- PLAYER -->
+                    <article class="fighter player">
+
+                        <div class="fighter-top">
+                            <span class="operator-label">OPERATOR A</span>
+                            <span class="live-tag">YOU</span>
+                        </div>
+
+                        <div class="avatar player-avatar">
+                            A
+                        </div>
+
+                        <h3>FOCUS OPERATIVE</h3>
+
+                        <div class="fighter-status">
+                            <span class="status-light"></span>
+                            <span id="playerStatus">LOCKED IN</span>
+                        </div>
+
+                        <div class="focus-meter">
+                            <div class="meter-fill" id="playerMeter"></div>
+                        </div>
+
+                        <span class="meter-label">FOCUS INTEGRITY</span>
+
+                    </article>
+
+                    <div class="versus">
+                        <span>VS</span>
+                        <div class="versus-line"></div>
+                    </div>
+
+                    <!-- RIVAL -->
+                    <article class="fighter rival">
+
+                        <div class="fighter-top">
+                            <span class="operator-label">OPERATOR B</span>
+                            <span class="live-tag rival-tag">RIVAL</span>
+                        </div>
+
+                        <div class="avatar rival-avatar">
+                            R
+                        </div>
+
+                        <h3 id="rivalName">VOID OPERATIVE</h3>
+
+                        <div class="fighter-status">
+                            <span class="status-light"></span>
+                            <span id="rivalStatus">LOCKED IN</span>
+                        </div>
+
+                        <div class="focus-meter">
+                            <div class="meter-fill" id="rivalMeter"></div>
+                        </div>
+
+                        <span class="meter-label">FOCUS INTEGRITY</span>
+
+                    </article>
+
+                </div>
+
+                <div class="timer-panel">
+
+                    <span class="timer-label">TIME REMAINING</span>
+
+                    <div id="timer" class="timer">
+                        60:00
+                    </div>
+
+                    <div class="timer-progress">
+                        <div id="timerProgress"></div>
+                    </div>
+
+                    <div class="timer-meta">
+                        <span>SESSION: DEEP WORK</span>
+                        <span id="sessionXP">COMMITMENT: 1,000 XP</span>
+                    </div>
+
+                </div>
+
+                <div class="arena-controls">
+
+                    <button id="yieldBtn" class="yield-button">
+                        <span>✕</span>
+                        END FOCUS SESSION
+                    </button>
+
+                    <p>
+                        Ending the session early applies the
+                        productivity penalty.
+                    </p>
+
+                </div>
+
+                <div id="arenaFeed" class="arena-feed">
+                    <div>
+                        <span>[SYSTEM]</span>
+                        Neural link established.
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- RESULT OVERLAY -->
+        <div id="resultOverlay" class="result-overlay">
+
+            <div class="result-card">
+
+                <div id="resultIcon" class="result-icon">
+                    ✓
+                </div>
+
+                <span id="resultCode" class="result-code">
+                    PROTOCOL COMPLETE
+                </span>
+
+                <h2 id="resultTitle">
+                    VICTORY
+                </h2>
+
+                <p id="resultDescription">
+                    Focus protocol successfully completed.
+                </p>
+
+                <div class="result-reward">
+                    <span>FOCUS XP RESULT</span>
+                    <strong id="resultXP">+2,000 $FORGE</strong>
+                </div>
+
+                <button id="returnBtn" class="primary-button">
+                    RETURN TO ARENA
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="impactFlash" class="impact-flash"></div>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
