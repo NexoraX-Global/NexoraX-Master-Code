@@ -1,0 +1,898 @@
+:root {
+    --bg: #030303;
+    --panel: rgba(12, 15, 17, 0.82);
+    --panel-border: rgba(255, 255, 255, 0.08);
+
+    --cyan: #00e5ff;
+    --cyan-soft: rgba(0, 229, 255, 0.35);
+
+    --gold: #ffd700;
+    --gold-soft: rgba(255, 215, 0, 0.3);
+
+    --white: #f5f7f8;
+    --muted: #788187;
+    --dim: #3e4549;
+
+    --success: #66ffcc;
+
+    --radius: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    background: var(--bg);
+    color-scheme: dark;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(0, 229, 255, 0.045),
+            transparent 35%
+        ),
+        #030303;
+    color: var(--white);
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ambient {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    opacity: 0.12;
+    z-index: 0;
+}
+
+.ambient-one {
+    top: 5%;
+    left: -150px;
+    background: var(--cyan);
+}
+
+.ambient-two {
+    right: -160px;
+    bottom: 5%;
+    background: var(--gold);
+}
+
+.grid-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.11;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 38px 38px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.app-shell {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 720px);
+    margin: 0 auto;
+    padding:
+        20px
+        18px
+        35px;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 39px;
+    height: 39px;
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    border-radius: 11px;
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    box-shadow:
+        inset 0 0 15px rgba(0, 229, 255, 0.08),
+        0 0 15px rgba(0, 229, 255, 0.08);
+}
+
+.brand h1 {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+}
+
+.brand p {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 8px;
+    letter-spacing: 1.7px;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 9px var(--success);
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+.hero-section {
+    text-align: center;
+    padding-top: 35px;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--cyan);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.eyebrow span {
+    display: block;
+    width: 18px;
+    height: 1px;
+    background: var(--cyan);
+    opacity: 0.5;
+}
+
+.hero-section h2 {
+    margin-top: 13px;
+    font-size: clamp(25px, 8vw, 42px);
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+.hero-section h2 strong {
+    color: var(--cyan);
+    font-weight: 800;
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.35);
+}
+
+.hero-description {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.core-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(78vw, 330px);
+    height: min(78vw, 330px);
+    margin: 15px auto 0;
+}
+
+.apex-core {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 125px;
+    height: 125px;
+    border-radius: 34%;
+    transform: rotate(45deg);
+    transition:
+        width 1s cubic-bezier(0.22, 1, 0.36, 1),
+        height 1s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1s ease,
+        box-shadow 1s ease;
+}
+
+.core-aura {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(0, 229, 255, 0.04);
+    filter: blur(20px);
+    transition:
+        transform 1s ease,
+        background 1s ease,
+        box-shadow 1s ease;
+}
+
+.core-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid;
+    border-radius: 34%;
+    pointer-events: none;
+}
+
+.ring-one {
+    border-color: rgba(255, 255, 255, 0.13);
+}
+
+.ring-two {
+    inset: -13px;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.ring-three {
+    inset: -27px;
+    border-color: rgba(255, 255, 255, 0.035);
+}
+
+.core-crystal {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    transform: rotate(-45deg);
+}
+
+.core-crystal span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.core-crystal span:nth-child(1) {
+    transform: rotate(60deg);
+}
+
+.core-crystal span:nth-child(2) {
+    transform: rotate(-60deg);
+}
+
+.core-crystal span:nth-child(3) {
+    transform: rotate(0deg);
+}
+
+.core-center {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: currentColor;
+    transform: rotate(-45deg);
+}
+
+.orbit {
+    position: absolute;
+    border: 1px solid;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.orbit-outer {
+    width: 290px;
+    height: 130px;
+    border-color: rgba(0, 229, 255, 0.07);
+    transform: rotate(-25deg);
+    animation: orbitOne 12s linear infinite;
+}
+
+.orbit-middle {
+    width: 240px;
+    height: 100px;
+    border-color: rgba(255, 215, 0, 0.05);
+    transform: rotate(55deg);
+    animation: orbitTwo 9s linear infinite reverse;
+}
+
+.orbit-inner {
+    width: 190px;
+    height: 70px;
+    border-color: rgba(255, 255, 255, 0.04);
+    transform: rotate(20deg);
+    animation: orbitThree 7s linear infinite;
+}
+
+/* DORMANT */
+
+.apex-core.dormant {
+    color: #777e82;
+    background: rgba(130, 140, 145, 0.08);
+    border: 1px solid rgba(160, 170, 175, 0.3);
+    box-shadow:
+        0 0 18px rgba(150, 160, 165, 0.08),
+        inset 0 0 25px rgba(255, 255, 255, 0.03);
+    animation: dormantPulse 3.2s ease-in-out infinite;
+}
+
+.apex-core.dormant .core-center {
+    box-shadow: 0 0 12px rgba(180, 190, 195, 0.35);
+}
+
+/* AWAKENED */
+
+.apex-core.awakened {
+    width: 145px;
+    height: 145px;
+    color: var(--cyan);
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.65);
+    box-shadow:
+        0 0 25px rgba(0, 229, 255, 0.3),
+        0 0 70px rgba(0, 229, 255, 0.12),
+        inset 0 0 35px rgba(0, 229, 255, 0.08);
+    animation: awakenedPulse 2.5s ease-in-out infinite;
+}
+
+.apex-core.awakened .core-center {
+    box-shadow:
+        0 0 15px var(--cyan),
+        0 0 35px rgba(0, 229, 255, 0.7);
+}
+
+.core-stage:has(.apex-core.awakened) .core-aura {
+    background: rgba(0, 229, 255, 0.12);
+    box-shadow: 0 0 90px rgba(0, 229, 255, 0.2);
+    transform: scale(1.3);
+}
+
+/* GOD TIER */
+
+.apex-core.god-tier {
+    width: 175px;
+    height: 175px;
+    color: var(--gold);
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 215, 0, 0.2),
+            rgba(255, 215, 0, 0.03) 65%
+        );
+    border: 1px solid rgba(255, 215, 0, 0.85);
+    box-shadow:
+        0 0 30px rgba(255, 215, 0, 0.55),
+        0 0 80px rgba(255, 215, 0, 0.32),
+        0 0 150px rgba(255, 180, 0, 0.15),
+        inset 0 0 50px rgba(255, 215, 0, 0.12);
+    animation:
+        godPulse 2.1s ease-in-out infinite,
+        godRotate 14s linear infinite;
+}
+
+.apex-core.god-tier .core-center {
+    width: 23px;
+    height: 23px;
+    box-shadow:
+        0 0 20px var(--gold),
+        0 0 55px var(--gold),
+        0 0 100px rgba(255, 215, 0, 0.65);
+}
+
+.core-stage:has(.apex-core.god-tier) .core-aura {
+    background: rgba(255, 215, 0, 0.18);
+    box-shadow:
+        0 0 100px rgba(255, 215, 0, 0.45),
+        0 0 170px rgba(255, 170, 0, 0.2);
+    transform: scale(1.65);
+}
+
+.evolution-state {
+    min-height: 82px;
+    margin-top: -5px;
+}
+
+.state-label {
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.evolution-state h3 {
+    margin-top: 5px;
+    color: #aab0b3;
+    font-size: 17px;
+    letter-spacing: 2px;
+    transition: color 0.6s ease, text-shadow 0.6s ease;
+}
+
+.evolution-state p {
+    max-width: 330px;
+    margin: 6px auto 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Timer */
+
+.timer-panel {
+    margin-top: 15px;
+    padding: 21px;
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.012)
+        ),
+        var(--panel);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(18px);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-kicker {
+    color: var(--cyan);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.panel-header h3 {
+    margin-top: 4px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+.session-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    color: var(--muted);
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+.session-indicator span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--dim);
+}
+
+.session-indicator.running {
+    color: var(--cyan);
+    border-color: rgba(0, 229, 255, 0.2);
+}
+
+.session-indicator.running span {
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+    animation: statusPulse 1.2s infinite;
+}
+
+.timer {
+    margin-top: 22px;
+    color: var(--white);
+    font-family:
+        "Courier New",
+        monospace;
+    font-size: clamp(50px, 16vw, 78px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 3px;
+    text-align: center;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+    font-variant-numeric: tabular-nums;
+}
+
+.timer.running {
+    color: var(--cyan);
+    text-shadow:
+        0 0 20px rgba(0, 229, 255, 0.3),
+        0 0 50px rgba(0, 229, 255, 0.08);
+}
+
+.timer-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.progress-track {
+    height: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        var(--cyan),
+        var(--gold)
+    );
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+    transition: width 0.5s linear;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.control-button {
+    min-height: 52px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    transition:
+        transform 0.15s ease,
+        opacity 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+.control-button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.control-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.control-button.primary {
+    border: 1px solid rgba(0, 229, 255, 0.6);
+    color: #001519;
+    background: var(--cyan);
+    box-shadow:
+        0 0 20px rgba(0, 229, 255, 0.15),
+        inset 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.control-button.primary:hover:not(:disabled) {
+    box-shadow:
+        0 0 25px rgba(0, 229, 255, 0.35),
+        0 0 60px rgba(0, 229, 255, 0.1);
+}
+
+.control-button.secondary {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #c7cbcd;
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.button-icon {
+    margin-right: 5px;
+}
+
+.reset-button {
+    display: block;
+    margin: 15px auto 0;
+    border: 0;
+    background: transparent;
+    color: #596166;
+    cursor: pointer;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.reset-button:hover {
+    color: #9da4a8;
+}
+
+/* Stats */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 13px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.018);
+}
+
+.stat-icon {
+    color: var(--cyan);
+    font-size: 15px;
+}
+
+.stat-label {
+    display: block;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+.stat-card strong {
+    display: block;
+    margin-top: 4px;
+    overflow: hidden;
+    color: #d9dddf;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+/* Guidance */
+
+.guidance-panel {
+    display: flex;
+    gap: 13px;
+    margin-top: 10px;
+    padding: 16px;
+    border: 1px solid rgba(0, 229, 255, 0.08);
+    border-radius: 15px;
+    background: rgba(0, 229, 255, 0.018);
+}
+
+.guidance-icon {
+    flex: 0 0 auto;
+    color: var(--cyan);
+    font-size: 22px;
+}
+
+.guidance-panel h3 {
+    font-size: 9px;
+    letter-spacing: 1.2px;
+}
+
+.guidance-panel p {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.55;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    color: #363b3e;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+/* Toast */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 30px;
+    background: rgba(5, 12, 14, 0.92);
+    color: #dbe2e4;
+    font-size: 9px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    transform: translate(-50%, 100px);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease;
+}
+
+.toast.visible {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+.toast-icon {
+    color: var(--success);
+    font-size: 13px;
+}
+
+/* Animations */
+
+@keyframes statusPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+@keyframes dormantPulse {
+    0%, 100% {
+        transform: rotate(45deg) scale(0.94);
+        opacity: 0.72;
+    }
+
+    50% {
+        transform: rotate(45deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes awakenedPulse {
+    0%, 100% {
+        transform: rotate(45deg) scale(0.98);
+    }
+
+    50% {
+        transform: rotate(45deg) scale(1.045);
+    }
+}
+
+@keyframes godPulse {
+    0%, 100% {
+        filter: brightness(0.95);
+        box-shadow:
+            0 0 30px rgba(255, 215, 0, 0.5),
+            0 0 80px rgba(255, 215, 0, 0.28),
+            0 0 150px rgba(255, 180, 0, 0.12),
+            inset 0 0 50px rgba(255, 215, 0, 0.1);
+    }
+
+    50% {
+        filter: brightness(1.2);
+        box-shadow:
+            0 0 45px rgba(255, 215, 0, 0.8),
+            0 0 110px rgba(255, 215, 0, 0.42),
+            0 0 190px rgba(255, 180, 0, 0.18),
+            inset 0 0 70px rgba(255, 215, 0, 0.16);
+    }
+}
+
+@keyframes godRotate {
+    from {
+        transform: rotate(45deg);
+    }
+
+    to {
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes orbitOne {
+    from {
+        transform: rotate(-25deg);
+    }
+
+    to {
+        transform: rotate(335deg);
+    }
+}
+
+@keyframes orbitTwo {
+    from {
+        transform: rotate(55deg);
+    }
+
+    to {
+        transform: rotate(-305deg);
+    }
+}
+
+@keyframes orbitThree {
+    from {
+        transform: rotate(20deg);
+    }
+
+    to {
+        transform: rotate(380deg);
+    }
+}
+
+@media (min-width: 600px) {
+    .app-shell {
+        padding-top: 28px;
+    }
+
+    .hero-section {
+        padding-top: 45px;
+    }
+
+    .core-stage {
+        margin-top: 25px;
+    }
+
+    .timer-panel {
+        padding: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+
+    .progress-fill,
+    .apex-core,
+    .core-aura {
+        transition-duration: 0.01ms !important;
+    }
+}
