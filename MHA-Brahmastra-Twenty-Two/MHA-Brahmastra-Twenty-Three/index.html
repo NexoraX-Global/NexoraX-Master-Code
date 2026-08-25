@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="TaskForge-Core — a peaceful visual legacy and daily focus tracker.">
+    <title>TaskForge-Core | The Legacy Monolith</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="app-shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <div>
+                    <p class="eyebrow">TASKFORGE-CORE</p>
+                    <h1>VISUAL LEGACY</h1>
+                </div>
+            </div>
+
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot"></span>
+                <span id="statusText">ACTIVE</span>
+            </div>
+        </header>
+
+        <section class="hero" aria-labelledby="monolithTitle">
+            <div class="section-heading">
+                <p class="section-label">DAILY PROGRESSION</p>
+                <h2 id="monolithTitle">THE LEGACY MONOLITH</h2>
+                <p class="section-description">
+                    Build your legacy one focused day at a time.
+                </p>
+            </div>
+
+            <div class="streak-display" aria-live="polite">
+                <span class="streak-label">CURRENT STREAK</span>
+                <span class="streak-value" id="streakValue">0</span>
+                <span class="streak-unit" id="streakUnit">DAYS</span>
+            </div>
+
+            <div
+                class="monolith-stage"
+                id="monolithStage"
+                data-state="dormant"
+                aria-label="Visual representation of your current focus streak"
+            >
+                <div class="stage-glow"></div>
+                <div class="floor-ring floor-ring-back"></div>
+                <div class="floor-ring floor-ring-front"></div>
+
+                <div class="monolith-shadow"></div>
+
+                <div class="monolith">
+                    <div class="monolith-side monolith-side-left"></div>
+                    <div class="monolith-side monolith-side-right"></div>
+                    <div class="monolith-top"></div>
+                    <div class="monolith-face">
+                        <div class="monolith-inner-glow"></div>
+                        <div class="rune-field" id="runeField"></div>
+                        <div class="monolith-core"></div>
+                    </div>
+                    <div class="monolith-base"></div>
+                </div>
+
+                <div class="state-message" id="stateMessage">
+                    BEGIN YOUR LEGACY
+                </div>
+            </div>
+        </section>
+
+        <section class="control-panel" aria-label="Focus controls">
+            <div class="panel-line"></div>
+
+            <button
+                class="action-button primary-action"
+                id="logFocusButton"
+                type="button"
+            >
+                <span class="button-icon" aria-hidden="true">+</span>
+                <span class="button-content">
+                    <strong>LOG DAILY FOCUS</strong>
+                    <small>STREAK +1</small>
+                </span>
+                <span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+
+            <button
+                class="action-button secondary-action"
+                id="missedDayButton"
+                type="button"
+            >
+                <span class="button-icon pause-icon" aria-hidden="true">Ⅱ</span>
+                <span class="button-content">
+                    <strong>SIMULATE MISSED DAY</strong>
+                    <small>TEST REST STATE</small>
+                </span>
+                <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+
+            <p class="control-note" id="controlNote">
+                Your progress is stored locally on this device.
+            </p>
+        </section>
+
+        <footer class="footer">
+            <span>FOCUS</span>
+            <span class="footer-divider"></span>
+            <span>GROW</span>
+            <span class="footer-divider"></span>
+            <span>BUILD</span>
+        </footer>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
