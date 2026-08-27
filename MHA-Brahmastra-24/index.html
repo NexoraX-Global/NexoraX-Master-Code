@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="TaskForge-Core — a calm micro-action system designed to reduce activation friction.">
+    <title>TaskForge-Core | Momentum Engine</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="ambient-system" aria-hidden="true">
+        <div class="ambient-orb orb-cyan"></div>
+        <div class="ambient-orb orb-green"></div>
+        <div class="tunnel tunnel-one"></div>
+        <div class="tunnel tunnel-two"></div>
+        <div class="tunnel tunnel-three"></div>
+        <div class="tunnel tunnel-four"></div>
+        <div class="grid-floor"></div>
+    </div>
+
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-symbol" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="brand-copy">
+                    <span class="brand-kicker">TASKFORGE-CORE</span>
+                    <span class="brand-name">MOMENTUM ENGINE</span>
+                </div>
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>CALM MODE</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- PHASE 1 -->
+            <section
+                class="phase phase-input active"
+                id="inputPhase"
+                aria-labelledby="inputTitle"
+            >
+                <div class="phase-intro">
+                    <span class="phase-number">01 / DEFINE</span>
+
+                    <h1 id="inputTitle">
+                        Make the first step<br>
+                        <span>ridiculously small.</span>
+                    </h1>
+
+                    <p>
+                        Don't solve the entire task. Define one tiny action
+                        that you can begin in the next five minutes.
+                    </p>
+                </div>
+
+                <form class="momentum-form" id="momentumForm" novalidate>
+                    <div class="field-group">
+                        <label for="bigGoal">THE BIG GOAL</label>
+
+                        <div class="field-wrapper">
+                            <textarea
+                                id="bigGoal"
+                                name="bigGoal"
+                                rows="3"
+                                maxlength="300"
+                                autocomplete="off"
+                                placeholder="What feels overwhelming right now?"
+                                required
+                            ></textarea>
+
+                            <span class="field-counter" id="goalCounter">0 / 300</span>
+                        </div>
+
+                        <span class="field-hint">
+                            Name the destination. You don't need to reach it yet.
+                        </span>
+                    </div>
+
+                    <div class="connector" aria-hidden="true">
+                        <span class="connector-line"></span>
+                        <span class="connector-node"></span>
+                        <span class="connector-line"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="microAction">THE 5-MIN MICRO-ACTION</label>
+
+                        <div class="field-wrapper micro-wrapper">
+                            <input
+                                id="microAction"
+                                name="microAction"
+                                type="text"
+                                maxlength="160"
+                                autocomplete="off"
+                                placeholder="e.g. Open the document and write the first heading"
+                                required
+                            >
+
+                            <span class="field-counter" id="actionCounter">0 / 160</span>
+                        </div>
+
+                        <span class="field-hint">
+                            Make it so easy that starting feels effortless.
+                        </span>
+                    </div>
+
+                    <button
+                        class="ignite-button"
+                        id="igniteButton"
+                        type="submit"
+                    >
+                        <span class="ignite-energy" aria-hidden="true"></span>
+                        <span class="ignite-text">IGNITE MOMENTUM</span>
+                        <span class="ignite-arrow" aria-hidden="true">↗</span>
+                    </button>
+
+                    <p class="form-message" id="formMessage" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <!-- PHASE 2 -->
+            <section
+                class="phase phase-focus"
+                id="focusPhase"
+                aria-labelledby="focusTitle"
+                aria-hidden="true"
+            >
+                <div class="focus-header">
+                    <span class="phase-number">02 / ACTIVATE</span>
+
+                    <h2 id="focusTitle">ONE SMALL ACTION.</h2>
+
+                    <p class="focus-goal" id="focusGoal">
+                        Your goal will appear here.
+                    </p>
+                </div>
+
+                <div class="momentum-area">
+                    <div class="energy-particles" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="momentum-ring-shell">
+                        <div class="ring-aura"></div>
+
+                        <svg
+                            class="momentum-svg"
+                            viewBox="0 0 300 300"
+                            aria-hidden="true"
+                        >
+                            <defs>
+                                <linearGradient
+                                    id="momentumGradient"
+                                    x1="0%"
+                                    y1="0%"
+                                    x2="100%"
+                                    y2="100%"
+                                >
+                                    <stop offset="0%" stop-color="#00e5ff"></stop>
+                                    <stop offset="52%" stop-color="#00ffcc"></stop>
+                                    <stop offset="100%" stop-color="#39ff14"></stop>
+                                </linearGradient>
+
+                                <filter id="ringGlow">
+                                    <feGaussianBlur
+                                        stdDeviation="4"
+                                        result="blur"
+                                    ></feGaussianBlur>
+
+                                    <feMerge>
+                                        <feMergeNode in="blur"></feMergeNode>
+                                        <feMergeNode in="SourceGraphic"></feMergeNode>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <circle
+                                class="ring-track"
+                                cx="150"
+                                cy="150"
+                                r="125"
+                            ></circle>
+
+                            <circle
+                                class="ring-progress-glow"
+                                cx="150"
+                                cy="150"
+                                r="125"
+                            ></circle>
+
+                            <circle
+                                class="ring-progress"
+                                id="ringProgress"
+                                cx="150"
+                                cy="150"
+                                r="125"
+                                pathLength="100"
+                            ></circle>
+                        </svg>
+
+                        <div class="timer-core">
+                            <span class="timer-label">MOMENTUM</span>
+
+                            <div
+                                class="timer-value"
+                                id="timerValue"
+                                role="timer"
+                                aria-live="polite"
+                            >
+                                05:00
+                            </div>
+
+                            <span class="timer-subtitle">
+                                FIVE MINUTES
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="active-action">
+                    <span class="active-label">CURRENT MICRO-ACTION</span>
+
+                    <p id="activeAction">
+                        Your micro-action will appear here.
+                    </p>
+                </div>
+
+                <button
+                    class="quiet-exit"
+                    id="exitFocusButton"
+                    type="button"
+                >
+                    PAUSE SESSION
+                </button>
+            </section>
+
+            <!-- PHASE 3 -->
+            <section
+                class="phase phase-success"
+                id="successPhase"
+                aria-labelledby="successTitle"
+                aria-hidden="true"
+            >
+                <div class="success-orbit" aria-hidden="true">
+                    <div class="success-ring success-ring-one"></div>
+                    <div class="success-ring success-ring-two"></div>
+                    <div class="success-core">✓</div>
+                </div>
+
+                <span class="phase-number">03 / MOMENTUM CREATED</span>
+
+                <h2 id="successTitle">
+                    Activation friction<br>
+                    <span>broken.</span>
+                </h2>
+
+                <p class="success-message">
+                    You didn't need to finish everything.
+                    You only needed to begin — and you did.
+                </p>
+
+                <div class="completed-card">
+                    <span class="completed-label">MICRO-ACTION COMPLETED</span>
+                    <p id="completedAction">
+                        Your completed action will appear here.
+                    </p>
+                </div>
+
+                <div class="success-note">
+                    <span class="success-note-dot"></span>
+                    <span>Momentum is now available. Continue if it feels natural.</span>
+                </div>
+
+                <button
+                    class="base-button"
+                    id="returnBaseButton"
+                    type="button"
+                >
+                    <span>RETURN TO BASE</span>
+                    <span aria-hidden="true">↗</span>
+                </button>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <span>SMALL ACTIONS</span>
+            <span class="footer-separator"></span>
+            <span>REAL MOMENTUM</span>
+            <span class="footer-separator"></span>
+            <span>NO PRESSURE</span>
+        </footer>
+    </div>
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+        aria-hidden="true"
+    >
+        <span class="toast-icon">✓</span>
+        <span id="toastMessage">Session paused.</span>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
