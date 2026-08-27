@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#030303">
+  <meta name="description" content="TaskForge PRO Mega Focus Room">
+  <title>TaskForge PRO — Mega Focus Room</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- HEADER -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">TF</div>
+        <div>
+          <div class="brand-name">TASKFORGE PRO</div>
+          <div class="brand-sub">MEGA FOCUS ROOM</div>
+        </div>
+      </div>
+
+      <div class="live-pill">
+        <span class="live-dot"></span>
+        <span>LIVE</span>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ================= SETUP ================= -->
+      <section id="setupScreen" class="screen active-screen">
+
+        <div class="hero">
+          <div class="hero-badge">FOCUS TOGETHER</div>
+          <h1>Build Your Focus Room</h1>
+          <p>Pick a task, set a time, invite friends, and focus.</p>
+        </div>
+
+        <div class="setup-grid">
+
+          <!-- TASK -->
+          <div class="panel task-panel">
+            <div class="panel-label">YOUR TASK</div>
+            <label for="taskInput" class="field-title">
+              What are you working on?
+            </label>
+
+            <input
+              id="taskInput"
+              class="big-input"
+              type="text"
+              maxlength="80"
+              autocomplete="off"
+              placeholder="Example: Python Coding"
+            >
+
+            <div class="input-hint">
+              Keep it short and clear.
+            </div>
+          </div>
+
+          <!-- TIME -->
+          <div class="panel">
+            <div class="panel-label">FOCUS TIME</div>
+
+            <div class="time-row">
+              <input
+                id="timeInput"
+                class="big-input time-input"
+                type="number"
+                min="1"
+                max="24"
+                value="25"
+                inputmode="numeric"
+              >
+
+              <select id="timeUnit" class="unit-select">
+                <option value="minutes">Minutes</option>
+                <option value="hours">Hours</option>
+              </select>
+            </div>
+
+            <div class="time-limit">
+              Maximum: 24 hours
+            </div>
+          </div>
+
+          <!-- COINS -->
+          <div class="panel">
+            <div class="panel-label">YOUR COINS</div>
+
+            <div class="coin-display">
+              <span class="coin-symbol">◈</span>
+              <span id="coinInputValue">100</span>
+            </div>
+
+            <input
+              id="coinInput"
+              class="range-input"
+              type="range"
+              min="10"
+              max="10000"
+              value="100"
+              step="10"
+            >
+
+            <div class="range-labels">
+              <span>10</span>
+              <span>10,000</span>
+            </div>
+          </div>
+
+          <!-- FRIEND COUNT -->
+          <div class="panel">
+            <div class="panel-label">FRIENDS</div>
+
+            <div class="friend-count">
+              <span id="friendCountValue">5</span>
+              <span>friends</span>
+            </div>
+
+            <input
+              id="friendSlider"
+              class="range-input"
+              type="range"
+              min="1"
+              max="50"
+              value="5"
+              step="1"
+            >
+
+            <div class="range-labels">
+              <span>1</span>
+              <span>50</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FRIEND PREVIEW -->
+        <div class="panel friend-preview-panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-label">ROOM MEMBERS</div>
+              <h2>Friends joining</h2>
+            </div>
+
+            <div id="friendPreviewCount" class="count-badge">5</div>
+          </div>
+
+          <div id="friendPreviewGrid" class="friend-grid preview-grid"></div>
+        </div>
+
+        <!-- INVITE -->
+        <div class="invite-panel">
+          <div class="invite-icon">🔗</div>
+
+          <div class="invite-copy">
+            <strong>Invite your friends</strong>
+            <span>Copy the room link and send it to them.</span>
+          </div>
+
+          <button id="copyInviteBtn" class="secondary-btn" type="button">
+            Copy Invite Link
+          </button>
+        </div>
+
+        <button id="startRoomBtn" class="primary-btn start-btn" type="button">
+          <span>START FOCUS ROOM</span>
+          <span class="arrow">→</span>
+        </button>
+
+        <div class="safe-note">
+          ◈ Coins are virtual points used inside this demo.
+        </div>
+
+      </section>
+
+
+      <!-- ================= ACTIVE ROOM ================= -->
+      <section id="roomScreen" class="screen">
+
+        <div class="room-head">
+
+          <div>
+            <div class="room-status">
+              <span class="live-dot"></span>
+              ROOM ACTIVE
+            </div>
+
+            <h1 id="activeTaskName">Python Coding</h1>
+            <p id="activeRoomText">Stay focused with your team.</p>
+          </div>
+
+          <div class="room-stats">
+            <div class="mini-stat">
+              <span>YOU</span>
+              <strong id="activeUserCoins">100</strong>
+              <small>coins</small>
+            </div>
+
+            <div class="mini-stat">
+              <span>SURVIVORS</span>
+              <strong id="survivorCount">0</strong>
+              <small>players</small>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- TIMER -->
+        <div class="timer-card">
+
+          <div class="timer-label">FOCUS TIME LEFT</div>
+
+          <div id="timerDisplay" class="timer-display">
+            00:25:00
+          </div>
+
+          <div class="timer-progress">
+            <div id="timerProgressBar"></div>
+          </div>
+
+          <div class="timer-meta">
+            <span id="timerStartedText">Ready</span>
+            <span id="timerTotalText">25 minutes</span>
+          </div>
+
+        </div>
+
+
+        <!-- CHEAT WARNING -->
+        <div id="antiCheatBanner" class="anti-cheat-banner">
+          <div class="warning-icon">⚡</div>
+          <div>
+            <strong>Stay on this screen</strong>
+            <span>Leaving the room ends your run.</span>
+          </div>
+        </div>
+
+
+        <!-- PLAYERS -->
+        <div class="panel room-players-panel">
+
+          <div class="panel-head">
+            <div>
+              <div class="panel-label">FOCUS ROOM</div>
+              <h2>Everyone is focusing</h2>
+            </div>
+
+            <div id="roomPlayerCount" class="count-badge">6</div>
+          </div>
+
+          <div id="roomPlayerGrid" class="friend-grid room-grid"></div>
+
+        </div>
+
+
+        <!-- EMOJI CHAT -->
+        <div class="chat-panel">
+
+          <div class="chat-head">
+            <div>
+              <div class="panel-label">QUICK MESSAGES</div>
+              <strong>Send a focus ping</strong>
+            </div>
+
+            <span class="scroll-hint">Swipe →</span>
+          </div>
+
+          <div id="emojiRow" class="emoji-row">
+
+            <button class="emoji-chip" data-message="Locked In 🔒">Locked In 🔒</button>
+            <button class="emoji-chip" data-message="Deep Zone 🧠">Deep Zone 🧠</button>
+            <button class="emoji-chip" data-message="Need Coffee ☕">Need Coffee ☕</button>
+            <button class="emoji-chip" data-message="Brain Dead 💀">Brain Dead 💀</button>
+            <button class="emoji-chip" data-message="Crushing it 🔥">Crushing it 🔥</button>
+            <button class="emoji-chip" data-message="Halfway done 🚀">Halfway done 🚀</button>
+            <button class="emoji-chip" data-message="Do Not Disturb 🚫">Do Not Disturb 🚫</button>
+            <button class="emoji-chip" data-message="Focusing hard 👁️">Focusing hard 👁️</button>
+            <button class="emoji-chip" data-message="Taking a breath 🧘">Taking a breath 🧘</button>
+            <button class="emoji-chip" data-message="Almost there 🏁">Almost there 🏁</button>
+            <button class="emoji-chip" data-message="No distractions 🔇">No distractions 🔇</button>
+            <button class="emoji-chip" data-message="Pushing limits 📈">Pushing limits 📈</button>
+            <button class="emoji-chip" data-message="In the flow 🌊">In the flow 🌊</button>
+            <button class="emoji-chip" data-message="Grinding ⚙️">Grinding ⚙️</button>
+            <button class="emoji-chip" data-message="Winner mindset 🏆">Winner mindset 🏆</button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ROOM ACTIONS -->
+        <div class="room-actions">
+          <button id="endRoomBtn" class="quit-btn" type="button">
+            End My Focus
+          </button>
+        </div>
+
+      </section>
+
+
+      <!-- ================= CERTIFICATE ================= -->
+      <section id="certificateScreen" class="screen">
+
+        <div class="certificate-wrap">
+
+          <div class="certificate-glow"></div>
+
+          <div class="certificate">
+
+            <div class="certificate-top">
+              <div class="cert-logo">TF</div>
+
+              <div class="cert-small">
+                TASKFORGE PRO
+              </div>
+            </div>
+
+            <div class="cert-line"></div>
+
+            <div class="cert-kicker">
+              FOCUS ROOM COMPLETE
+            </div>
+
+            <h1>Mission Accomplished</h1>
+
+            <p class="cert-message">
+              You stayed focused and finished your mission.
+            </p>
+
+            <div class="cert-task-box">
+              <span>TASK</span>
+              <strong id="certificateTask">Python Coding</strong>
+            </div>
+
+            <div class="certificate-stats">
+
+              <div class="cert-stat">
+                <span>TIME FOCUSED</span>
+                <strong id="certificateTime">25:00</strong>
+              </div>
+
+              <div class="cert-stat">
+                <span>COINS WON</span>
+                <strong id="certificateCoins">0</strong>
+              </div>
+
+              <div class="cert-stat">
+                <span>RESULT</span>
+                <strong class="success-text">SURVIVED</strong>
+              </div>
+
+            </div>
+
+            <div class="cert-line"></div>
+
+            <!-- LEADERBOARD -->
+            <div class="leaderboard-section">
+
+              <div class="leaderboard-head">
+                <div>
+                  <div class="panel-label">FINAL RESULTS</div>
+                  <h2>Room Leaderboard</h2>
+                </div>
+              </div>
+
+              <div id="leaderboardList" class="leaderboard-list"></div>
+
+            </div>
+
+            <div class="certificate-footer">
+              <span id="certificateDate">TaskForge PRO</span>
+              <span>Focus • Finish • Grow</span>
+            </div>
+
+          </div>
+
+          <button id="newRoomBtn" class="primary-btn new-room-btn" type="button">
+            START A NEW ROOM
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast" role="status">
+      <span id="toastIcon">✓</span>
+      <span id="toastText">Done</span>
+    </div>
+
+    <!-- AUDIO ENABLE -->
+    <div id="audioUnlock" class="audio-unlock">
+      <div class="audio-card">
+        <div class="audio-symbol">🔊</div>
+        <h2>Sound is ready</h2>
+        <p>Tap once to turn on focus sounds.</p>
+        <button id="unlockAudioBtn" class="primary-btn" type="button">
+          TURN ON SOUND
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
