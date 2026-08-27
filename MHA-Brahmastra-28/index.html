@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#030303">
+    <meta name="description" content="TaskForge-Core Accountability Pod">
+    <title>TaskForge-Core | Accountability Pod</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <header class="network-header">
+            <div class="brand-mark">
+                <span class="brand-symbol">TF</span>
+                <div>
+                    <strong>TASKFORGE</strong>
+                    <small>ACCOUNTABILITY POD</small>
+                </div>
+            </div>
+
+            <div class="network-ticker" aria-live="polite">
+                <span class="ticker-pulse"></span>
+                <span>🌐 Global Focus Pods Online: <b id="globalPods">14,290</b></span>
+                <span class="ticker-divider">|</span>
+                <span>Platform Tax Vault: 🪙 <b id="vaultBalance">1,250,000</b></span>
+            </div>
+
+            <div class="connection-state" id="connectionState">
+                <span class="status-dot"></span>
+                <span>NETWORK STABLE</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <section class="hero-panel">
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    ACCOUNTABILITY NETWORK
+                </div>
+
+                <h1>FOCUS IS<br><span>SYNCHRONIZED.</span></h1>
+
+                <p class="hero-copy">
+                    Enter the pod, synchronize your focus state, and work alongside
+                    peers operating under the same commitment window.
+                </p>
+
+                <div class="system-state idle-state" id="systemState">
+                    <div class="state-icon">
+                        <span id="stateIcon">○</span>
+                    </div>
+                    <div class="state-copy">
+                        <small>SYSTEM STATE</small>
+                        <strong id="stateTitle">IDLE LOBBY</strong>
+                        <span id="stateDescription">Awaiting pod synchronization.</span>
+                    </div>
+                    <div class="state-indicator" id="stateIndicator"></div>
+                </div>
+            </section>
+
+            <section class="pod-panel">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">ACTIVE POD</span>
+                        <h2>#7712</h2>
+                    </div>
+
+                    <div class="member-count">
+                        <span class="live-dot"></span>
+                        <b id="memberCount">5</b> MEMBERS DEEP WORK
+                    </div>
+                </div>
+
+                <div class="member-grid" id="memberGrid">
+
+                    <article class="member-card active-member">
+                        <div class="avatar">AR</div>
+                        <div class="member-info">
+                            <strong>Alex R.</strong>
+                            <span>DEEP WORK</span>
+                        </div>
+                        <div class="member-signal">
+                            <i></i><i></i><i></i>
+                        </div>
+                    </article>
+
+                    <article class="member-card active-member">
+                        <div class="avatar">MK</div>
+                        <div class="member-info">
+                            <strong>Maya K.</strong>
+                            <span>DEEP WORK</span>
+                        </div>
+                        <div class="member-signal">
+                            <i></i><i></i><i></i>
+                        </div>
+                    </article>
+
+                    <article class="member-card active-member">
+                        <div class="avatar">JD</div>
+                        <div class="member-info">
+                            <strong>Jordan D.</strong>
+                            <span>DEEP WORK</span>
+                        </div>
+                        <div class="member-signal">
+                            <i></i><i></i><i></i>
+                        </div>
+                    </article>
+
+                    <article class="member-card active-member">
+                        <div class="avatar">SK</div>
+                        <div class="member-info">
+                            <strong>Sam K.</strong>
+                            <span>DEEP WORK</span>
+                        </div>
+                        <div class="member-signal">
+                            <i></i><i></i><i></i>
+                        </div>
+                    </article>
+
+                    <article class="member-card active-member">
+                        <div class="avatar">TN</div>
+                        <div class="member-info">
+                            <strong>Taylor N.</strong>
+                            <span>DEEP WORK</span>
+                        </div>
+                        <div class="member-signal">
+                            <i></i><i></i><i></i>
+                        </div>
+                    </article>
+
+                    <article class="member-card self-member" id="selfMember">
+                        <div class="avatar">YOU</div>
+                        <div class="member-info">
+                            <strong>Your Session</strong>
+                            <span id="yourStatus">LOBBY</span>
+                        </div>
+                        <div class="member-signal">
+                            <i></i><i></i><i></i>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section class="control-panel">
+                <div class="control-header">
+                    <div>
+                        <span class="section-label">POD CONTROL</span>
+                        <h2>Commitment Interface</h2>
+                    </div>
+
+                    <div class="balance-display">
+                        <small>FOCUS CREDITS</small>
+                        <strong><span id="creditBalance">1,000</span> FC</strong>
+                    </div>
+                </div>
+
+                <div class="lockdown-info">
+                    <div class="info-cell">
+                        <span>SESSION</span>
+                        <strong id="sessionStatus">NOT ACTIVE</strong>
+                    </div>
+
+                    <div class="info-cell">
+                        <span>SYNC</span>
+                        <strong id="syncStatus">STANDBY</strong>
+                    </div>
+
+                    <div class="info-cell">
+                        <span>INTEGRITY</span>
+                        <strong id="integrityStatus">100%</strong>
+                    </div>
+
+                    <div class="info-cell">
+                        <span>ELAPSED</span>
+                        <strong id="elapsedTime">00:00:00</strong>
+                    </div>
+                </div>
+
+                <button
+                    class="primary-action"
+                    id="engageButton"
+                    type="button"
+                    aria-label="Synchronize and engage pod lockdown"
+                >
+                    <span class="button-icon">↯</span>
+                    <span class="button-text">SYNC &amp; ENGAGE POD LOCKDOWN</span>
+                    <span class="button-arrow">→</span>
+                </button>
+
+                <button
+                    class="emergency-button"
+                    id="emergencyButton"
+                    type="button"
+                    aria-label="Emergency exit"
+                >
+                    <span>EMERGENCY EXIT</span>
+                    <small>Ends your local focus session</small>
+                </button>
+            </section>
+
+            <section class="event-panel">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-label">NETWORK TELEMETRY</span>
+                        <h2>Live Pod Events</h2>
+                    </div>
+
+                    <span class="telemetry-status">
+                        <i></i> LIVE
+                    </span>
+                </div>
+
+                <div class="event-feed" id="eventFeed">
+                    <div class="event-row">
+                        <time>NOW</time>
+                        <span class="event-dot"></span>
+                        <p>Pod #7712 is accepting focus synchronization.</p>
+                    </div>
+
+                    <div class="event-row">
+                        <time>--</time>
+                        <span class="event-dot"></span>
+                        <p>Network integrity channel initialized.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="system-footer">
+            <span>TASKFORGE-CORE</span>
+            <span>ACCOUNTABILITY NETWORK</span>
+            <span id="footerClock">--:--:--</span>
+        </footer>
+
+    </div>
+
+    <!-- Penalty Modal -->
+    <div
+        class="modal-layer"
+        id="penaltyModal"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="penaltyTitle"
+    >
+        <div class="modal-backdrop"></div>
+
+        <div class="penalty-modal">
+            <div class="breach-warning">
+                <div class="warning-icon">!</div>
+                <div>
+                    <span>FOCUS BREACH DETECTED</span>
+                    <small id="breachSource">SESSION VISIBILITY INTERRUPTED</small>
+                </div>
+            </div>
+
+            <div class="penalty-content">
+                <span class="section-label">ACCOUNTABILITY PROTOCOL</span>
+
+                <h2 id="penaltyTitle">Commitment Interrupted</h2>
+
+                <p>
+                    Your pod session detected an interruption. To restore your
+                    session state, acknowledge the accountability event below.
+                </p>
+
+                <div class="penalty-cost">
+                    <span>SESSION COST</span>
+                    <strong>-50 FC</strong>
+                </div>
+
+                <label for="verificationInput">
+                    TYPE THE VERIFICATION STRING EXACTLY
+                </label>
+
+                <div class="verification-box">
+                    <code id="verificationPrompt">I accept the penalty for breaking my team's focus</code>
+                    <button
+                        type="button"
+                        id="copyPromptButton"
+                        aria-label="Copy verification string"
+                    >COPY</button>
+                </div>
+
+                <input
+                    id="verificationInput"
+                    type="text"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    maxlength="80"
+                    placeholder="Type verification string..."
+                    aria-describedby="verificationError"
+                >
+
+                <div class="verification-error" id="verificationError">
+                    Verification does not match.
+                </div>
+
+                <div class="modal-actions">
+                    <button
+                        class="confirm-penalty"
+                        id="confirmPenaltyButton"
+                        type="button"
+                    >
+                        ACKNOWLEDGE &amp; RESTORE
+                    </button>
+
+                    <button
+                        class="cancel-penalty"
+                        id="cancelPenaltyButton"
+                        type="button"
+                    >
+                        REMAIN IN BREACH STATE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+</body>
+</html>
