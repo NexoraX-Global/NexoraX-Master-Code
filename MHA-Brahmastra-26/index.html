@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050505">
+    <meta name="color-scheme" content="dark">
+    <meta name="description" content="TaskForge — A focused productivity ecosystem built for meaningful progress.">
+    <title>TaskForge — Enter the Ecosystem</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="noise"></div>
+
+    <main class="gateway">
+
+        <header class="topbar">
+            <a href="#" class="brand" aria-label="TaskForge home">
+                <span class="brand-mark">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="brand-name">TaskForge</span>
+            </a>
+
+            <button
+                type="button"
+                class="language-toggle"
+                id="languageToggle"
+                aria-label="Switch language"
+                aria-pressed="false"
+            >
+                <span class="language-icon">◉</span>
+                <span id="languageLabel">हिन्दी</span>
+            </button>
+        </header>
+
+        <section class="gateway-content">
+
+            <div class="intro-panel">
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    <span data-i18n="eyebrow">PRODUCTIVITY ECOSYSTEM</span>
+                </div>
+
+                <h1>
+                    <span data-i18n="heroLineOne">Build momentum.</span>
+                    <span class="gradient-text" data-i18n="heroLineTwo">Own your progress.</span>
+                </h1>
+
+                <p class="hero-description" data-i18n="heroDescription">
+                    A focused digital environment designed to help you organize priorities, build consistency, and turn intention into meaningful progress.
+                </p>
+
+                <div class="trust-row">
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span data-i18n="trustOne">Private by design</span>
+                    </div>
+
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span data-i18n="trustTwo">Built for focus</span>
+                    </div>
+
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span data-i18n="trustThree">Simple to start</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="auth-card" aria-labelledby="authTitle">
+
+                <div class="card-glow"></div>
+
+                <div class="auth-card-inner">
+
+                    <div class="auth-header">
+                        <div class="secure-badge">
+                            <span class="secure-icon">◆</span>
+                            <span data-i18n="secure">SECURE ACCESS</span>
+                        </div>
+
+                        <h2 id="authTitle" data-i18n="signupTitle">Create your account</h2>
+
+                        <p id="authSubtitle" data-i18n="signupSubtitle">
+                            Start building a more focused workflow.
+                        </p>
+                    </div>
+
+                    <div class="auth-switch" role="tablist" aria-label="Authentication mode">
+
+                        <button
+                            type="button"
+                            class="auth-mode active"
+                            id="signupMode"
+                            role="tab"
+                            aria-selected="true"
+                            data-i18n="signup"
+                        >
+                            Sign Up
+                        </button>
+
+                        <button
+                            type="button"
+                            class="auth-mode"
+                            id="loginMode"
+                            role="tab"
+                            aria-selected="false"
+                            data-i18n="login"
+                        >
+                            Log In
+                        </button>
+
+                        <span class="switch-indicator" id="switchIndicator"></span>
+                    </div>
+
+                    <form id="authForm" class="auth-form" novalidate>
+
+                        <div class="field-group name-field" id="nameField">
+                            <div class="field-shell">
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    autocomplete="name"
+                                    placeholder=" "
+                                    aria-describedby="nameError"
+                                >
+                                <label for="name" data-i18n="nameLabel">Full name</label>
+                                <span class="field-line"></span>
+                            </div>
+                            <small class="field-error" id="nameError"></small>
+                        </div>
+
+                        <div class="field-group">
+                            <div class="field-shell">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    autocomplete="email"
+                                    placeholder=" "
+                                    aria-describedby="emailError"
+                                >
+                                <label for="email" data-i18n="emailLabel">Email address</label>
+                                <span class="field-line"></span>
+                            </div>
+                            <small class="field-error" id="emailError"></small>
+                        </div>
+
+                        <div class="field-group">
+                            <div class="field-shell password-shell">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    autocomplete="new-password"
+                                    placeholder=" "
+                                    aria-describedby="passwordError"
+                                >
+                                <label for="password" data-i18n="passwordLabel">Password</label>
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="passwordToggle"
+                                    aria-label="Show password"
+                                >
+                                    <span class="eye-open">◉</span>
+                                    <span class="eye-closed">◌</span>
+                                </button>
+
+                                <span class="field-line"></span>
+                            </div>
+
+                            <div class="password-strength" id="passwordStrength">
+                                <span class="strength-track">
+                                    <span class="strength-fill"></span>
+                                </span>
+                                <span class="strength-label" data-i18n="passwordHint">
+                                    Use at least 8 characters
+                                </span>
+                            </div>
+
+                            <small class="field-error" id="passwordError"></small>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="remember-option" id="rememberOption">
+                                <input type="checkbox" id="rememberMe">
+                                <span class="custom-checkbox"></span>
+                                <span data-i18n="remember">Keep me signed in</span>
+                            </label>
+
+                            <button
+                                type="button"
+                                class="forgot-button"
+                                id="forgotButton"
+                                data-i18n="forgot"
+                            >
+                                Forgot password?
+                            </button>
+                        </div>
+
+                        <button type="submit" class="primary-cta" id="submitButton">
+                            <span class="cta-text" data-i18n="signupCta">Create my account</span>
+                            <span class="cta-arrow">→</span>
+                            <span class="cta-shine"></span>
+                        </button>
+
+                        <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+                    </form>
+
+                    <div class="legal-text">
+                        <span data-i18n="legalBefore">By continuing, you agree to our</span>
+                        <button type="button" data-i18n="terms">Terms</button>
+                        <span data-i18n="legalAnd">and</span>
+                        <button type="button" data-i18n="privacy">Privacy Policy</button>.
+                    </div>
+
+                    <div class="security-note">
+                        <span class="lock-icon">⌁</span>
+                        <span data-i18n="securityNote">
+                            Your information is protected with secure account practices.
+                        </span>
+                    </div>
+
+                </div>
+            </section>
+        </section>
+
+        <footer class="footer">
+            <span>© <span id="currentYear"></span> TaskForge</span>
+            <span class="footer-separator"></span>
+            <span data-i18n="footerText">Designed for meaningful progress.</span>
+        </footer>
+
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <span class="toast-icon">✓</span>
+        <span id="toastText"></span>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
