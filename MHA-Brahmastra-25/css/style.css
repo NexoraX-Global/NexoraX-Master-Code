@@ -1,0 +1,1225 @@
+:root {
+    --obsidian: #030303;
+    --obsidian-soft: #080808;
+    --surface: rgba(12, 12, 14, 0.82);
+
+    --white: #f4f4f6;
+    --text: #d7d7dc;
+    --muted: #77777f;
+    --muted-dark: #46464d;
+
+    --pink: #ff0055;
+    --pink-bright: #ff1f70;
+    --pink-soft: rgba(255, 0, 85, 0.25);
+    --pink-faint: rgba(255, 0, 85, 0.07);
+
+    --violet: #a600ff;
+    --violet-soft: rgba(166, 0, 255, 0.16);
+
+    --border: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 0, 85, 0.35);
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    background: var(--obsidian);
+    color-scheme: dark;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(255, 0, 85, 0.025),
+            transparent 38%
+        ),
+        var(--obsidian);
+    color: var(--white);
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+textarea {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--pink);
+    outline-offset: 3px;
+}
+
+.background-system {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ambient-glow {
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.045;
+}
+
+.glow-pink {
+    top: 24%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--pink);
+    animation: ambientPulse 8s ease-in-out infinite;
+}
+
+.glow-violet {
+    right: -170px;
+    bottom: -100px;
+    background: var(--violet);
+    opacity: 0.025;
+    animation: ambientPulseReverse 11s ease-in-out infinite;
+}
+
+.scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 0, 85, 0.08),
+        transparent
+    );
+    animation: scanTravel 12s linear infinite;
+}
+
+.background-grid {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    bottom: -18%;
+    height: 48%;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px
+        );
+    background-size: 55px 55px;
+    transform: perspective(340px) rotateX(58deg);
+    transform-origin: center top;
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
+}
+
+.orbital-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(255, 0, 85, 0.018);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(25deg);
+}
+
+.orbital-one {
+    animation: orbitalSpin 30s linear infinite;
+}
+
+.orbital-two {
+    width: 700px;
+    height: 700px;
+    border-color: rgba(166, 0, 255, 0.012);
+    animation: orbitalSpinReverse 40s linear infinite;
+}
+
+.app-shell {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1080px);
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding:
+        24px
+        max(24px, env(safe-area-inset-right))
+        max(18px, env(safe-area-inset-bottom))
+        max(24px, env(safe-area-inset-left));
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-emblem {
+    width: 27px;
+    height: 27px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    transform: rotate(45deg);
+    border: 1px solid rgba(255, 0, 85, 0.32);
+    box-shadow:
+        0 0 18px rgba(255, 0, 85, 0.06);
+}
+
+.emblem-core {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow:
+        0 0 7px var(--pink),
+        0 0 15px var(--pink-soft);
+}
+
+.emblem-ring {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border: 1px solid rgba(255, 0, 85, 0.5);
+    border-radius: 50%;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.brand-label {
+    color: var(--pink);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+}
+
+.brand-title {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 650;
+    letter-spacing: 0.15em;
+}
+
+.system-state {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.015);
+    font-size: 7px;
+    font-weight: 750;
+    letter-spacing: 0.15em;
+}
+
+.state-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink);
+    animation: stateBreath 3s ease-in-out infinite;
+}
+
+.main-interface {
+    flex: 1;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro {
+    width: 100%;
+    text-align: center;
+}
+
+.protocol-label {
+    color: var(--pink);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.27em;
+}
+
+.intro h1 {
+    margin-top: 15px;
+    color: var(--white);
+    font-size: clamp(31px, 7.5vw, 52px);
+    line-height: 1.05;
+    font-weight: 430;
+    letter-spacing: -0.04em;
+}
+
+.intro h1 span {
+    color: transparent;
+    background:
+        linear-gradient(
+            100deg,
+            #ff397b,
+            var(--pink),
+            #ff62a0
+        );
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.intro p {
+    max-width: 510px;
+    margin: 17px auto 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.75;
+}
+
+.quarantine-interface {
+    width: 100%;
+    margin-top: 35px;
+}
+
+.input-container {
+    width: 100%;
+}
+
+.input-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+}
+
+.input-shell {
+    position: relative;
+}
+
+.input-shell textarea {
+    width: 100%;
+    min-height: 105px;
+    padding: 15px 16px 28px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    resize: vertical;
+    color: var(--white);
+    background:
+        linear-gradient(
+            125deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.012)
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025),
+        0 20px 60px rgba(0, 0, 0, 0.18);
+    line-height: 1.55;
+    transition:
+        border-color 250ms ease,
+        box-shadow 250ms ease,
+        background 250ms ease;
+}
+
+.input-shell textarea::placeholder {
+    color: #52525a;
+}
+
+.input-shell textarea:hover {
+    border-color: rgba(255, 255, 255, 0.13);
+}
+
+.input-shell textarea:focus {
+    outline: none;
+    border-color: var(--border-bright);
+    background: rgba(255, 0, 85, 0.018);
+    box-shadow:
+        0 0 0 3px rgba(255, 0, 85, 0.025),
+        0 20px 65px rgba(0, 0, 0, 0.22);
+}
+
+.input-shell textarea.invalid {
+    border-color: rgba(255, 0, 85, 0.65);
+    animation: inputNudge 320ms ease;
+}
+
+.character-count {
+    position: absolute;
+    right: 12px;
+    bottom: 9px;
+    color: var(--muted-dark);
+    font-size: 7px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+    pointer-events: none;
+}
+
+.input-hint {
+    display: block;
+    margin-top: 7px;
+    color: #505056;
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+.quarantine-button {
+    position: relative;
+    width: 100%;
+    height: 61px;
+    margin-top: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 0, 85, 0.34);
+    border-radius: 11px;
+    color: var(--white);
+    background:
+        linear-gradient(
+            100deg,
+            rgba(255, 0, 85, 0.09),
+            rgba(166, 0, 255, 0.035)
+        );
+    cursor: pointer;
+    box-shadow:
+        0 0 35px rgba(255, 0, 85, 0.035),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    transition:
+        transform 180ms ease,
+        border-color 250ms ease,
+        box-shadow 250ms ease;
+}
+
+.quarantine-button:hover {
+    border-color: rgba(255, 0, 85, 0.65);
+    box-shadow:
+        0 0 45px rgba(255, 0, 85, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.quarantine-button:active {
+    transform: scale(0.985);
+}
+
+.button-energy {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: -130px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--pink);
+    filter: blur(50px);
+    opacity: 0.08;
+    animation: buttonEnergySweep 6s ease-in-out infinite;
+}
+
+.button-icon,
+.button-text,
+.button-arrow {
+    position: relative;
+    z-index: 1;
+}
+
+.button-icon {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    border-radius: 7px;
+    color: var(--pink-bright);
+    font-size: 16px;
+}
+
+.button-text {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.19em;
+}
+
+.button-arrow {
+    color: var(--pink-bright);
+    font-size: 15px;
+    transition: transform 250ms ease;
+}
+
+.quarantine-button:hover .button-arrow {
+    transform: translate(2px, 2px);
+}
+
+.feedback-message {
+    min-height: 17px;
+    margin-top: 9px;
+    color: #7f6670;
+    font-size: 8px;
+    text-align: center;
+    letter-spacing: 0.04em;
+}
+
+.vault-section {
+    width: 100%;
+    margin-top: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vault-status {
+    width: min(100%, 430px);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.status-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 0, 85, 0.13)
+    );
+}
+
+.status-line:last-child {
+    transform: scaleX(-1);
+}
+
+.status-label {
+    color: #4d4d53;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+}
+
+.vault-stage {
+    width: 230px;
+    height: 220px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    perspective: 700px;
+}
+
+.vault-aura {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    bottom: 35px;
+    border-radius: 50%;
+    background: var(--pink);
+    filter: blur(55px);
+    opacity: 0.055;
+    animation: vaultAura 4s ease-in-out infinite;
+}
+
+.vault-energy-ring {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    border: 1px solid rgba(255, 0, 85, 0.15);
+    border-radius: 50%;
+    transform: translateX(-50%) rotateX(67deg);
+}
+
+.ring-back {
+    width: 190px;
+    height: 55px;
+    opacity: 0.45;
+    animation: ringBreath 4s ease-in-out infinite;
+}
+
+.ring-front {
+    width: 145px;
+    height: 43px;
+    opacity: 0.3;
+    animation: ringBreath 4s ease-in-out infinite reverse;
+}
+
+.vault {
+    width: 108px;
+    height: 120px;
+    position: relative;
+    margin-bottom: 45px;
+    transform-style: preserve-3d;
+    transform: rotateY(-7deg);
+    filter:
+        drop-shadow(0 25px 22px rgba(0, 0, 0, 0.8));
+    animation: vaultFloat 5s ease-in-out infinite;
+}
+
+.vault-body {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 7px 7px 5px 5px;
+    background:
+        linear-gradient(
+            145deg,
+            #19191c 0%,
+            #0d0d0f 50%,
+            #070709 100%
+        );
+    box-shadow:
+        inset 8px 0 20px rgba(255, 255, 255, 0.025),
+        inset -8px 0 20px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.vault-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            transparent 48%,
+            rgba(255, 255, 255, 0.022) 50%,
+            transparent 52%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 18px,
+            rgba(255, 255, 255, 0.014) 19px,
+            transparent 20px
+        );
+}
+
+.vault-top {
+    position: absolute;
+    left: 6px;
+    top: -9px;
+    width: 96px;
+    height: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    background: linear-gradient(
+        145deg,
+        #242428,
+        #0c0c0e
+    );
+    transform: rotateX(65deg);
+    transform-origin: center bottom;
+}
+
+.vault-base {
+    position: absolute;
+    left: -7px;
+    bottom: -14px;
+    width: 122px;
+    height: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: #0b0b0d;
+    transform: rotateX(65deg);
+    transform-origin: center top;
+}
+
+.vault-inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 72px;
+    height: 72px;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 0, 85, 0.08);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 0, 85, 0.025),
+        transparent 70%
+    );
+}
+
+.vault-lock {
+    position: relative;
+    width: 28px;
+    height: 34px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.lock-shackle {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--pink);
+    border-bottom: 0;
+    border-radius: 9px 9px 0 0;
+    box-shadow:
+        0 0 8px rgba(255, 0, 85, 0.45);
+}
+
+.lock-body {
+    width: 26px;
+    height: 20px;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 0, 85, 0.55);
+    border-radius: 4px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 0, 85, 0.17),
+            rgba(255, 0, 85, 0.025)
+        );
+    box-shadow:
+        0 0 12px rgba(255, 0, 85, 0.12);
+}
+
+.lock-core {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4px;
+    height: 7px;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    background: var(--pink);
+    box-shadow: 0 0 7px var(--pink);
+}
+
+.absorbed-thought {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    width: min(90%, 260px);
+    min-height: 30px;
+    padding: 7px 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 0, 85, 0.18);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 0, 85, 0.045);
+    box-shadow: 0 0 18px rgba(255, 0, 85, 0.06);
+    transform: translateX(-50%) scale(1);
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+    font-size: 8px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.absorbed-thought.sucking {
+    animation: thoughtSuction 1050ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.vault-stage.absorbing .vault {
+    animation:
+        vaultFloat 5s ease-in-out infinite,
+        vaultAbsorb 900ms ease-in-out;
+}
+
+.vault-stage.absorbing .vault-aura {
+    animation:
+        vaultAura 4s ease-in-out infinite,
+        auraSurge 900ms ease-out;
+}
+
+.vault-stage.absorbing .ring-back {
+    animation: ringAbsorbBack 950ms ease-out;
+}
+
+.vault-stage.absorbing .ring-front {
+    animation: ringAbsorbFront 950ms ease-out;
+}
+
+.counter-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+}
+
+.counter-label {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+}
+
+.counter-value {
+    color: var(--pink);
+    font-size: 23px;
+    line-height: 1;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 15px rgba(255, 0, 85, 0.18);
+}
+
+.counter-value.bump {
+    animation: counterBump 450ms var(--ease);
+}
+
+.vault-message {
+    min-height: 17px;
+    margin-top: 9px;
+    color: #505057;
+    font-size: 8px;
+    text-align: center;
+    letter-spacing: 0.04em;
+}
+
+.footer {
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #39393e;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+}
+
+.footer-dot {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: #38383d;
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    z-index: 20;
+    width: max-content;
+    max-width: calc(100% - 40px);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 0, 85, 0.2);
+    border-radius: 999px;
+    color: var(--text);
+    background: rgba(10, 7, 9, 0.94);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    font-size: 8px;
+    transform: translate(-50%, 20px);
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition:
+        opacity 300ms ease,
+        transform 300ms var(--ease);
+}
+
+.toast.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.toast-symbol {
+    color: var(--pink);
+    font-size: 11px;
+    text-shadow: 0 0 8px var(--pink);
+}
+
+@keyframes ambientPulse {
+    0%,
+    100% {
+        opacity: 0.035;
+        transform: translateX(-50%) scale(0.96);
+    }
+
+    50% {
+        opacity: 0.065;
+        transform: translateX(-50%) scale(1.07);
+    }
+}
+
+@keyframes ambientPulseReverse {
+    0%,
+    100% {
+        opacity: 0.02;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 0.035;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes scanTravel {
+    from {
+        top: -5%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    to {
+        top: 105%;
+        opacity: 0;
+    }
+}
+
+@keyframes orbitalSpin {
+    from {
+        transform: translate(-50%, -50%) rotate(25deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(385deg);
+    }
+}
+
+@keyframes orbitalSpinReverse {
+    from {
+        transform: translate(-50%, -50%) rotate(-25deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(-385deg);
+    }
+}
+
+@keyframes stateBreath {
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+@keyframes buttonEnergySweep {
+    0% {
+        left: -130px;
+    }
+
+    50% {
+        left: calc(100% + 30px);
+    }
+
+    100% {
+        left: -130px;
+    }
+}
+
+@keyframes inputNudge {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+@keyframes vaultFloat {
+    0%,
+    100% {
+        transform: rotateY(-7deg) translateY(0);
+    }
+
+    50% {
+        transform: rotateY(-7deg) translateY(-4px);
+    }
+}
+
+@keyframes vaultAura {
+    0%,
+    100% {
+        opacity: 0.04;
+        transform: scale(0.94);
+    }
+
+    50% {
+        opacity: 0.075;
+        transform: scale(1.07);
+    }
+}
+
+@keyframes ringBreath {
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: translateX(-50%) rotateX(67deg) scale(0.96);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateX(-50%) rotateX(67deg) scale(1.04);
+    }
+}
+
+@keyframes thoughtSuction {
+    0% {
+        opacity: 0.9;
+        transform:
+            translate(-50%, 0)
+            scale(1);
+        filter: blur(0);
+    }
+
+    18% {
+        opacity: 0.95;
+        transform:
+            translate(-50%, 18px)
+            scale(0.92);
+        filter: blur(0);
+    }
+
+    55% {
+        opacity: 0.72;
+        transform:
+            translate(-50%, 74px)
+            scale(0.58);
+        filter: blur(0.5px);
+    }
+
+    78% {
+        opacity: 0.35;
+        transform:
+            translate(-50%, 126px)
+            scale(0.25);
+        filter: blur(1.5px);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, 165px)
+            scale(0.02);
+        filter: blur(4px);
+    }
+}
+
+@keyframes vaultAbsorb {
+    0%,
+    100% {
+        transform: rotateY(-7deg) scale(1);
+    }
+
+    45% {
+        transform: rotateY(-7deg) scale(1.035);
+    }
+
+    65% {
+        transform: rotateY(-7deg) scale(0.985);
+    }
+}
+
+@keyframes auraSurge {
+    0% {
+        opacity: 0.055;
+        transform: scale(1);
+    }
+
+    45% {
+        opacity: 0.16;
+        transform: scale(1.45);
+    }
+
+    100% {
+        opacity: 0.055;
+        transform: scale(1);
+    }
+}
+
+@keyframes ringAbsorbBack {
+    0% {
+        opacity: 0.45;
+        transform: translateX(-50%) rotateX(67deg) scale(1);
+    }
+
+    50% {
+        opacity: 0.85;
+        transform: translateX(-50%) rotateX(67deg) scale(1.18);
+    }
+
+    100% {
+        opacity: 0.25;
+        transform: translateX(-50%) rotateX(67deg) scale(0.88);
+    }
+}
+
+@keyframes ringAbsorbFront {
+    0% {
+        opacity: 0.3;
+        transform: translateX(-50%) rotateX(67deg) scale(1);
+    }
+
+    50% {
+        opacity: 0.75;
+        transform: translateX(-50%) rotateX(67deg) scale(1.22);
+    }
+
+    100% {
+        opacity: 0.2;
+        transform: translateX(-50%) rotateX(67deg) scale(0.86);
+    }
+}
+
+@keyframes counterBump {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.2);
+        text-shadow:
+            0 0 8px var(--pink),
+            0 0 24px rgba(255, 0, 85, 0.35);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (min-width: 700px) {
+    .app-shell {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .main-interface {
+        padding-top: 65px;
+    }
+
+    .quarantine-interface {
+        margin-top: 42px;
+    }
+
+    .vault-section {
+        margin-top: 27px;
+    }
+}
+
+@media (max-height: 720px) {
+    .main-interface {
+        padding-top: 28px;
+    }
+
+    .intro h1 {
+        font-size: 34px;
+    }
+
+    .intro p {
+        margin-top: 10px;
+    }
+
+    .quarantine-interface {
+        margin-top: 20px;
+    }
+
+    .input-shell textarea {
+        min-height: 75px;
+    }
+
+    .quarantine-button {
+        height: 51px;
+        margin-top: 15px;
+    }
+
+    .vault-section {
+        margin-top: 10px;
+    }
+
+    .vault-stage {
+        height: 155px;
+        transform: scale(0.72);
+        margin-top: -10px;
+        margin-bottom: -18px;
+    }
+
+    .footer {
+        padding-top: 7px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

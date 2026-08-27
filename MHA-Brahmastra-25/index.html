@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#030303">
+    <meta name="description" content="TaskForge-Core Neural Quarantine — capture distracting thoughts and return to focused work.">
+    <title>TaskForge-Core | Neural Quarantine</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="background-system" aria-hidden="true">
+        <div class="ambient-glow glow-pink"></div>
+        <div class="ambient-glow glow-violet"></div>
+        <div class="scan-line"></div>
+        <div class="background-grid"></div>
+        <div class="orbital-ring orbital-one"></div>
+        <div class="orbital-ring orbital-two"></div>
+    </div>
+
+    <main class="app-shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-emblem" aria-hidden="true">
+                    <span class="emblem-core"></span>
+                    <span class="emblem-ring"></span>
+                </div>
+
+                <div class="brand-text">
+                    <span class="brand-label">TASKFORGE-CORE</span>
+                    <span class="brand-title">NEURAL QUARANTINE</span>
+                </div>
+            </div>
+
+            <div class="system-state">
+                <span class="state-dot"></span>
+                <span>FOCUS PROTOCOL</span>
+            </div>
+        </header>
+
+        <section class="main-interface" aria-labelledby="mainTitle">
+            <div class="intro">
+                <span class="protocol-label">COGNITIVE UNLOADING / 025</span>
+
+                <h1 id="mainTitle">
+                    Clear the mental<br>
+                    <span>background noise.</span>
+                </h1>
+
+                <p>
+                    Capture the thought. Quarantine it. Return to what matters.
+                    You don't need to solve every thought the moment it appears.
+                </p>
+            </div>
+
+            <section class="quarantine-interface" aria-label="Distraction quarantine">
+                <div class="input-container" id="inputContainer">
+                    <label for="thoughtInput">
+                        DISTRACTING THOUGHT
+                    </label>
+
+                    <div class="input-shell">
+                        <textarea
+                            id="thoughtInput"
+                            rows="3"
+                            maxlength="280"
+                            autocomplete="off"
+                            spellcheck="true"
+                            placeholder="What is distracting you right now?"
+                            aria-describedby="inputHint"
+                        ></textarea>
+
+                        <span
+                            class="character-count"
+                            id="characterCount"
+                        >0 / 280</span>
+                    </div>
+
+                    <span class="input-hint" id="inputHint">
+                        You don't have to act on it now. Just capture it.
+                    </span>
+                </div>
+
+                <button
+                    class="quarantine-button"
+                    id="quarantineButton"
+                    type="button"
+                >
+                    <span class="button-energy" aria-hidden="true"></span>
+                    <span class="button-icon" aria-hidden="true">↓</span>
+                    <span class="button-text">QUARANTINE THOUGHT</span>
+                    <span class="button-arrow" aria-hidden="true">↘</span>
+                </button>
+
+                <p
+                    class="feedback-message"
+                    id="feedbackMessage"
+                    aria-live="polite"
+                ></p>
+            </section>
+
+            <section class="vault-section" aria-label="Distraction vault">
+                <div class="vault-status">
+                    <span class="status-line"></span>
+                    <span class="status-label">SECURE COGNITIVE STORAGE</span>
+                    <span class="status-line"></span>
+                </div>
+
+                <div
+                    class="vault-stage"
+                    id="vaultStage"
+                    aria-hidden="true"
+                >
+                    <div class="vault-aura"></div>
+
+                    <div class="vault-energy-ring ring-back"></div>
+                    <div class="vault-energy-ring ring-front"></div>
+
+                    <div class="vault">
+                        <div class="vault-top"></div>
+                        <div class="vault-body">
+                            <div class="vault-inner">
+                                <div class="vault-lock">
+                                    <span class="lock-shackle"></span>
+                                    <span class="lock-body">
+                                        <span class="lock-core"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vault-base"></div>
+                    </div>
+
+                    <div
+                        class="absorbed-thought"
+                        id="absorbedThought"
+                        aria-hidden="true"
+                    ></div>
+                </div>
+
+                <div class="counter-container">
+                    <span class="counter-label">QUARANTINED ANOMALIES</span>
+                    <strong
+                        class="counter-value"
+                        id="quarantineCount"
+                    >0</strong>
+                </div>
+
+                <p class="vault-message" id="vaultMessage">
+                    Your workspace is clear.
+                </p>
+            </section>
+        </section>
+
+        <footer class="footer">
+            <span>CAPTURE</span>
+            <span class="footer-dot"></span>
+            <span>RELEASE</span>
+            <span class="footer-dot"></span>
+            <span>RETURN TO FOCUS</span>
+        </footer>
+    </main>
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+        aria-hidden="true"
+    >
+        <span class="toast-symbol">✓</span>
+        <span id="toastText">Thought quarantined.</span>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
