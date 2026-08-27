@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#030303">
+    <meta name="description" content="TaskForge-Core Focus Duel Arena">
+    <title>TaskForge-Core | Focus Duel Arena</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+<div class="app">
+
+    <header class="command-header">
+        <div class="brand">
+            <div class="brand-logo">TF</div>
+            <div>
+                <strong>TASKFORGE</strong>
+                <small>FOCUS DUEL ARENA</small>
+            </div>
+        </div>
+
+        <div class="global-stats">
+            <span class="live-indicator"></span>
+            <span>🌐 Active Duels: <b id="activeDuels">3,420</b></span>
+            <i></i>
+            <span>Platform Escrow Vault: 🪙 <b id="vaultBalance">2,890,000</b></span>
+        </div>
+
+        <div class="network-status">
+            <span class="status-dot"></span>
+            <span id="networkText">ONLINE</span>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="eyebrow">
+                <span></span>
+                FOCUS COMPETITION NETWORK
+            </div>
+
+            <h1>
+                ENTER THE<br>
+                <em>FOCUS ARENA.</em>
+            </h1>
+
+            <p>
+                Synchronize with another focused participant and run a
+                distraction-resistant execution session.
+            </p>
+
+            <div class="mode-indicator" id="modeIndicator">
+                <div class="mode-symbol" id="modeSymbol">○</div>
+
+                <div>
+                    <small>ARENA STATUS</small>
+                    <strong id="modeTitle">LOBBY READY</strong>
+                    <span id="modeDescription">
+                        Waiting for duel deployment.
+                    </span>
+                </div>
+
+                <div class="mode-light"></div>
+            </div>
+        </section>
+
+        <section class="arena-card" id="arenaCard">
+
+            <div class="arena-top">
+                <div>
+                    <span class="section-label">ACTIVE ARENA</span>
+                    <h2>FOCUS DUEL</h2>
+                </div>
+
+                <div class="match-state" id="matchState">
+                    <span></span>
+                    LOBBY
+                </div>
+            </div>
+
+            <div class="duel-board">
+
+                <article class="duelist user-side">
+                    <div class="player-ring">
+                        <div class="player-avatar">SR</div>
+                        <span class="shield-dot"></span>
+                    </div>
+
+                    <span class="player-label">YOU</span>
+                    <h3>Sarthak</h3>
+                    <small id="userFocusStatus">READY</small>
+                </article>
+
+                <div class="versus">
+                    <div class="connection-line left"></div>
+
+                    <div class="vs-core">
+                        <span>VS</span>
+                    </div>
+
+                    <div class="connection-line right"></div>
+                </div>
+
+                <article class="duelist opponent-side">
+                    <div class="player-ring">
+                        <div class="player-avatar">RX</div>
+                        <span class="shield-dot"></span>
+                    </div>
+
+                    <span class="player-label">OPPONENT</span>
+                    <h3>Rival_X</h3>
+                    <small id="opponentFocusStatus">READY</small>
+                </article>
+
+            </div>
+
+            <div class="stake-panel">
+                <div>
+                    <span>VIRTUAL STAKE</span>
+                    <strong><span id="stakeAmount">50</span> FC</strong>
+                </div>
+
+                <div class="stake-lock" id="stakeLock">
+                    <span>◈</span>
+                    STAKE UNLOCKED
+                </div>
+            </div>
+
+            <div class="duel-timer">
+                <small>DUEL TIME</small>
+                <strong id="duelTimer">00:00:00</strong>
+                <span id="timerState">STANDBY</span>
+            </div>
+
+            <div class="arena-actions">
+                <button class="primary-btn" id="initiateButton">
+                    <span>↯</span>
+                    <b>INITIATE FOCUS DUEL</b>
+                    <i>→</i>
+                </button>
+
+                <button class="secondary-btn" id="lockButton" disabled>
+                    <span>◇</span>
+                    <b>LOCK STAKE &amp; DEPLOY SHIELD</b>
+                    <i>→</i>
+                </button>
+
+                <button class="forfeit-btn" id="forfeitButton" disabled>
+                    <b>EMERGENCY FORFEIT</b>
+                    <small>Ends the current virtual duel</small>
+                </button>
+            </div>
+
+        </section>
+
+        <section class="dashboard-grid">
+
+            <div class="balance-card">
+                <div class="card-heading">
+                    <span class="section-label">PERSONAL LEDGER</span>
+                    <span class="ledger-icon">◈</span>
+                </div>
+
+                <div class="balance-number">
+                    <small>FOCUS COINS</small>
+                    <strong id="userBalance">1,000</strong>
+                </div>
+
+                <div class="ledger-row">
+                    <span>Available</span>
+                    <b id="availableBalance">1,000 FC</b>
+                </div>
+
+                <div class="ledger-row">
+                    <span>Locked</span>
+                    <b id="lockedBalance">0 FC</b>
+                </div>
+            </div>
+
+            <div class="integrity-card">
+                <div class="card-heading">
+                    <span class="section-label">FOCUS INTEGRITY</span>
+                    <span class="integrity-percent" id="integrityPercent">100%</span>
+                </div>
+
+                <div class="integrity-bar">
+                    <span id="integrityBar"></span>
+                </div>
+
+                <p id="integrityText">
+                    Focus channel operating normally.
+                </p>
+            </div>
+
+        </section>
+
+        <section class="telemetry-panel">
+
+            <div class="telemetry-heading">
+                <div>
+                    <span class="section-label">DUEL TELEMETRY</span>
+                    <h2>Synchronization Stream</h2>
+                </div>
+
+                <div class="telemetry-live">
+                    <span></span>
+                    LIVE
+                </div>
+            </div>
+
+            <div class="telemetry-feed" id="telemetryFeed">
+                <div class="event">
+                    <time>NOW</time>
+                    <span></span>
+                    <p>Arena synchronization channel initialized.</p>
+                </div>
+
+                <div class="event">
+                    <time>--</time>
+                    <span></span>
+                    <p>Waiting for duel deployment command.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <span>TASKFORGE-CORE</span>
+        <span>FOCUS ARENA</span>
+        <span id="footerClock">--:--:--</span>
+    </footer>
+
+</div>
+
+<!-- Result Modal -->
+<div class="modal" id="resultModal" aria-hidden="true">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="result-card" id="resultCard">
+
+        <div class="result-icon" id="resultIcon">✓</div>
+
+        <span class="result-label" id="resultLabel">
+            DUEL COMPLETE
+        </span>
+
+        <h2 id="resultTitle">FOCUS SESSION COMPLETE</h2>
+
+        <p id="resultMessage">
+            Your virtual arena session has ended.
+        </p>
+
+        <div class="result-stat">
+            <span>VIRTUAL COIN TRANSFER</span>
+            <strong id="resultAmount">0 FC</strong>
+        </div>
+
+        <button id="resultCloseButton">
+            RETURN TO ARENA
+        </button>
+
+    </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+</body>
+</html>
