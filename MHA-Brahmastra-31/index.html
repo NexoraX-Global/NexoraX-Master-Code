@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Guillotine Protocol</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="noise-overlay"></div>
+
+  <header class="cmd-header">
+    <div class="cmd-header__left">
+      <span class="pulse-dot"></span>
+      <span class="cmd-header__label">Guillotine Protocol Active</span>
+    </div>
+    <div class="cmd-header__right">
+      <span class="vault-label">Platform Tax Vault</span>
+      <span class="vault-amount" id="vaultAmount">🪙 4,250,500</span>
+    </div>
+  </header>
+
+  <main class="stage">
+
+    <!-- IDLE STATE : declaration + stake -->
+    <section class="panel panel--idle" id="idlePanel">
+      <p class="panel__eyebrow">Single Execution Target</p>
+      <h1 class="panel__title">Declare it. Stake it. Execute it.</h1>
+
+      <input
+        type="text"
+        id="targetInput"
+        class="target-input"
+        placeholder="Declare Your ONE Execution Target..."
+        autocomplete="off"
+        maxlength="80"
+      >
+
+      <div class="stake-block">
+        <div class="stake-block__row">
+          <span class="stake-block__tag">Stake</span>
+          <span class="stake-block__value" id="stakeValue">100</span>
+          <span class="stake-block__unit">Focus Coins</span>
+        </div>
+        <input
+          type="range"
+          id="stakeSlider"
+          class="stake-slider"
+          min="10"
+          max="500"
+          step="10"
+          value="100"
+        >
+        <div class="stake-block__ends">
+          <span>10</span>
+          <span>500</span>
+        </div>
+      </div>
+
+      <div class="duration-block">
+        <div class="stake-block__row">
+          <span class="stake-block__tag">Duration</span>
+          <span class="stake-block__value" id="durationValue">15</span>
+          <span class="stake-block__unit">Minutes</span>
+        </div>
+        <input
+          type="range"
+          id="durationSlider"
+          class="stake-slider"
+          min="1"
+          max="90"
+          step="1"
+          value="15"
+        >
+        <div class="stake-block__ends">
+          <span>1</span>
+          <span>90</span>
+        </div>
+      </div>
+
+      <button class="engage-btn" id="engageBtn">
+        <span class="engage-btn__text">Engage Guillotine &amp; Lock Device</span>
+      </button>
+
+      <p class="balance-line">Available Balance: <span id="balanceAmount">2,000</span> Focus Coins</p>
+    </section>
+
+    <!-- LOCKED STATE : active countdown, hidden by default -->
+    <section class="panel panel--locked hidden" id="lockedPanel">
+      <p class="panel__eyebrow">Execution In Progress — No Exit</p>
+      <h2 class="locked-target" id="lockedTarget">—</h2>
+
+      <div class="timer-ring">
+        <svg class="timer-ring__svg" viewBox="0 0 200 200">
+          <circle class="timer-ring__track" cx="100" cy="100" r="90"></circle>
+          <circle class="timer-ring__progress" id="timerProgress" cx="100" cy="100" r="90"></circle>
+        </svg>
+        <div class="timer-ring__time" id="timerDisplay">15:00</div>
+      </div>
+
+      <p class="locked-warning">Leaving this screen destroys your stake. Instantly. Permanently.</p>
+
+      <button class="complete-btn" id="completeBtn">Mark Complete</button>
+    </section>
+
+    <!-- SUCCESS OVERLAY -->
+    <div class="overlay overlay--success hidden" id="successOverlay">
+      <div class="overlay__inner">
+        <div class="overlay__icon">✓</div>
+        <h2 class="overlay__title">Execution Confirmed</h2>
+        <p class="overlay__subtitle">Stake returned in full.</p>
+        <p class="overlay__amount" id="successAmount">+100 Focus Coins</p>
+        <button class="reset-btn" id="successResetBtn">Declare Next Target</button>
+      </div>
+    </div>
+
+    <!-- BURN PROTOCOL OVERLAY -->
+    <div class="overlay overlay--burn hidden" id="burnOverlay">
+      <div class="overlay__inner">
+        <div class="overlay__icon overlay__icon--burn">✕</div>
+        <h2 class="overlay__title overlay__title--burn">Execution Breached</h2>
+        <p class="overlay__subtitle">Focus abandoned. Stake seized.</p>
+        <p class="overlay__amount overlay__amount--burn" id="burnAmount">-100 Focus Coins</p>
+        <button class="reset-btn reset-btn--burn" id="burnResetBtn">Return to Command</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
