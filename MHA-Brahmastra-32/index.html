@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Execution Exchange — Live Focus Market</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<header class="cyber-header">
+  <div class="header-row top-row">
+    <div class="live-badge">
+      <span class="pulse-dot"></span>
+      🌐 Execution Exchange Live
+    </div>
+    <div class="tax-vault">
+      Platform Tax Vault:
+      <span id="taxVault" class="vault-amount">🪙 5,890,200</span>
+    </div>
+  </div>
+  <div class="header-row wallet-row">
+    <div class="wallet-display">
+      <span class="wallet-label">Available Liquidity</span>
+      <span id="walletAmount" class="wallet-amount">2,500 FC</span>
+    </div>
+    <div class="market-status">
+      <span class="status-chip" id="marketStatusChip">MARKET OPEN</span>
+    </div>
+  </div>
+</header>
+
+<main class="exchange-main">
+
+  <section class="market-section">
+    <h2 class="section-title">
+      <span class="title-icon">📡</span> LIVE MARKET FEED
+    </h2>
+    <p class="section-sub">Stake Focus Coins on active peer execution sessions. Predict discipline. Profit from conviction.</p>
+
+    <div class="market-grid" id="marketGrid">
+      <!-- Market cards injected & animated by JS, static fallback below -->
+      <article class="market-card" data-market-id="market-1">
+        <div class="card-glow"></div>
+        <div class="card-header">
+          <div class="peer-avatar">NG</div>
+          <div class="peer-info">
+            <h3 class="peer-name">NovaGrid</h3>
+            <p class="peer-goal">is attempting a <strong>2-Hour Deep Work Block</strong></p>
+          </div>
+          <div class="odds-badge" id="odds-market-1">62% HOLD</div>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-market-1" style="width: 34%;"></div>
+        </div>
+        <div class="card-meta">
+          <span class="meta-item">⏱ <span id="time-market-1">01:19:42</span> remaining</span>
+          <span class="meta-item">👥 <span id="pool-market-1">184</span> traders in pool</span>
+        </div>
+        <div class="card-actions">
+          <button class="btn-back" data-market="market-1" data-action="back">
+            <span class="btn-icon">🟢</span> BACK HIM <span class="btn-stake">(Stake 50 FC)</span>
+          </button>
+          <button class="btn-short" data-market="market-1" data-action="short">
+            <span class="btn-icon">🔴</span> SHORT HIM <span class="btn-stake">(Stake 50 FC)</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="market-card" data-market-id="market-2">
+        <div class="card-glow"></div>
+        <div class="card-header">
+          <div class="peer-avatar">SK</div>
+          <div class="peer-info">
+            <h3 class="peer-name">SilentKarma</h3>
+            <p class="peer-goal">is attempting a <strong>90-Minute No-Phone Sprint</strong></p>
+          </div>
+          <div class="odds-badge" id="odds-market-2">47% HOLD</div>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-market-2" style="width: 58%;"></div>
+        </div>
+        <div class="card-meta">
+          <span class="meta-item">⏱ <span id="time-market-2">00:37:11</span> remaining</span>
+          <span class="meta-item">👥 <span id="pool-market-2">96</span> traders in pool</span>
+        </div>
+        <div class="card-actions">
+          <button class="btn-back" data-market="market-2" data-action="back">
+            <span class="btn-icon">🟢</span> BACK HIM <span class="btn-stake">(Stake 50 FC)</span>
+          </button>
+          <button class="btn-short" data-market="market-2" data-action="short">
+            <span class="btn-icon">🔴</span> SHORT HIM <span class="btn-stake">(Stake 50 FC)</span>
+          </button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="execution-section">
+    <h2 class="section-title">
+      <span class="title-icon">🎯</span> MY EXECUTION
+    </h2>
+    <p class="section-sub">Declare your goal. Enter the market. Let the crowd price your discipline.</p>
+
+    <div class="execution-panel">
+      <label for="goalInput" class="goal-label">Declare Your Focus Goal</label>
+      <input type="text" id="goalInput" class="goal-input" placeholder="e.g. 90-Minute Deep Work Block on Q3 Report" maxlength="80">
+
+      <label for="durationSelect" class="goal-label">Session Duration</label>
+      <select id="durationSelect" class="duration-select">
+        <option value="1500">25 Minutes</option>
+        <option value="2700">45 Minutes</option>
+        <option value="3600" selected>60 Minutes</option>
+        <option value="5400">90 Minutes</option>
+        <option value="7200">120 Minutes</option>
+      </select>
+
+      <button id="lockFocusBtn" class="lock-focus-btn">
+        <span class="lock-icon">🔒</span>
+        LOCK FOCUS &amp; ENTER MARKET
+      </button>
+      <p class="lockfocus-warning">Once locked, leaving this tab will be flagged to the market as a discipline breach.</p>
+    </div>
+
+    <div id="focusOverlay" class="focus-overlay hidden">
+      <div class="focus-overlay-inner">
+        <div class="focus-status" id="focusStatus">SESSION ACTIVE</div>
+        <div class="focus-timer" id="focusTimer">60:00</div>
+        <div class="focus-goal-display" id="focusGoalDisplay">Your goal appears here</div>
+        <div class="anticheat-log" id="anticheatLog"></div>
+        <button id="abortFocusBtn" class="abort-focus-btn">ABORT SESSION</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="toastContainer" class="toast-container"></div>
+
+<footer class="exchange-footer">
+  <p>All Focus Coins (FC) are a virtual, non-monetary accountability metric. No real currency is staked, deposited, or withdrawn.</p>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
