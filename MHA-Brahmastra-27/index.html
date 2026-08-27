@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#030303">
+    <meta name="color-scheme" content="dark">
+    <meta name="description" content="TaskForge — Define your direction and create a personal commitment.">
+    <title>TaskForge — Genesis Protocol</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+    <div class="grid-overlay"></div>
+    <div class="noise-overlay"></div>
+
+    <main class="protocol-page">
+
+        <header class="topbar">
+
+            <a href="#" class="brand" aria-label="TaskForge">
+                <span class="brand-symbol">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+
+                <span class="brand-name">TaskForge</span>
+            </a>
+
+            <div class="header-status">
+                <span class="status-light"></span>
+                <span data-i18n="secureEnvironment">SECURE ENVIRONMENT</span>
+            </div>
+
+        </header>
+
+        <section class="protocol-container">
+
+            <div class="protocol-intro">
+
+                <div class="protocol-label">
+                    <span class="label-line"></span>
+                    <span data-i18n="genesisProtocol">GENESIS PROTOCOL</span>
+                    <span class="label-line"></span>
+                </div>
+
+                <div class="step-indicator">
+                    <span class="step active" id="stepOne">01</span>
+                    <span class="step-line"></span>
+                    <span class="step" id="stepTwo">02</span>
+                    <span class="step-line"></span>
+                    <span class="step" id="stepThree">03</span>
+                </div>
+
+                <h1 id="pageTitle">
+                    <span data-i18n="defineTitle">Define what</span>
+                    <span class="accent" data-i18n="mattersTitle">matters most.</span>
+                </h1>
+
+                <p class="intro-copy" id="introCopy" data-i18n="defineDescription">
+                    Put your most meaningful objective into words. Make it clear, personal, and genuinely yours.
+                </p>
+
+            </div>
+
+            <!-- PHASE 1 -->
+
+            <section class="phase phase-one active" id="phaseOne">
+
+                <div class="mission-card">
+
+                    <div class="card-top">
+                        <div class="field-number">01</div>
+
+                        <div class="field-meta">
+                            <span data-i18n="identityDirection">IDENTITY &amp; DIRECTION</span>
+                            <span class="live-indicator">
+                                <span></span>
+                                <span data-i18n="live">LIVE</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mission-field">
+
+                        <label for="missionInput" data-i18n="missionLabel">
+                            Define your ultimate mission in life.
+                        </label>
+
+                        <textarea
+                            id="missionInput"
+                            maxlength="180"
+                            rows="3"
+                            placeholder="e.g., Crack UPSC, Build a Startup"
+                            data-i18n-placeholder="missionPlaceholder"
+                            autocomplete="off"
+                            spellcheck="true"
+                        ></textarea>
+
+                        <div class="input-bottom">
+
+                            <span class="input-guidance" data-i18n="missionGuidance">
+                                Choose something meaningful to you.
+                            </span>
+
+                            <span class="character-count">
+                                <span id="characterCount">0</span>/180
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="generate-button"
+                        id="generateButton"
+                    >
+                        <span class="button-text" data-i18n="generateProtocol">
+                            Generate Protocol
+                        </span>
+
+                        <span class="button-arrow">→</span>
+
+                        <span class="button-shimmer"></span>
+                    </button>
+
+                    <p class="validation-message" id="validationMessage"></p>
+
+                </div>
+
+                <div class="privacy-note">
+                    <span class="privacy-symbol">◇</span>
+                    <span data-i18n="privateNote">
+                        Your statement stays on this device until you choose to continue.
+                    </span>
+                </div>
+
+            </section>
+
+            <!-- PHASE 2 + 3 -->
+
+            <section class="phase phase-two" id="phaseTwo">
+
+                <div class="contract-card">
+
+                    <div class="contract-header">
+
+                        <div>
+                            <div class="contract-kicker">
+                                <span class="contract-dot"></span>
+                                <span data-i18n="digitalContract">DIGITAL CONTRACT</span>
+                            </div>
+
+                            <h2 data-i18n="contractTitle">
+                                A commitment to your direction.
+                            </h2>
+                        </div>
+
+                        <div class="verified-mark">
+                            <span>✓</span>
+                        </div>
+
+                    </div>
+
+                    <div class="contract-divider"></div>
+
+                    <div class="contract-statement">
+
+                        <span class="statement-label" data-i18n="yourMission">
+                            YOUR MISSION
+                        </span>
+
+                        <blockquote id="missionDisplay"></blockquote>
+
+                    </div>
+
+                    <div class="contract-principle">
+
+                        <span class="principle-mark">✦</span>
+
+                        <p data-i18n="contractPrinciple">
+                            Progress begins with clarity. This commitment is a reminder of the direction you chose today.
+                        </p>
+
+                    </div>
+
+                    <div class="hold-section">
+
+                        <div class="hold-heading">
+
+                            <span data-i18n="readyToCommit">
+                                Ready to commit?
+                            </span>
+
+                            <span id="holdTimer">0.0s</span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="hold-button"
+                            id="holdButton"
+                            aria-label="Hold to commit for three seconds"
+                        >
+
+                            <span class="hold-progress"></span>
+
+                            <span class="hold-ring ring-one"></span>
+                            <span class="hold-ring ring-two"></span>
+
+                            <span class="hold-content">
+
+                                <span class="hold-icon">
+                                    <span class="hold-icon-inner"></span>
+                                </span>
+
+                                <span class="hold-label" data-i18n="holdToCommit">
+                                    HOLD TO COMMIT
+                                </span>
+
+                                <span class="hold-subtitle" data-i18n="holdSubtitle">
+                                    Keep holding for 3 seconds
+                                </span>
+
+                            </span>
+
+                        </button>
+
+                        <div class="hold-progress-track">
+                            <span id="holdProgressBar"></span>
+                        </div>
+
+                        <p class="release-message" id="releaseMessage" data-i18n="releaseHint">
+                            Release early and the commitment resets.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="back-button"
+                    id="backButton"
+                >
+                    <span>←</span>
+                    <span data-i18n="editMission">Edit mission</span>
+                </button>
+
+            </section>
+
+            <!-- PHASE 4 -->
+
+            <section class="phase phase-three" id="phaseThree">
+
+                <div class="success-container">
+
+                    <div class="success-orbit orbit-one"></div>
+                    <div class="success-orbit orbit-two"></div>
+                    <div class="success-orbit orbit-three"></div>
+
+                    <div class="success-core">
+
+                        <div class="success-check">
+                            <svg viewBox="0 0 52 52" aria-hidden="true">
+                                <circle
+                                    class="check-circle"
+                                    cx="26"
+                                    cy="26"
+                                    r="22"
+                                ></circle>
+
+                                <path
+                                    class="check-path"
+                                    d="M15 27.5L22.5 35L38 18"
+                                ></path>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <div class="success-label">
+                        <span class="success-dot"></span>
+                        <span data-i18n="commitmentVerified">
+                            COMMITMENT VERIFIED
+                        </span>
+                    </div>
+
+                    <h2>
+                        <span data-i18n="identityLocked">Identity Locked.</span>
+                        <span class="success-accent" data-i18n="welcomePercent">
+                            Welcome to the 1%.
+                        </span>
+                    </h2>
+
+                    <p class="success-copy" data-i18n="successDescription">
+                        Your direction has been defined. Let your daily actions give it momentum.
+                    </p>
+
+                    <div class="locked-mission">
+
+                        <span data-i18n="committedDirection">
+                            COMMITTED DIRECTION
+                        </span>
+
+                        <strong id="successMission"></strong>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="continue-button"
+                        id="continueButton"
+                    >
+                        <span data-i18n="enterTaskForge">Enter TaskForge</span>
+                        <span>→</span>
+                    </button>
+
+                    <p class="success-footnote" data-i18n="successFootnote">
+                        One clear direction. One step at a time.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <footer class="footer">
+
+            <span>© <span id="currentYear"></span> TaskForge</span>
+
+            <span class="footer-divider"></span>
+
+            <span data-i18n="footerText">
+                Built for focused progress.
+            </span>
+
+        </footer>
+
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <span class="toast-symbol">✓</span>
+        <span id="toastText"></span>
+    </div>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
