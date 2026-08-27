@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030303">
+    <meta name="description" content="TaskForge-Core Proof-of-Execution Syndicate Feed">
+    <title>TaskForge-Core | Execution Feed</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <header class="command-header">
+            <div class="brand-block">
+                <div class="brand-mark">TF</div>
+                <div>
+                    <p class="eyebrow">TASKFORGE-CORE</p>
+                    <h1>Proof-of-Execution</h1>
+                </div>
+            </div>
+
+            <div class="network-status">
+                <span class="status-dot"></span>
+                <span>NETWORK SYNCHRONIZED</span>
+            </div>
+
+            <div class="vault-display">
+                <span>🌐 Syndicate Vanguard Live</span>
+                <strong>
+                    Platform Tax Vault:
+                    🪙 <span id="vaultBalance">4,250,500</span>
+                </strong>
+            </div>
+        </header>
+
+        <main class="main-grid">
+
+            <aside class="side-panel">
+                <section class="wallet-card">
+                    <div class="panel-label">PERSONAL WALLET</div>
+
+                    <div class="wallet-balance">
+                        <span class="coin-icon">🪙</span>
+                        <span id="walletBalance">500</span>
+                        <small>FC</small>
+                    </div>
+
+                    <div class="wallet-line"></div>
+
+                    <div class="wallet-meta">
+                        <span>Available Focus Coins</span>
+                        <strong id="walletStatus">READY</strong>
+                    </div>
+                </section>
+
+                <section class="system-card">
+                    <div class="panel-label">SYSTEM TELEMETRY</div>
+
+                    <div class="telemetry-row">
+                        <span>Feed status</span>
+                        <strong class="green">LIVE</strong>
+                    </div>
+
+                    <div class="telemetry-row">
+                        <span>Execution proof</span>
+                        <strong>VERIFIED</strong>
+                    </div>
+
+                    <div class="telemetry-row">
+                        <span>Audio engine</span>
+                        <strong id="audioStatus">STANDBY</strong>
+                    </div>
+                </section>
+
+                <section class="info-card">
+                    <div class="panel-label">PROOF PROTOCOL</div>
+                    <p>
+                        The feed records completed focus sessions.
+                        Respect signals are optional and use virtual
+                        Focus Coins.
+                    </p>
+                </section>
+            </aside>
+
+            <section class="feed-section">
+
+                <div class="feed-header">
+                    <div>
+                        <p class="eyebrow">LIVE EXECUTION STREAM</p>
+                        <h2>Syndicate Feed</h2>
+                    </div>
+
+                    <div class="live-counter">
+                        <span class="pulse"></span>
+                        <span id="entryCounter">03</span>
+                        ENTRIES
+                    </div>
+                </div>
+
+                <div
+                    id="feedContainer"
+                    class="feed-container"
+                    aria-live="polite"
+                >
+
+                    <article class="execution-card">
+                        <div class="card-topline">
+                            <span class="proof-badge">✓ PROOF VERIFIED</span>
+                            <time>2 MIN AGO</time>
+                        </div>
+
+                        <div class="execution-main">
+                            <div class="avatar">RX</div>
+
+                            <div class="execution-copy">
+                                <h3>Rival_X</h3>
+                                <p>
+                                    dominated a
+                                    <strong>3-Hour Deep Work Block</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="session-stats">
+                            <div>
+                                <span>DURATION</span>
+                                <strong>03:00:00</strong>
+                            </div>
+
+                            <div>
+                                <span>STATUS</span>
+                                <strong class="green">COMPLETED</strong>
+                            </div>
+
+                            <div>
+                                <span>PROOF</span>
+                                <strong>SYNCED</strong>
+                            </div>
+                        </div>
+
+                        <div class="card-action">
+                            <button
+                                class="boost-button"
+                                type="button"
+                                data-boost
+                            >
+                                <span>⚡</span>
+                                BOOST
+                                <small>(STAKE 10 FC)</small>
+                            </button>
+
+                            <span class="boost-status">UNBOOSTED</span>
+                        </div>
+                    </article>
+
+                    <article class="execution-card">
+                        <div class="card-topline">
+                            <span class="proof-badge">✓ PROOF VERIFIED</span>
+                            <time>7 MIN AGO</time>
+                        </div>
+
+                        <div class="execution-main">
+                            <div class="avatar">AN</div>
+
+                            <div class="execution-copy">
+                                <h3>Atlas_Node</h3>
+                                <p>
+                                    completed a
+                                    <strong>90-Minute Research Sprint</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="session-stats">
+                            <div>
+                                <span>DURATION</span>
+                                <strong>01:30:00</strong>
+                            </div>
+
+                            <div>
+                                <span>STATUS</span>
+                                <strong class="green">COMPLETED</strong>
+                            </div>
+
+                            <div>
+                                <span>PROOF</span>
+                                <strong>SYNCED</strong>
+                            </div>
+                        </div>
+
+                        <div class="card-action">
+                            <button
+                                class="boost-button"
+                                type="button"
+                                data-boost
+                            >
+                                <span>⚡</span>
+                                BOOST
+                                <small>(STAKE 10 FC)</small>
+                            </button>
+
+                            <span class="boost-status">UNBOOSTED</span>
+                        </div>
+                    </article>
+
+                    <article class="execution-card">
+                        <div class="card-topline">
+                            <span class="proof-badge">✓ PROOF VERIFIED</span>
+                            <time>11 MIN AGO</time>
+                        </div>
+
+                        <div class="execution-main">
+                            <div class="avatar">VX</div>
+
+                            <div class="execution-copy">
+                                <h3>VectorPrime</h3>
+                                <p>
+                                    completed a
+                                    <strong>2-Hour Coding Session</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="session-stats">
+                            <div>
+                                <span>DURATION</span>
+                                <strong>02:00:00</strong>
+                            </div>
+
+                            <div>
+                                <span>STATUS</span>
+                                <strong class="green">COMPLETED</strong>
+                            </div>
+
+                            <div>
+                                <span>PROOF</span>
+                                <strong>SYNCED</strong>
+                            </div>
+                        </div>
+
+                        <div class="card-action">
+                            <button
+                                class="boost-button"
+                                type="button"
+                                data-boost
+                            >
+                                <span>⚡</span>
+                                BOOST
+                                <small>(STAKE 10 FC)</small>
+                            </button>
+
+                            <span class="boost-status">UNBOOSTED</span>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div id="feedNotice" class="feed-notice">
+                    <span class="notice-line"></span>
+                    <span>LIVE EXECUTION STREAM ACTIVE</span>
+                    <span class="notice-line"></span>
+                </div>
+
+            </section>
+        </main>
+
+        <div id="toastContainer" class="toast-container"></div>
+
+        <div
+            id="audioPrompt"
+            class="audio-prompt"
+            role="status"
+            aria-live="polite"
+        >
+            <span>Audio feedback ready</span>
+            <button id="enableAudio" type="button">ENABLE</button>
+        </div>
+
+    </div>
+</body>
+</html>
