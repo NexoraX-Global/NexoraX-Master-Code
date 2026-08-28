@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Phantom Rival</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<div class="container">
+
+  <header class="header">
+    <h1 class="app-title">Phantom Rival</h1>
+    <p class="app-sub">Beat Your Past</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat-box">
+      <span class="stat-label">Your Best</span>
+      <span class="stat-value" id="bestTimeDisplay">60.0s</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-label">Time Elapsed</span>
+      <span class="stat-value" id="liveTimer">0.0s</span>
+    </div>
+  </div>
+
+  <div class="race-area">
+
+    <div class="track-wrapper">
+      <div class="track-label">
+        <span class="label-text cyan-text">Your Speed</span>
+        <span class="label-percent" id="userPercent">0%</span>
+      </div>
+      <div class="track">
+        <div class="track-fill cyan" id="userBar"></div>
+      </div>
+    </div>
+
+    <div class="track-wrapper">
+      <div class="track-label">
+        <span class="label-text red-text">The Phantom</span>
+        <span class="label-percent" id="phantomPercent">0%</span>
+      </div>
+      <div class="track">
+        <div class="track-fill red" id="phantomBar"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-start" id="startBtn">Start Race</button>
+    <button class="btn btn-finish hidden" id="finishBtn">I'm Done!</button>
+  </div>
+
+</div>
+
+<div class="overlay victory hidden" id="victoryOverlay">
+  <div class="overlay-content">
+    <h2 class="result-title victory-title">VICTORY: New Record</h2>
+    <p class="result-sub" id="victorySub">You beat the Phantom.</p>
+    <button class="btn btn-claim" id="claimBtn">Claim Multiplier</button>
+  </div>
+</div>
+
+<div class="overlay defeat hidden" id="defeatOverlay">
+  <div class="overlay-content">
+    <h2 class="result-title defeat-title">DEFEAT: Too Slow</h2>
+    <p class="result-sub" id="defeatSub">The Phantom finished first. Zero rewards.</p>
+    <button class="btn btn-retry" id="retryBtn">Try Again</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
