@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#030303">
+    <meta name="description" content="Neural Sentinel - Zero-Trust Visual Verification Engine">
+    <title>Neural Sentinel | Visual Verification</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-orb">
+                    <span></span>
+                </div>
+
+                <div class="brand-copy">
+                    <h1>NEURAL SENTINEL</h1>
+                    <p>ZERO-TRUST VISUAL VERIFICATION</p>
+                </div>
+            </div>
+
+            <div class="security-indicator">
+                <span class="status-dot"></span>
+                <span>SECURE</span>
+            </div>
+        </header>
+
+
+        <main class="main-content">
+
+            <section class="hero-panel">
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    IDENTITY PROOF PROTOCOL
+                    <span class="eyebrow-line"></span>
+                </div>
+
+                <h2>Prove you're<br><span>present.</span></h2>
+
+                <p class="hero-description">
+                    Capture a live visual proof or upload a recent image.
+                    Follow the gesture instruction shown below.
+                </p>
+            </section>
+
+
+            <section class="verification-card">
+
+                <div class="protocol-header">
+                    <div>
+                        <span class="protocol-label">VERIFICATION PROTOCOL</span>
+                        <h3>Visual Proof Capture</h3>
+                    </div>
+
+                    <div class="protocol-number">01</div>
+                </div>
+
+
+                <div class="mode-selector">
+
+                    <button
+                        type="button"
+                        id="liveModeBtn"
+                        class="mode-btn active"
+                        aria-label="Use live camera"
+                    >
+                        <span class="mode-icon">◉</span>
+                        <span>
+                            <strong>Live Action</strong>
+                            <small>Camera verification</small>
+                        </span>
+                    </button>
+
+                    <button
+                        type="button"
+                        id="uploadModeBtn"
+                        class="mode-btn"
+                        aria-label="Upload screenshot"
+                    >
+                        <span class="mode-icon">▣</span>
+                        <span>
+                            <strong>Upload Screenshot</strong>
+                            <small>Recent image only</small>
+                        </span>
+                    </button>
+
+                </div>
+
+
+                <div class="gesture-panel">
+
+                    <div class="gesture-icon">✌️</div>
+
+                    <div class="gesture-copy">
+                        <span>LIVE CHALLENGE</span>
+                        <strong>Show this gesture</strong>
+                        <p>Hold a <b>✌️ peace sign</b> clearly inside the frame.</p>
+                    </div>
+
+                    <div class="challenge-pulse"></div>
+
+                </div>
+
+
+                <div
+                    id="captureStage"
+                    class="capture-stage"
+                    aria-label="Visual verification capture area"
+                >
+
+                    <video
+                        id="cameraVideo"
+                        class="media-element"
+                        autoplay
+                        muted
+                        playsinline
+                    ></video>
+
+                    <canvas
+                        id="captureCanvas"
+                        class="hidden-canvas"
+                    ></canvas>
+
+                    <img
+                        id="uploadedImage"
+                        class="media-element"
+                        alt="Uploaded verification evidence"
+                    >
+
+                    <div class="capture-placeholder" id="capturePlaceholder">
+                        <div class="placeholder-ring">
+                            <div class="placeholder-icon">◉</div>
+                        </div>
+
+                        <strong>CAMERA OFFLINE</strong>
+                        <span>Initialize visual capture</span>
+                    </div>
+
+
+                    <div class="scanner-overlay" id="scannerOverlay">
+
+                        <div class="scan-grid"></div>
+
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+
+                        <div class="face-guide"></div>
+
+                        <div class="laser-line"></div>
+
+                        <div class="scan-status">
+                            <span class="scan-status-dot"></span>
+                            <span id="scanStatusText">SCANNER STANDBY</span>
+                        </div>
+
+                        <div class="capture-reticle">
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                    <div class="capture-time" id="captureTime">
+                        WAITING
+                    </div>
+
+                </div>
+
+
+                <div class="camera-controls">
+
+                    <button
+                        type="button"
+                        id="startCameraBtn"
+                        class="primary-btn"
+                    >
+                        <span class="btn-icon">◉</span>
+                        Start Camera
+                    </button>
+
+                    <button
+                        type="button"
+                        id="flipCameraBtn"
+                        class="secondary-btn"
+                        disabled
+                    >
+                        <span>🔄</span>
+                        Flip Camera
+                    </button>
+
+                    <button
+                        type="button"
+                        id="captureBtn"
+                        class="capture-btn"
+                        disabled
+                    >
+                        <span class="capture-circle"></span>
+                        <span>Capture Proof</span>
+                    </button>
+
+                </div>
+
+
+                <div class="upload-controls" id="uploadControls">
+
+                    <label
+                        for="imageInput"
+                        class="upload-dropzone"
+                        id="uploadDropzone"
+                    >
+                        <span class="upload-icon">⇧</span>
+
+                        <span class="upload-title">
+                            Select Recent Screenshot
+                        </span>
+
+                        <span class="upload-subtitle">
+                            Image timestamp must be within 2 minutes
+                        </span>
+
+                        <span class="upload-format">
+                            JPG • JPEG • PNG • WEBP
+                        </span>
+                    </label>
+
+                    <input
+                        id="imageInput"
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp,image/*"
+                        hidden
+                    >
+
+                </div>
+
+
+                <div class="verification-actions">
+
+                    <button
+                        type="button"
+                        id="verifyBtn"
+                        class="verify-btn"
+                        disabled
+                    >
+                        <span class="verify-lock">◈</span>
+                        <span>Begin Verification</span>
+                        <span class="verify-arrow">→</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        id="resetBtn"
+                        class="reset-btn"
+                    >
+                        Reset Session
+                    </button>
+
+                </div>
+
+
+                <div class="verification-progress">
+
+                    <div class="progress-header">
+                        <span>VERIFICATION PROGRESS</span>
+                        <strong id="progressPercent">0%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            id="progressFill"
+                        ></div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section
+                class="terminal-panel"
+                aria-label="Security terminal logs"
+            >
+
+                <div class="terminal-header">
+
+                    <div class="terminal-title">
+                        <span class="terminal-symbol">&gt;_</span>
+                        SECURITY TERMINAL
+                    </div>
+
+                    <div class="terminal-state">
+                        <span class="terminal-dot"></span>
+                        LIVE
+                    </div>
+
+                </div>
+
+                <div
+                    class="terminal-body"
+                    id="terminalBody"
+                >
+                    <div class="terminal-line system-line">
+                        <span class="terminal-time">--:--:--</span>
+                        <span class="terminal-prefix">SYS</span>
+                        <span>Awaiting verification session...</span>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <section
+                class="success-panel"
+                id="successPanel"
+                aria-live="polite"
+            >
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <span class="success-label">
+                    VISUAL PROOF ACCEPTED
+                </span>
+
+                <h2>VERIFIED</h2>
+
+                <p>
+                    Your verification proof has passed the local
+                    validation sequence.
+                </p>
+
+                <button
+                    type="button"
+                    id="claimBtn"
+                    class="claim-btn"
+                >
+                    <span>Claim Bounty</span>
+                    <span>→</span>
+                </button>
+
+            </section>
+
+        </main>
+
+
+        <footer class="footer">
+
+            <div>
+                <span class="footer-shield">◆</span>
+                Local-first verification prototype
+            </div>
+
+            <div>
+                NEURAL SENTINEL
+                <span class="footer-divider">•</span>
+                CLIENT ENGINE
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <div
+        id="toastContainer"
+        class="toast-container"
+        aria-live="assertive"
+        aria-atomic="true"
+    ></div>
+
+
+    <div
+        class="success-flash"
+        id="successFlash"
+    ></div>
+
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
