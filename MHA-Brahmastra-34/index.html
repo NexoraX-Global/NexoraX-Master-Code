@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velocity Matrix | Micro-Missions Engine</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <header class="app-header">
+    <div class="header-left">
+      <h1 class="logo">VELOCITY <span class="accent-cyan">MATRIX</span></h1>
+      <p class="tagline">Micro-Missions Engine</p>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-pill">
+        <span class="stat-label">Coins</span>
+        <span class="stat-value" id="totalCoins">0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Completed</span>
+        <span class="stat-value" id="completedCount">0 / 0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Active</span>
+        <span class="stat-value" id="activeCount">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <section class="setup-panel" id="setupPanel">
+      <h2 class="panel-title">Launch a New Goal</h2>
+      <div class="setup-form">
+        <div class="form-group">
+          <label for="mainGoalInput">Main Goal</label>
+          <input type="text" id="mainGoalInput" placeholder="e.g. Ship the Q3 Launch" maxlength="60">
+        </div>
+        <div class="form-group form-group-small">
+          <label for="missionCountInput">Micro-Missions</label>
+          <input type="number" id="missionCountInput" min="1" max="12" value="4">
+        </div>
+        <button id="generateBtn" class="btn btn-primary">
+          <span class="btn-icon">⚡</span> Generate Missions
+        </button>
+      </div>
+      <p class="goal-display" id="goalDisplay"></p>
+    </section>
+
+    <section class="missions-section">
+      <div class="missions-grid" id="missionsGrid">
+        <div class="empty-state" id="emptyState">
+          <p>No missions yet. Set your goal above and generate your first batch.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
