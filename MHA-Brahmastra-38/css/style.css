@@ -1,0 +1,423 @@
+/* ============================================
+   VOCAL ECHO PROTOCOL — OBSIDIAN / CRIMSON / CYBER BLUE
+   ============================================ */
+
+:root {
+  --bg-obsidian: #030303;
+  --bg-panel: #0b0b0d;
+  --crimson: #FF0033;
+  --crimson-dim: #7a0019;
+  --cyber-blue: #00F0FF;
+  --cyber-blue-dim: #005a61;
+  --text-primary: #f2f2f2;
+  --text-muted: #8a8a92;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --transition-fast: 0.18s ease;
+  --transition-slow: 0.6s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-obsidian);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ============================================
+   SCREEN SWITCHING
+   ============================================ */
+
+.screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+  transition: background-color var(--transition-slow);
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ============================================
+   STATE 1 — SETUP SCREEN
+   ============================================ */
+
+#setup-screen {
+  background: var(--bg-obsidian);
+}
+
+.setup-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px 32px;
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.06),
+    0 0 40px rgba(0, 240, 255, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyber-blue);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.app-title {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #ffffff 0%, var(--cyber-blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+.config-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.config-group label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.config-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 15px;
+  color: var(--text-primary);
+  background-color: #111114;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2300F0FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.config-group select:hover {
+  border-color: var(--cyber-blue-dim);
+}
+
+.config-group select:focus {
+  outline: none;
+  border-color: var(--cyber-blue);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.18);
+}
+
+.start-button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #001014;
+  background: var(--cyber-blue);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow:
+    0 0 20px rgba(0, 240, 255, 0.55),
+    0 0 60px rgba(0, 240, 255, 0.25);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 28px rgba(0, 240, 255, 0.75),
+    0 0 80px rgba(0, 240, 255, 0.35);
+}
+
+.start-button:active {
+  transform: translateY(0);
+}
+
+.start-button:focus-visible,
+.stop-button:focus-visible,
+.restart-button:focus-visible {
+  outline: 3px solid var(--cyber-blue);
+  outline-offset: 3px;
+}
+
+.setup-error {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--crimson);
+  min-height: 16px;
+  text-align: center;
+}
+
+/* ============================================
+   STATE 2 — STANDBY / ALERT SCREEN
+   ============================================ */
+
+#standby-screen {
+  background: var(--bg-obsidian);
+}
+
+.standby-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  text-align: center;
+}
+
+.mic-icon {
+  width: 130px;
+  height: 130px;
+  padding: 30px;
+  border-radius: 50%;
+  color: var(--cyber-blue);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.10) 0%, rgba(0, 240, 255, 0) 70%);
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.35),
+    0 0 30px rgba(0, 240, 255, 0.45),
+    0 0 80px rgba(0, 240, 255, 0.20);
+  animation: pulse-blue 2s ease-in-out infinite;
+  transition: color var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+@keyframes pulse-blue {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.standby-status {
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  transition: color var(--transition-fast);
+}
+
+.countdown-display {
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--cyber-blue);
+  min-height: 54px;
+  font-variant-numeric: tabular-nums;
+}
+
+.stop-button {
+  margin-top: 18px;
+  padding: 12px 26px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.stop-button:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+/* --- Alert mode: triggered check, Blood Red takeover --- */
+
+#standby-screen.alert-mode {
+  background: var(--crimson);
+  animation: flash-red 0.9s ease-in-out infinite;
+}
+
+@keyframes flash-red {
+  0%, 100% { background-color: #FF0033; }
+  50% { background-color: #b8001f; }
+}
+
+#standby-screen.alert-mode .mic-icon {
+  color: #030303;
+  background: radial-gradient(circle, rgba(3, 3, 3, 0.25) 0%, rgba(3, 3, 3, 0) 70%);
+  box-shadow:
+    0 0 0 1px rgba(3, 3, 3, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.55),
+    0 0 90px rgba(255, 0, 51, 0.6);
+  animation: pulse-blue 0.6s ease-in-out infinite;
+}
+
+#standby-screen.alert-mode .standby-status {
+  color: #030303;
+  font-size: 16px;
+}
+
+#standby-screen.alert-mode .countdown-display {
+  color: #030303;
+  text-shadow: 0 0 20px rgba(3, 3, 3, 0.4);
+}
+
+#standby-screen.alert-mode .stop-button {
+  color: rgba(3, 3, 3, 0.7);
+  border-color: rgba(3, 3, 3, 0.4);
+}
+
+#standby-screen.alert-mode .stop-button:hover {
+  color: #030303;
+  border-color: #030303;
+}
+
+/* ============================================
+   STATE 3 — DEFEAT SCREEN
+   ============================================ */
+
+#defeat-screen {
+  background: var(--bg-obsidian);
+}
+
+.defeat-inner {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  background: var(--bg-panel);
+  border: 1px solid rgba(255, 0, 51, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  box-shadow:
+    0 0 0 1px rgba(255, 0, 51, 0.12),
+    0 0 50px rgba(255, 0, 51, 0.25),
+    0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.defeat-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--crimson);
+  text-shadow: 0 0 20px rgba(255, 0, 51, 0.6);
+  margin-bottom: 22px;
+}
+
+.defeat-line {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+.defeat-word,
+.defeat-heard {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.restart-button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #1a0004;
+  background: var(--crimson);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow:
+    0 0 20px rgba(255, 0, 51, 0.55),
+    0 0 60px rgba(255, 0, 51, 0.25);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.restart-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 28px rgba(255, 0, 51, 0.75),
+    0 0 80px rgba(255, 0, 51, 0.35);
+}
+
+.restart-button:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .mic-icon,
+  #standby-screen.alert-mode {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .setup-card {
+    padding: 28px 22px 26px;
+  }
+
+  .app-title {
+    font-size: 24px;
+  }
+
+  .mic-icon {
+    width: 100px;
+    height: 100px;
+    padding: 22px;
+  }
+
+  .countdown-display {
+    font-size: 36px;
+  }
+
+  .defeat-inner {
+    padding: 30px 22px;
+  }
+}
