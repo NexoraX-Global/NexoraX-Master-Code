@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Presence Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+  <header class="app-header">
+    <h1>PRESENCE <span class="accent">TRACKER</span></h1>
+    <div class="status-line">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="status-text">STANDBY</span>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <!-- MODE SELECT -->
+    <section class="mode-select" id="mode-select">
+      <button id="desk-mode-btn" class="mode-btn">🖥️ Desk Mode</button>
+      <button id="field-mode-btn" class="mode-btn">🏃 Field Mode</button>
+    </section>
+
+    <!-- CAMERA -->
+    <section class="video-wrapper" id="video-wrapper">
+      <video id="camera-feed" autoplay playsinline muted></video>
+      <div class="scanner-line" id="scanner-line"></div>
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+      <div class="badge" id="rec-badge">● LIVE</div>
+      <div class="camera-off-msg" id="camera-off-msg">Camera not active</div>
+    </section>
+
+    <div class="controls-row">
+      <button id="switch-camera-btn" class="util-btn">🔄 Switch Camera</button>
+      <select id="voice-lang-select" class="util-select">
+        <option value="en">🔊 English</option>
+        <option value="hi">🔊 Hindi</option>
+      </select>
+    </div>
+
+    <!-- FIELD MODE MOTION PANEL -->
+    <section class="motion-panel" id="motion-panel">
+      <div class="motion-label">MOTION SIGNAL</div>
+      <div class="motion-bar-track">
+        <div class="motion-bar-fill" id="motion-bar-fill"></div>
+      </div>
+      <div class="motion-idle-text" id="motion-idle-text">Idle: 0s</div>
+    </section>
+
+    <!-- TIMER -->
+    <div class="timer-display" id="timer-display">SESSION 00:00</div>
+
+    <!-- ACTION CONTROLS -->
+    <section class="action-buttons">
+      <button id="pause-btn" class="pause-btn" disabled>⏸️ Biometric Pause</button>
+    </section>
+
+    <button id="complete-btn" class="complete-btn" disabled>✅ MISSION COMPLETE</button>
+
+  </main>
+</div>
+
+<!-- RESUME / PAUSE OVERLAY -->
+<div class="resume-overlay" id="resume-overlay">
+  <h2>BIOMETRIC PAUSE ACTIVE</h2>
+  <div class="big-countdown" id="big-countdown">60</div>
+  <p class="overlay-sub">Resume before the timer hits zero or the mission fails.</p>
+  <button id="resume-btn" class="resume-btn">▶️ RESUME MISSION</button>
+</div>
+
+<!-- FAILURE OVERLAY -->
+<div class="fail-overlay" id="fail-overlay">
+  <h1>⚠ MISSION FAILED</h1>
+  <p id="fail-reason">Session integrity lost.</p>
+  <button id="restart-btn" class="restart-btn">RESTART SESSION</button>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="success-overlay">
+  <h1>✅ MISSION COMPLETE</h1>
+  <p id="success-summary">Great work. Session logged.</p>
+  <button id="success-restart-btn" class="restart-btn">NEW SESSION</button>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
