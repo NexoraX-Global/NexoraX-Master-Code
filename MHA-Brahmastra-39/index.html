@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Omni-Sensor Vanguard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <h1>Omni-Sensor Vanguard</h1>
+    </div>
+    <div class="mode-toggle" id="modeToggle">
+      <button class="mode-btn active" data-mode="desk" id="deskModeBtn">Work Mode</button>
+      <button class="mode-btn" data-mode="workout" id="workoutModeBtn">Workout Mode</button>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="card timer-card">
+      <p class="status-label" id="statusLabel">Ready When You Are</p>
+      <div class="timer-display" id="timerDisplay">00:00</div>
+      <p class="phase-sub" id="phaseSub">Tap Start Work to begin</p>
+
+      <div class="primary-controls">
+        <button class="btn btn-primary" id="startBtn">Start Work</button>
+        <button class="btn btn-secondary hidden" id="breakBtn">Take a Break</button>
+        <button class="btn btn-ghost hidden" id="skipBtn">Skip Break</button>
+      </div>
+    </section>
+
+    <section class="card settings-card">
+      <h2>Settings</h2>
+
+      <div class="setting-block" id="deskSettings">
+        <label>Screen Dims After Being Still For</label>
+        <input type="range" id="idleSlider" min="5" max="180" value="30">
+        <div class="setting-value" id="idleValue">30 seconds</div>
+      </div>
+
+      <div class="setting-block hidden" id="workoutActiveSettings">
+        <label>Work Length</label>
+        <div class="chip-group" id="activeLengthGroup">
+          <button class="chip" data-min="5">5m</button>
+          <button class="chip" data-min="10">10m</button>
+          <button class="chip active" data-min="15">15m</button>
+          <button class="chip" data-min="20">20m</button>
+          <button class="chip" data-min="30">30m</button>
+          <button class="chip" data-min="45">45m</button>
+          <button class="chip" data-min="60">60m</button>
+        </div>
+      </div>
+
+      <div class="setting-block">
+        <label>Break Length</label>
+        <div class="chip-group" id="breakLengthGroup">
+          <button class="chip" data-sec="30">30 Seconds</button>
+          <button class="chip active" data-sec="60">1 Minute</button>
+          <button class="chip" data-sec="300">5 Minutes</button>
+          <button class="chip" data-sec="600">10 Minutes</button>
+          <button class="chip" data-sec="900">15 Minutes</button>
+          <button class="chip" data-sec="1200">20 Minutes</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="idleOverlay" class="idle-overlay"></div>
+
+<div id="tabWarning" class="tab-warning hidden">
+  <p>⚠️ Come back! Locking in <span id="tabCountdown">10</span>s</p>
+</div>
+
+<div id="lockScreen" class="lock-screen hidden">
+  <div class="lock-box">
+    <h2>Locked</h2>
+    <p>You left the screen too long. Type this code to continue:</p>
+    <div class="pin-display" id="pinDisplay">0000</div>
+    <input type="text" id="pinInput" class="pin-input" maxlength="4" inputmode="numeric" autocomplete="off" placeholder="Enter code">
+    <button class="btn btn-primary" id="unlockBtn">Unlock</button>
+    <p class="lock-error hidden" id="lockError">Wrong code, try again</p>
+  </div>
+</div>
+
+<div id="sirenOverlay" class="siren-overlay hidden">
+  <div class="siren-box">
+    <h2>MOVE!</h2>
+    <p>No motion detected. Shake your device 3 times to stop the alarm.</p>
+    <div class="shake-dots">
+      <span id="shakeDot1" class="dot"></span>
+      <span id="shakeDot2" class="dot"></span>
+      <span id="shakeDot3" class="dot"></span>
+    </div>
+  </div>
+</div>
+
+<div id="restBanner" class="rest-banner hidden">
+  <p id="restText">Resting... 00:30</p>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
