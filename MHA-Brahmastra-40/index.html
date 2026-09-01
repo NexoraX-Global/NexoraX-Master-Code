@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070914">
+  <meta name="description" content="The Gladiator Syndicate — a proof-of-work productivity community.">
+  <title>The Gladiator Syndicate</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="aurora aurora-one"></div>
+  <div class="aurora aurora-two"></div>
+  <div class="aurora aurora-three"></div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <div class="app-shell">
+
+    <header class="topbar glass">
+      <div class="brand">
+        <div class="brand-mark">GS</div>
+        <div>
+          <h1>The Gladiator Syndicate</h1>
+          <span>PROOF OF WORK COMMUNITY</span>
+        </div>
+      </div>
+
+      <div class="connection-status">
+        <span class="status-dot"></span>
+        <span id="connectionText">SIMULATED P2P ONLINE</span>
+      </div>
+
+      <button id="settingsButton" class="icon-button" aria-label="Settings">⚙</button>
+    </header>
+
+    <main class="dashboard">
+
+      <section class="hero glass">
+        <div class="hero-copy">
+          <div class="eyebrow">THE ARENA IS LIVE</div>
+          <h2 id="heroTitle">Turn Focus Into Reputation.</h2>
+          <p id="heroSubtitle">
+            Work publicly. Prove your focus. Build your reputation.
+          </p>
+
+          <div class="hero-actions">
+            <button id="startFocusButton" class="primary-button">
+              <span>⚡</span>
+              <span id="startFocusText">Start Focus</span>
+            </button>
+
+            <button id="openDuelButton" class="secondary-button">
+              ⚔ <span id="duelText">Focus Duel</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-score">
+          <div class="score-ring">
+            <div>
+              <strong id="heroScore">742</strong>
+              <span>REP</span>
+            </div>
+          </div>
+          <span class="rank-label">GLADIATOR • LVL 8</span>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+
+        <article class="stat-card glass">
+          <div class="stat-icon blue">◉</div>
+          <div>
+            <span id="statFocusLabel">Focus Today</span>
+            <strong id="focusToday">02h 35m</strong>
+          </div>
+        </article>
+
+        <article class="stat-card glass">
+          <div class="stat-icon green">✓</div>
+          <div>
+            <span id="statVerifiedLabel">Verification</span>
+            <strong id="verificationStatus">READY</strong>
+          </div>
+        </article>
+
+        <article class="stat-card glass">
+          <div class="stat-icon purple">⚔</div>
+          <div>
+            <span id="statDuelsLabel">Duels Won</span>
+            <strong id="duelsWon">18</strong>
+          </div>
+        </article>
+
+        <article class="stat-card glass">
+          <div class="stat-icon orange">♜</div>
+          <div>
+            <span id="statClanLabel">Clan</span>
+            <strong>[Coders]</strong>
+          </div>
+        </article>
+
+      </section>
+
+      <div class="content-grid">
+
+        <section class="main-column">
+
+          <article class="focus-panel glass">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">FOCUS CORE</div>
+                <h2 id="focusCoreTitle">Proof of Work</h2>
+              </div>
+
+              <div id="verifiedBadge" class="verified-badge">
+                <span>✓</span> VERIFIED
+              </div>
+            </div>
+
+            <div class="timer-container">
+              <div class="timer-ring">
+                <div class="timer-inner">
+                  <span id="timerState">STANDBY</span>
+                  <strong id="focusTimer">00:00:00</strong>
+                  <small id="timerSubtext">Set your focus duration</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="time-controls">
+              <label for="focusMinutes">
+                <span id="minutesLabel">Focus Minutes</span>
+                <input
+                  id="focusMinutes"
+                  type="number"
+                  min="1"
+                  max="1440"
+                  step="1"
+                  value="25"
+                >
+              </label>
+
+              <button id="focusStartControl" class="primary-button">
+                START MISSION
+              </button>
+
+              <button id="focusPauseControl" class="secondary-button hidden">
+                PAUSE
+              </button>
+
+              <button id="focusStopControl" class="danger-button hidden">
+                ABORT
+              </button>
+            </div>
+
+            <div class="progress-track">
+              <div id="focusProgress" class="progress-fill"></div>
+            </div>
+
+            <div class="verification-line">
+              <span class="pulse-dot"></span>
+              <span id="verificationMessage">
+                Anti-Fake Engine is monitoring active focus.
+              </span>
+            </div>
+          </article>
+
+          <article class="arena glass">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">SPECTATOR MODE</div>
+                <h2 id="arenaTitle">The Gladiator Arena</h2>
+              </div>
+              <span class="live-pill">● LIVE</span>
+            </div>
+
+            <div id="duelList" class="duel-list"></div>
+          </article>
+
+          <article class="clans glass">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">COMMUNITY POWER</div>
+                <h2 id="clanTitle">Clan Network</h2>
+              </div>
+              <button id="viewClansButton" class="small-button">VIEW ALL</button>
+            </div>
+
+            <div class="clan-grid">
+              <div class="clan-card">
+                <span class="clan-emblem">⌬</span>
+                <div>
+                  <strong>[Coders]</strong>
+                  <span>1,284 members</span>
+                </div>
+                <b>92K REP</b>
+              </div>
+
+              <div class="clan-card">
+                <span class="clan-emblem">☾</span>
+                <div>
+                  <strong>[NightOwls]</strong>
+                  <span>918 members</span>
+                </div>
+                <b>76K REP</b>
+              </div>
+
+              <div class="clan-card">
+                <span class="clan-emblem">Δ</span>
+                <div>
+                  <strong>[Builders]</strong>
+                  <span>742 members</span>
+                </div>
+                <b>61K REP</b>
+              </div>
+            </div>
+          </article>
+
+          <article class="elite glass">
+            <div class="elite-lock">
+              <div class="lock-icon">🔒</div>
+              <div>
+                <div class="eyebrow">GATED ACCESS</div>
+                <h2 id="eliteTitle">Elite Rooms</h2>
+                <p id="eliteDescription">
+                  Requires 500+ Reputation Score.
+                </p>
+              </div>
+            </div>
+
+            <div class="elite-progress">
+              <div class="elite-progress-header">
+                <span>ACCESS LEVEL</span>
+                <strong id="eliteScore">742 / 500</strong>
+              </div>
+              <div class="progress-track">
+                <div id="eliteProgress" class="progress-fill"></div>
+              </div>
+            </div>
+
+            <button id="eliteEnterButton" class="primary-button">
+              ENTER ELITE ROOM
+            </button>
+          </article>
+
+        </section>
+
+        <aside class="sidebar">
+
+          <article class="profile-card glass">
+            <div class="profile-top">
+              <div class="avatar">S</div>
+              <div>
+                <strong>[Coders] Sarthak</strong>
+                <span id="profileOnline">● ONLINE</span>
+              </div>
+            </div>
+
+            <div class="profile-stats">
+              <div>
+                <span>REP</span>
+                <strong id="profileScore">742</strong>
+              </div>
+              <div>
+                <span>STREAK</span>
+                <strong>12D</strong>
+              </div>
+              <div>
+                <span>RANK</span>
+                <strong>#27</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="chat-panel glass">
+
+            <div class="chat-header">
+              <div>
+                <div class="eyebrow">P2P CHANNEL</div>
+                <h2 id="warRoomTitle">The War Room</h2>
+              </div>
+              <span class="online-count">
+                <span class="pulse-dot"></span>
+                <span id="onlineCount">37</span>
+              </span>
+            </div>
+
+            <div id="chatMessages" class="chat-messages"></div>
+
+            <div class="emoji-row">
+              <button data-emoji="🔥">🔥</button>
+              <button data-emoji="🚀">🚀</button>
+              <button data-emoji="⚔️">⚔️</button>
+              <button data-emoji="💪">💪</button>
+              <button data-emoji="🧠">🧠</button>
+            </div>
+
+            <form id="chatForm" class="chat-input">
+              <input
+                id="chatInput"
+                type="text"
+                maxlength="300"
+                autocomplete="off"
+                placeholder="Send a message..."
+              >
+              <button type="submit">➤</button>
+            </form>
+
+          </article>
+
+          <article class="network-panel glass">
+            <div class="section-heading compact">
+              <h2>Network</h2>
+              <span class="network-live">LIVE</span>
+            </div>
+
+            <div class="network-row">
+              <span>P2P Peers</span>
+              <strong id="peerCount">37</strong>
+            </div>
+
+            <div class="network-row">
+              <span>Rooms</span>
+              <strong id="roomCount">12</strong>
+            </div>
+
+            <div class="network-row">
+              <span>Latency</span>
+              <strong id="latency">24ms</strong>
+            </div>
+          </article>
+
+        </aside>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="duelModal" class="modal hidden">
+    <div class="modal-card glass">
+      <button class="modal-close" data-close="duelModal">×</button>
+
+      <div class="eyebrow">GLADIATOR ARENA</div>
+      <h2>Initiate Focus Duel</h2>
+      <p>
+        Challenge another gladiator. Both players stake virtual Reputation
+        Score. The winner receives the pooled virtual score.
+      </p>
+
+      <label class="field">
+        <span>Opponent</span>
+        <select id="duelOpponent">
+          <option value="orion">[NightOwls] Orion — 691 REP</option>
+          <option value="nova">[Builders] Nova — 824 REP</option>
+          <option value="zen">[Coders] Zen — 588 REP</option>
+          <option value="atlas">[Builders] Atlas — 913 REP</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Focus Duration (minutes)</span>
+        <input id="duelMinutes" type="number" min="1" max="1440" value="30">
+      </label>
+
+      <label class="field">
+        <span>Virtual Reputation Wager</span>
+        <input id="duelWager" type="number" min="1" max="742" value="50">
+      </label>
+
+      <div class="duel-preview">
+        <div>
+          <span>Your stake</span>
+          <strong id="yourStake">50 REP</strong>
+        </div>
+        <div>
+          <span>Potential pool</span>
+          <strong id="potentialPool">100 REP</strong>
+        </div>
+      </div>
+
+      <button id="confirmDuelButton" class="primary-button full-width">
+        ⚔ CHALLENGE GLADIATOR
+      </button>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-card glass settings-card">
+      <button class="modal-close" data-close="settingsModal">×</button>
+
+      <div class="eyebrow">SYSTEM CONTROL</div>
+      <h2>Settings Matrix</h2>
+
+      <div class="settings-section">
+        <h3>Language Engine</h3>
+
+        <label class="field">
+          <span>Language</span>
+          <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="fr">Français</option>
+            <option value="ru">Русский</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="ja">日本語</option>
+            <option value="ar">العربية</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="settings-section">
+        <h3>Sound Matrix</h3>
+
+        <div class="sound-grid">
+          <label class="sound-option">
+            <input type="radio" name="sound" value="pulse" checked>
+            <span>Pulse</span>
+          </label>
+
+          <label class="sound-option">
+            <input type="radio" name="sound" value="synth">
+            <span>Synth</span>
+          </label>
+
+          <label class="sound-option">
+            <input type="radio" name="sound" value="bell">
+            <span>Bell</span>
+          </label>
+
+          <label class="sound-option">
+            <input type="radio" name="sound" value="siren">
+            <span>Siren</span>
+          </label>
+        </div>
+
+        <button id="testSoundButton" class="secondary-button full-width">
+          🔊 TEST SOUND
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="breakModal" class="modal hidden">
+    <div class="modal-card glass break-card">
+      <div class="break-icon">☕</div>
+      <div class="eyebrow">TACTICAL PAUSE</div>
+      <h2>5-Minute Break</h2>
+      <p>
+        The active timer will pause gracefully. No failure will be recorded.
+      </p>
+
+      <div id="breakCountdown" class="break-countdown">05:00</div>
+
+      <button id="resumeBreakButton" class="primary-button full-width">
+        RESUME EARLY
+      </button>
+    </div>
+  </div>
+
+  <div id="activeDuelBar" class="active-duel-bar hidden">
+    <div>
+      <span class="duel-live-dot"></span>
+      <strong id="activeDuelTitle">DUEL ACTIVE</strong>
+    </div>
+
+    <div class="active-duel-timer" id="activeDuelTimer">00:00</div>
+
+    <button id="requestBreakButton" class="secondary-button">
+      ☕ REQUEST 5-MIN BREAK
+    </button>
+
+    <button id="forfeitDuelButton" class="danger-button">
+      FORFEIT
+    </button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
