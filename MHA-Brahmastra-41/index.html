@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#05070d">
+  <meta name="description" content="Focus Grind — visual proof, focus racing and productivity streaks.">
+  <title>Focus Grind // MHA-41</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="background-grid"></div>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◆</span>
+      <div>
+        <strong>FOCUS<span>GRIND</span></strong>
+        <small>VISUAL PRODUCTIVITY ENGINE</small>
+      </div>
+    </div>
+
+    <div class="system-status">
+      <span class="status-dot"></span>
+      <span id="systemStatus">SYSTEM READY</span>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <section class="hero">
+      <div class="eyebrow">PHASE 03 / PERFORMANCE MODE</div>
+      <h1>BUILD PROOF.<br><span>NOT NOISE.</span></h1>
+      <p>
+        Turn focused work into visible progress with camera proof,
+        real-time racing and voluntary point challenges.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span>STREAK</span>
+          <strong id="streakValue">07</strong>
+          <small>DAYS</small>
+        </div>
+
+        <div class="stat-card">
+          <span>FOCUS SCORE</span>
+          <strong id="focusScore">84</strong>
+          <small>/ 100</small>
+        </div>
+
+        <div class="stat-card">
+          <span>POINTS</span>
+          <strong id="pointsValue">1,240</strong>
+          <small>PTS</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel proof-panel">
+      <div class="panel-heading">
+        <div>
+          <div class="eyebrow">01 / FOCUS SNAP</div>
+          <h2>Visual Proof</h2>
+        </div>
+        <span class="badge cyan">CAMERA LINK</span>
+      </div>
+
+      <div class="camera-layout">
+        <div class="camera-frame">
+          <video id="cameraPreview" autoplay playsinline muted></video>
+          <canvas id="proofCanvas"></canvas>
+
+          <div class="camera-overlay">
+            <span>● LIVE PREVIEW</span>
+            <span id="cameraTimer">00:00</span>
+          </div>
+
+          <div class="scanline"></div>
+
+          <div class="camera-placeholder" id="cameraPlaceholder">
+            <div class="camera-icon">⌁</div>
+            <strong>CAMERA OFFLINE</strong>
+            <small>Enable camera to create visual proof</small>
+          </div>
+        </div>
+
+        <div class="camera-controls">
+          <button class="btn primary" id="startCameraBtn">
+            <span>◎</span> ENABLE CAMERA
+          </button>
+
+          <button class="btn secondary" id="snapBtn" disabled>
+            <span>◉</span> CAPTURE PROOF
+          </button>
+
+          <button class="btn ghost" id="stopCameraBtn" disabled>
+            STOP CAMERA
+          </button>
+
+          <div class="permission-note">
+            <strong>PRIVACY</strong>
+            <p>
+              Camera access stays inside this browser prototype.
+              No image is uploaded by this demo.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-result hidden" id="proofResult">
+        <div>
+          <span class="success-icon">✓</span>
+          <div>
+            <strong>PROOF CAPTURED</strong>
+            <small id="proofMetadata">Focus stamp generated.</small>
+          </div>
+        </div>
+
+        <button class="btn small" id="downloadProofBtn">
+          SAVE IMAGE
+        </button>
+      </div>
+    </section>
+
+    <section class="panel arena-panel">
+      <div class="panel-heading">
+        <div>
+          <div class="eyebrow">02 / GHOST-RIDER</div>
+          <h2>Focus Arena</h2>
+        </div>
+
+        <div class="arena-live">
+          <span class="status-dot"></span>
+          LIVE RACE
+        </div>
+      </div>
+
+      <div class="arena-grid">
+
+        <div class="race-column">
+          <div class="racer-header">
+            <div class="avatar user-avatar">YOU</div>
+            <div>
+              <strong>YOUR SESSION</strong>
+              <small id="userRaceTime">00:00</small>
+            </div>
+            <span class="race-percent" id="userPercent">0%</span>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill user-fill" id="userProgress"></div>
+          </div>
+
+          <div class="race-label">
+            <span>LIVE FOCUS</span>
+            <span id="userDistance">0 / 100</span>
+          </div>
+        </div>
+
+        <div class="vs">VS</div>
+
+        <div class="race-column ghost">
+          <div class="racer-header">
+            <div class="avatar ghost-avatar">G</div>
+            <div>
+              <strong>GHOST // APEX</strong>
+              <small id="ghostRaceTime">00:00</small>
+            </div>
+            <span class="race-percent" id="ghostPercent">0%</span>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill ghost-fill" id="ghostProgress"></div>
+          </div>
+
+          <div class="race-label">
+            <span>RECORDED BEST</span>
+            <span id="ghostDistance">0 / 100</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timer-controls">
+        <label>
+          SESSION LENGTH
+          <div class="number-input">
+            <input id="sessionMinutes" type="number" min="1" max="240" value="25">
+            <span>MIN</span>
+          </div>
+        </label>
+
+        <button class="btn primary large" id="startRaceBtn">
+          START FOCUS RACE
+        </button>
+
+        <button class="btn danger-outline" id="stopRaceBtn" disabled>
+          END SESSION
+        </button>
+      </div>
+    </section>
+
+    <section class="rescue-grid">
+
+      <div class="panel flare-panel">
+        <div class="eyebrow">03 / CLAN SUPPORT</div>
+        <h2>Need a Reset?</h2>
+        <p>
+          Send a support ping to your simulated focus clan.
+          Your browser may provide a short haptic and audio cue.
+        </p>
+
+        <button class="sos-button" id="sosBtn">
+          <span class="sos-ring"></span>
+          <strong>SUPPORT<br>FLARE</strong>
+          <small>SEND PING</small>
+        </button>
+
+        <div class="flare-status" id="flareStatus">
+          <span></span>
+          CLAN CHANNEL STANDBY
+        </div>
+      </div>
+
+      <div class="panel bounty-panel">
+        <div class="panel-heading">
+          <div>
+            <div class="eyebrow">04 / BOUNTY BOARD</div>
+            <h2>Focus Challenge</h2>
+          </div>
+          <span class="badge red">SIMULATION</span>
+        </div>
+
+        <p class="panel-description">
+          Set voluntary points at risk for this session.
+          The board is simulated and has no monetary value.
+        </p>
+
+        <div class="wager-box">
+          <label for="wagerInput">YOUR WAGER</label>
+          <div class="wager-input">
+            <input id="wagerInput" type="number" min="0" max="100000" value="100">
+            <span>PTS</span>
+          </div>
+
+          <button class="btn primary" id="publishBountyBtn">
+            PUBLISH CHALLENGE
+          </button>
+        </div>
+
+        <div class="radar">
+          <div class="radar-grid"></div>
+          <div class="radar-sweep"></div>
+          <div class="radar-center"></div>
+
+          <div class="hunter hunter-a">H1</div>
+          <div class="hunter hunter-b">H2</div>
+          <div class="hunter hunter-c">H3</div>
+          <div class="hunter hunter-d">H4</div>
+
+          <div class="radar-label">HUNTERS ONLINE</div>
+          <strong id="hunterCount">12</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel leaderboard-panel">
+      <div class="panel-heading">
+        <div>
+          <div class="eyebrow">LIVE CLAN</div>
+          <h2>Performance Board</h2>
+        </div>
+        <span class="badge cyan">LOCAL DEMO</span>
+      </div>
+
+      <div class="leaderboard" id="leaderboard">
+        <div class="leader-row">
+          <span class="rank">01</span>
+          <span class="player-avatar">AX</span>
+          <div class="player">
+            <strong>APEX</strong>
+            <small>42 min focus</small>
+          </div>
+          <strong class="score">2,840</strong>
+        </div>
+
+        <div class="leader-row">
+          <span class="rank">02</span>
+          <span class="player-avatar">NX</span>
+          <div class="player">
+            <strong>NOVA</strong>
+            <small>38 min focus</small>
+          </div>
+          <strong class="score">2,410</strong>
+        </div>
+
+        <div class="leader-row active-row">
+          <span class="rank">03</span>
+          <span class="player-avatar">YOU</span>
+          <div class="player">
+            <strong>YOU</strong>
+            <small id="leaderStatus">Ready to focus</small>
+          </div>
+          <strong class="score" id="leaderScore">1,240</strong>
+        </div>
+
+        <div class="leader-row">
+          <span class="rank">04</span>
+          <span class="player-avatar">ZR</span>
+          <div class="player">
+            <strong>ZERO</strong>
+            <small>29 min focus</small>
+          </div>
+          <strong class="score">1,180</strong>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>FOCUSGRIND ENGINE</span>
+    <span>LOCAL PROTOTYPE • HARDWARE APIs OPTIONAL</span>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
