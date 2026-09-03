@@ -1,0 +1,107 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <title>Genesis Gate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="gateway">
+    <section class="auth-card" aria-labelledby="gateway-title">
+      <div class="brand-mark" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="heading">
+        <p class="eyebrow">NEXORA X</p>
+        <h1 id="gateway-title">Genesis Gate</h1>
+        <p class="subtitle">Enter the next layer of your journey.</p>
+      </div>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+          >
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Enter your password"
+          >
+        </div>
+
+        <button class="primary-button" type="submit">
+          <span>Enter Genesis Gate</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h13M13 6l6 6-6 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+
+      <div class="divider" aria-hidden="true">
+        <span></span>
+        <strong>OR</strong>
+        <span></span>
+      </div>
+
+      <div class="alternate-actions">
+        <button id="googleButton" class="secondary-button" type="button">
+          <svg class="google-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M21.35 12.23c0-.7-.06-1.38-.18-2.03H12v3.84h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.2Z"/>
+            <path fill="#34A853" d="M12 21.5c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.69-1.72-5.46-4.03H3.3v2.53A9.74 9.74 0 0 0 12 21.5Z"/>
+            <path fill="#FBBC05" d="M6.54 13.58A5.85 5.85 0 0 1 6.24 12c0-.55.1-1.09.3-1.58V7.89H3.3A9.5 9.5 0 0 0 2.25 12c0 1.48.36 2.88 1.05 4.11l3.24-2.53Z"/>
+            <path fill="#EA4335" d="M12 6.39c1.43 0 2.71.49 3.72 1.46l2.79-2.79C16.83 3.4 14.63 2.5 12 2.5a9.74 9.74 0 0 0-8.7 5.39l3.24 2.53C7.31 8.11 9.46 6.39 12 6.39Z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <button id="phoneButton" class="secondary-button" type="button">
+          <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="7" y="2.5" width="10" height="19" rx="2.3"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"/>
+            <path d="M10.5 5h3M10 18.5h4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"/>
+          </svg>
+          <span>Continue with Phone Number</span>
+        </button>
+
+        <button id="guestButton" class="guest-button" type="button">
+          Continue as Guest
+        </button>
+      </div>
+
+      <p class="footer-note">
+        Secure gateway · Your journey starts here
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
